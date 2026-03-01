@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WristNav — Connecting to Strava</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0D0D1A; color: #fff; font-family: -apple-system, sans-serif;
+               display: flex; align-items: center; justify-content: center;
+               min-height: 100vh; text-align: center; padding: 20px; }
+        .card { background: #1A1A2E; border-radius: 16px; padding: 40px; max-width: 400px; }
+        .icon { font-size: 48px; margin-bottom: 16px; }
+        h1 { color: #4FC3F7; font-size: 22px; margin-bottom: 8px; }
+        p { color: #888; font-size: 15px; line-height: 1.6; }
+        .error { color: #EF5350; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon" id="icon">⏳</div>
+        <h1 id="title">Connecting to Strava...</h1>
+        <p id="message">Please wait while we complete the connection.</p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code  = params.get('code');
+        const error = params.get('error');
+
+        if (error) {
+            document.getElementById('icon').textContent = '❌';
+            document.getElementById('title').textContent = 'Connection Cancelled';
+            document.getElementById('message').textContent =
+                'You cancelled the Strava connection. You can close this page and try again in WristNav.';
+            document.getElementById('title').className = 'error';
+        } else if (code) {
+            document.getElementById('icon').textContent = '✓';
+            document.getElementById('title').textContent = 'Connected!';
+            document.getElementById('message').textContent =
+                'Strava connected successfully. Returning to WristNav...';
+
+            // Deep link back to phone app with auth code
+            setTimeout(() => {
+                window.location.href = 'wristnav://strava/callback?code=' + code;
+            }, 1000);
+        } else {
+            document.getElementById('icon').textContent = '❓';
+            document.getElementById('title').textContent = 'Something went wrong';
+            document.getElementById('message').textContent =
+                'No authorisation code received. Please try again from WristNav.';
+            document.getElementById('title').className = 'error';
+        }
+    </script>
+</body>
+</html>

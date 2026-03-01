@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WristNav</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0D0D1A; color: #fff; font-family: -apple-system, sans-serif; }
+        .hero { display: flex; flex-direction: column; align-items: center; justify-content: center;
+                min-height: 100vh; padding: 40px 20px; text-align: center; }
+        .logo { width: 80px; height: 80px; background: #4FC3F7; border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 36px; margin-bottom: 24px; }
+        h1 { font-size: 42px; font-weight: 700; color: #4FC3F7; margin-bottom: 8px; }
+        .tagline { font-size: 18px; color: #888; margin-bottom: 48px; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 16px; max-width: 800px; width: 100%; margin-bottom: 48px; }
+        .feature { background: #1A1A2E; border-radius: 12px; padding: 24px; text-align: left; }
+        .feature-icon { font-size: 28px; margin-bottom: 12px; }
+        .feature h3 { color: #4FC3F7; font-size: 16px; margin-bottom: 6px; }
+        .feature p { color: #888; font-size: 14px; line-height: 1.5; }
+        .links { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 12px 28px; border-radius: 8px; text-decoration: none;
+               font-size: 15px; font-weight: 600; }
+        .btn-primary { background: #4FC3F7; color: #000; }
+        .btn-secondary { background: #1A1A2E; color: #fff; border: 1px solid #333; }
+        footer { padding: 24px; text-align: center; color: #444; font-size: 13px; }
+        footer a { color: #4FC3F7; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="logo">⌚</div>
+        <h1>WristNav</h1>
+        <p class="tagline">Offline maps and GPS tracking for Wear OS</p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🗺️</div>
+                <h3>Offline Maps</h3>
+                <p>Download maps for your area and navigate without a data connection.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📍</div>
+                <h3>GPS Tracking</h3>
+                <p>Record your routes with elevation, heart rate and step data.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📁</div>
+                <h3>GPX Support</h3>
+                <p>Import and export GPX tracks. Send files between your phone and watch.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏃</div>
+                <h3>Live Stats</h3>
+                <p>Track distance, pace, heart rate, steps and elevation in real time.</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="privacy.html" class="btn btn-secondary">Privacy Policy</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 WristNav &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
