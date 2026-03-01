@@ -57,7 +57,14 @@
         footer a { color: #4FC3F7; text-decoration: none; }
     </style>
 </head>
-<body>
+<body>    <nav style="position:fixed; top:0; left:0; right:0; background:#1A1A2E; padding:12px 20px; display:flex; gap:24px; justify-content:center; z-index:999; border-bottom:1px solid #333;">
+        <a href="#download" style="color:#4FC3F7; text-decoration:none; font-size:14px; font-weight:600;">Download</a>
+        <a href="#watch" style="color:#888; text-decoration:none; font-size:14px; font-weight:600;">Watch App</a>
+        <a href="#phone" style="color:#888; text-decoration:none; font-size:14px; font-weight:600;">Phone App</a>
+        <a href="#settings" style="color:#888; text-decoration:none; font-size:14px; font-weight:600;">Settings</a>
+    </nav>
+    <div style="height:48px;"></div>
+
     <div class="hero">
         <div class="logo">⌚</div>
         <h1>WristNav</h1>
@@ -84,7 +91,7 @@
                 <p>Track distance, pace, heart rate, steps and elevation in real time.</p>
             </div>
         </div>
-        <div class="links">
+        <div id="download" class="links">
             <a href="https://github.com/boothy91/wrist-nav-site/releases/download/WristNav/WristNav-Watch-Release.apk" class="btn btn-primary">⌚ Download Watch APK</a>
             <a href="https://github.com/boothy91/wrist-nav-site/releases/download/WristNav/WristNav-Phone-Release.apk" class="btn btn-primary">📱 Download Phone APK</a>
             <a href="privacy.html" class="btn btn-secondary">Privacy Policy</a>
@@ -98,7 +105,7 @@
         </div>
     </div>
 
-    <div class="screens-section">
+    <div class="screens-section" id="watch">
         <h2>Watch App</h2>
         <p class="sub">Everything runs on the watch — no phone needed</p>
 
@@ -168,7 +175,7 @@
 
         <!-- Settings -->
         <div class="screen-group">
-            <h3>⚙️ Settings</h3>
+            <h3 id="settings">⚙️ Settings</h3>
             <p>Long press the map to open settings. Tap any option to cycle through values.</p>
             <div class="settings-grid">
                 <div class="setting-card">
@@ -219,7 +226,7 @@
         </div>
 
         <!-- Phone App -->
-        <h2 style="color:#4FC3F7; font-size:28px; margin-bottom:8px; text-align:center;">Phone Companion App</h2>
+        <h2 id="phone" style="color:#4FC3F7; font-size:28px; margin-bottom:8px; text-align:center;">Phone Companion App</h2>
         <p class="sub">Manage files, plan routes and upload to Strava</p>
 
         <div class="screen-group">
