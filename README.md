@@ -10,16 +10,7 @@ A fully featured outdoor sports app for Wear OS with offline maps, GPX navigatio
 
 If WristNav has been useful on a run, hike or ride — a coffee goes a long way!
 
-[
-
-![Ko-fi](https://img.shields.io/badge/Ko--fi-wristnav-FF5E5B?logo=ko-fi&logoColor=white)
-
-](https://ko-fi.com/wristnav)
-[
-
-![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-wristnavv-FFDD00?logo=buy-me-a-coffee&logoColor=black)
-
-](https://buymeacoffee.com/wristnavv)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-wristnav-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/wristnav) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-wristnavv-FFDD00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/wristnavv)
 
 ---
 
@@ -203,21 +194,6 @@ View all GPX files recorded on your watch and transferred to your phone. Tap any
 ![Phone App Plan](screenshots/Phone%20App%20Plan.png)
 
 Built-in Trail Planner — plan a route on the map, export as GPX, name it and send directly to your watch with one tap. Powered by [boothy91.github.io/gpx-map](https://boothy91.github.io/gpx-map/).
-
----
-
-## Building from Source
-
-Requirements: Android Studio, or Termux with Gradle
-
-```bash
-git clone https://github.com/boothy91/Wrist-Nav
-cd Wrist-Nav
-./gradlew :app:assembleRelease    # Watch app
-./gradlew :phone:assembleRelease  # Phone app
-```
-
-Signed APKs require a keystore. See `app/build.gradle` and `phone/build.gradle` for signing config.
 
 ---
 
