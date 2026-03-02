@@ -16,7 +16,7 @@ If WristNav has been useful on a run, hike or ride — a coffee goes a long way!
 
 ## Download & Install
 
-Download the latest APK from [Releases](https://github.com/boothy91/wrist-nav-site/releases/tag/WristNav) and sideload to your watch.
+Download the latest APK from [Releases](https://github.com/boothy91/wrist-nav-site/releases/tag/v1.0.1) and sideload to your watch.
 
 ### Method 1 — Wireless ADB (Recommended)
 
