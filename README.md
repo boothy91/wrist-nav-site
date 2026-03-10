@@ -16,7 +16,11 @@ If WristNav has been useful on a run, hike or ride — a coffee goes a long way!
 
 ## Download & Install
 
-Download the latest APK from [Releases](https://github.com/boothy91/wrist-nav-site/releases/tag/v1.0.2) and sideload to your watch.
+Download the latest APKs:
+- [⌚ Watch APK](https://github.com/boothy91/wrist-nav-site/raw/main/WristNav-Watch-Release.apk)
+- [📱 Phone Companion APK](https://github.com/boothy91/wrist-nav-site/raw/main/WristNav-Phone-Release.apk)
+
+Or visit the [landing page](https://boothy91.github.io/wrist-nav-site/) for more info.
 
 ### Method 1 — Wireless ADB (Recommended)
 
@@ -25,7 +29,7 @@ Download the latest APK from [Releases](https://github.com/boothy91/wrist-nav-si
 3. Run:
 ```
 adb connect <watch-ip-address>
-adb install WristNav-Watch.apk
+adb install WristNav-Watch-Release.apk
 ```
 
 ### Method 2 — Bugjaeger (Phone only, no PC needed)
@@ -33,6 +37,12 @@ adb install WristNav-Watch.apk
 1. Install [Bugjaeger](https://play.google.com/store/apps/details?id=eu.sisik.hackendebug) on your Android phone
 2. Enable **Wireless Debugging** on your watch and pair via Bugjaeger
 3. Use Bugjaeger's APK install feature to sideload the APK
+
+---
+
+## Offline Maps
+
+Map files for WristNav are available at **[boothy91.github.io/wrist-nav-maps](https://boothy91.github.io/wrist-nav-maps/)** — browse by region and download directly to your device.
 
 ---
 
@@ -120,57 +130,46 @@ Access via long press on map → Settings. Tap any option to cycle through value
 
 ### Setting 1 — Map Theme
 ![Setting 1](screenshots/Setting%20%231.png)
-
 Dark or Light map theme.
 
 ### Setting 2 — Distance Units
 ![Setting 2](screenshots/Setting%20%232.png)
-
 km or mi — affects distance display, pace, and split vibrations.
 
 ### Setting 3 — Clock Format
 ![Setting 3](screenshots/Setting%20%233.png)
-
 24hr or 12hr clock on the home screen.
 
 ### Setting 4 — Min Record Distance
 ![Setting 4](screenshots/Setting%20%234.png)
-
 Minimum distance between GPS points when recording. Lower = more detail, higher = smaller file size.
 
 ### Setting 5 — Min Record Time
 ![Setting 5](screenshots/Setting%20%235.png)
-
 Minimum time between GPS points when recording.
 
 ### Setting 6 — Import Track Colour
 ![Setting 6](screenshots/Setting%20%236.png)
-
 Colour for imported GPX tracks on the map.
 
 ### Setting 7 — Record Track Colour
 ![Setting 7](screenshots/Setting%20%237.png)
-
 Colour for your live recording track on the map.
 
 ### Setting 8 — Import Track Width
 ![Setting 8](screenshots/Setting%20%238.png)
-
 Line width for imported GPX tracks.
 
 ### Setting 9 — Record Track Width
 ![Setting 9](screenshots/Setting%20%239.png)
-
 Line width for your live recording track.
 
 ### Setting 10 — Auto Pause
 ![Setting 10](screenshots/Setting%20%2310.png)
-
 Automatically pause recording when you stop moving. Resumes when you start again.
 
 ### Setting 11 — Lap Splits
 ![Setting 11](screenshots/Setting%20%2311.png)
-
 Show a split time on screen with vibration at every km or mi.
 
 ---
