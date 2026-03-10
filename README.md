@@ -101,7 +101,7 @@ Tap any track to open a swipeable detail view:
 ![GPX File Manage](screenshots/GPX%20File%20Manage.png)
 
 Manage all your GPX files on the watch:
-- Import from file picker (works with Google Drive, email, any file manager)
+- Import GPX files via the phone companion app
 - Send to phone companion app
 - Delete tracks
 - Visibility toggle — doubles as nav route selector
