@@ -98,7 +98,7 @@ Tap any track to open a swipeable detail view:
 
 ### GPX File Manager
 
-![GPX File Manage](screenshots/GPX%20File%20Manage.png)
+![GPX File Manage](screenshots/Track%20Hidden%20Visable%20with%20delete%20button.png)
 
 Manage all your GPX files on the watch:
 - Import GPX files via the phone companion app
