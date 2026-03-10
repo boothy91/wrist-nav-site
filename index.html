@@ -29,7 +29,6 @@
         .donate-section { margin-top: 16px; }
         .donate-label { color: #555; font-size: 13px; margin-bottom: 12px; }
 
-        /* Screenshots section */
         .screens-section { width: 100%; max-width: 960px; padding: 60px 20px; margin: 0 auto; }
         .screens-section h2 { color: #4FC3F7; font-size: 28px; margin-bottom: 8px; text-align: center; }
         .screens-section .sub { color: #555; font-size: 14px; text-align: center; margin-bottom: 48px; }
@@ -41,23 +40,34 @@
         .screen-card img { width: 100%; display: block; }
         .screen-card .caption { padding: 10px 12px; font-size: 12px; color: #888; text-align: center; }
 
-        /* Settings grid */
         .settings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
         .setting-card { background: #1A1A2E; border-radius: 10px; overflow: hidden; }
         .setting-card img { width: 100%; display: block; }
         .setting-card .caption { padding: 8px; font-size: 11px; color: #888; text-align: center; }
 
-        /* Phone section */
         .phone-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
         .phone-card { background: #1A1A2E; border-radius: 12px; overflow: hidden; flex: 1; min-width: 200px; max-width: 280px; }
         .phone-card img { width: 100%; display: block; }
         .phone-card .caption { padding: 10px 12px; font-size: 12px; color: #888; text-align: center; }
 
+        .phonenav-banner {
+            background: #1A1A2E;
+            border: 1px solid #2A2A3E;
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+        .phonenav-banner h2 { color: #4FC3F7; font-size: 24px; margin-bottom: 10px; }
+        .phonenav-banner p { color: #888; font-size: 15px; margin-bottom: 24px; line-height: 1.7; }
+
         footer { padding: 24px; text-align: center; color: #444; font-size: 13px; }
         footer a { color: #4FC3F7; text-decoration: none; }
     </style>
 </head>
-<body>    <nav style="position:fixed; top:0; left:0; right:0; background:#1A1A2E; padding:12px 20px; display:flex; gap:24px; justify-content:center; z-index:999; border-bottom:1px solid #333;">
+<body>
+    <nav style="position:fixed; top:0; left:0; right:0; background:#1A1A2E; padding:12px 20px; display:flex; gap:24px; justify-content:center; z-index:999; border-bottom:1px solid #333;">
         <a href="#download" style="color:#4FC3F7; text-decoration:none; font-size:14px; font-weight:600;">Download</a>
         <a href="#watch" style="color:#888; text-decoration:none; font-size:14px; font-weight:600;">Watch App</a>
         <a href="#phone" style="color:#888; text-decoration:none; font-size:14px; font-weight:600;">Phone App</a>
@@ -92,7 +102,8 @@
             </div>
         </div>
         <div id="download" class="links">
-            <a href="https://github.com/boothy91/wrist-nav-site/releases" class="btn btn-primary">⌚ Download APKs</a>
+            <a href="https://github.com/boothy91/wrist-nav-site/raw/main/WristNav-Watch-Release.apk" class="btn btn-primary">⌚ Download Watch APK</a>
+            <a href="https://github.com/boothy91/wrist-nav-site/raw/main/WristNav-Phone-Release.apk" class="btn btn-secondary">📱 Download Phone APK</a>
             <a href="privacy.html" class="btn btn-secondary">Privacy Policy</a>
         </div>
         <div class="donate-section">
@@ -108,7 +119,6 @@
         <h2>Watch App</h2>
         <p class="sub">Everything runs on the watch — no phone needed</p>
 
-        <!-- Tracking -->
         <div class="screen-group">
             <h3>🏃 Start & Track</h3>
             <p>Start recording from the home screen. Enable Nav mode to follow a GPX route — the app jumps straight to the map when you begin.</p>
@@ -124,7 +134,6 @@
             </div>
         </div>
 
-        <!-- Stats -->
         <div class="screen-group">
             <h3>📊 Live Stats</h3>
             <p>Swipe between two stats screens during recording. Time, distance and pace on the first — heart rate, steps and elevation on the second.</p>
@@ -140,7 +149,6 @@
             </div>
         </div>
 
-        <!-- Map -->
         <div class="screen-group">
             <h3>🗺️ Offline Map</h3>
             <p>Full offline OSM maps. Download any region to the watch. When Nav mode is on, your GPX route shows on the map with remaining distance as an overlay.</p>
@@ -156,7 +164,6 @@
             </div>
         </div>
 
-        <!-- GPX -->
         <div class="screen-group">
             <h3>📁 GPX Files</h3>
             <p>Import routes from any file manager, Google Drive or email. Select a track to navigate — shows on the map with remaining distance countdown.</p>
@@ -172,59 +179,24 @@
             </div>
         </div>
 
-        <!-- Settings -->
         <div class="screen-group">
             <h3 id="settings">⚙️ Settings</h3>
             <p>Long press the map to open settings. Tap any option to cycle through values.</p>
             <div class="settings-grid">
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%231.png" alt="Map Theme">
-                    <div class="caption">Map Theme</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%232.png" alt="Distance">
-                    <div class="caption">Distance Units</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%233.png" alt="Clock">
-                    <div class="caption">Clock Format</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%234.png" alt="Rec Distance">
-                    <div class="caption">Min Rec Distance</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%235.png" alt="Rec Time">
-                    <div class="caption">Min Rec Time</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%236.png" alt="Import Colour">
-                    <div class="caption">Import Colour</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%237.png" alt="Record Colour">
-                    <div class="caption">Record Colour</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%238.png" alt="Import Width">
-                    <div class="caption">Import Width</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%239.png" alt="Record Width">
-                    <div class="caption">Record Width</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%2310.png" alt="Auto Pause">
-                    <div class="caption">Auto Pause</div>
-                </div>
-                <div class="setting-card">
-                    <img src="screenshots/Setting%20%2311.png" alt="Lap Splits">
-                    <div class="caption">Lap Splits</div>
-                </div>
+                <div class="setting-card"><img src="screenshots/Setting%20%231.png" alt="Map Theme"><div class="caption">Map Theme</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%232.png" alt="Distance"><div class="caption">Distance Units</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%233.png" alt="Clock"><div class="caption">Clock Format</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%234.png" alt="Rec Distance"><div class="caption">Min Rec Distance</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%235.png" alt="Rec Time"><div class="caption">Min Rec Time</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%236.png" alt="Import Colour"><div class="caption">Import Colour</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%237.png" alt="Record Colour"><div class="caption">Record Colour</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%238.png" alt="Import Width"><div class="caption">Import Width</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%239.png" alt="Record Width"><div class="caption">Record Width</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%2310.png" alt="Auto Pause"><div class="caption">Auto Pause</div></div>
+                <div class="setting-card"><img src="screenshots/Setting%20%2311.png" alt="Lap Splits"><div class="caption">Lap Splits</div></div>
             </div>
         </div>
 
-        <!-- Phone App -->
         <h2 id="phone" style="color:#4FC3F7; font-size:28px; margin-bottom:8px; text-align:center;">Phone Companion App</h2>
         <p class="sub">Manage files, plan routes and upload to Strava</p>
 
@@ -243,6 +215,12 @@
                     <div class="caption">Plan Route · Send to Watch</div>
                 </div>
             </div>
+        </div>
+
+        <div class="phonenav-banner">
+            <h2>📱 Also want it on your phone?</h2>
+            <p>PhoneNav is a standalone Android companion app with offline maps, GPX navigation, activity recording and a built-in route planner — no watch required.</p>
+            <a href="https://boothy91.github.io/phonenav-site/" class="btn btn-primary">Visit PhoneNav →</a>
         </div>
 
     </div>
