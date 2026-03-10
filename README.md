@@ -42,7 +42,7 @@ adb install WristNav-Watch-Release.apk
 
 ## Offline Maps
 
-Map files for WristNav are available at **[boothy91.github.io/wrist-nav-maps](https://boothy91.github.io/wrist-nav-maps/)** — browse by region and download directly to your device.
+Map files are downloaded directly within the watch app — browse by region and download to your watch without needing a phone. Check available regions and updates at **[boothy91.github.io/wrist-nav-maps](https://boothy91.github.io/wrist-nav-maps/)**.
 
 ---
 
@@ -56,18 +56,23 @@ Start, pause and stop recording from the home screen. Enable **Nav mode** to fol
 
 ![Map Downloads](screenshots/Map%20Downloads.png)
 
-Full offline maps powered by OpenStreetMap. Download map regions directly to your watch — no internet needed when out on a route. Supports dark and light themes.
+Full offline maps powered by OpenStreetMap. Download map regions directly to your watch — no internet needed when out on a route. Supports Fjord, Dark and Light themes.
 
 - Pinch to zoom, swipe to pan
 - Long press to open the main menu
 - Lock dot in the top bar — tap to lock/unlock map to your GPS position
 - Map rotates with your heading when locked
+- Minimal Map mode — strips map to roads, paths and water to save battery
 
-### Map with Nav Overlay
+### Navigation
 
-![Map with Nav Overlay](screenshots/Map%20with%20Nav%20Overlay.png)
+![Walk with Distance showing](screenshots/Walk%20with%20Distance%20showing.png)
 
-When Nav mode is active and recording, the map shows your imported route with remaining distance displayed as an overlay.
+When Nav mode is active, the map shows your imported route with remaining distance and elevation profile as an overlay.
+
+- Remaining distance to end of route
+- Live elevation profile graph with remaining climb indicator
+- Enable Nav Distance and Nav Elevation in settings to show/hide each
 
 ### Recording
 
@@ -75,42 +80,21 @@ When Nav mode is active and recording, the map shows your imported route with re
 
 Record your activity with live GPS tracking. Recording continues when the screen sleeps via a background service.
 
-- Live distance, time, pace and heart rate on the stats screen
+- Live distance, time, pace, heart rate, steps and elevation
 - Vibrates every km or mile
-- Auto-pause when stationary (optional)
-- Lap splits displayed on screen with vibration (optional)
-- GPX exported with timestamps, elevation, heart rate and step data
+- Lap splits with vibration (respects km/mi setting)
+- Countdown timer when starting
+- GPS status indicator (red/amber/green)
+- GPX exported with timestamps, elevation, heart rate and cadence data
 - Ready to upload directly to Strava
 
-### Pause and Stop
+### Track Details
 
-![Pause and Stop Tracking](screenshots/Pause%20and%20Stop%20Tracking.png)
+![Track Details Page](screenshots/Track%20Details%20Page.png)
 
-Pause your recording at any time and resume when ready. Stop and save your route as a GPX file.
-
-### Stats Screen 1
-
-![Stats 1](screenshots/Stats%201.png)
-
-Live stats during recording:
-- Elapsed time
-- Distance
-- Average pace per km/mi
-
-### Stats Screen 2
-
-![Stats 2](screenshots/Stats%202.png)
-
-Additional live stats:
-- Heart rate (BPM)
-- Steps
-- Elevation
-
-### GPX Navigation
-
-![GPX Files](screenshots/GPX%20Files.png)
-
-Import GPX routes and navigate along them. Select a track to display it on the map — only one track shows at a time. Enable Nav mode on the home screen to see remaining distance to the end of the route.
+Tap any track to open a swipeable detail view:
+- Page 1: Distance, elevation gain, date
+- Page 2: Garmin-style elevation profile with y-axis labels and total distance
 
 ### GPX File Manager
 
@@ -120,57 +104,26 @@ Manage all your GPX files on the watch:
 - Import from file picker (works with Google Drive, email, any file manager)
 - Send to phone companion app
 - Delete tracks
-- File size shown for each track
+- Visibility toggle — doubles as nav route selector
 
 ---
 
 ## Settings
 
-Access via long press on map → Settings. Tap any option to cycle through values.
+Access via long press on map → Settings. Settings include:
 
-### Setting 1 — Map Theme
-![Setting 1](screenshots/Setting%20%231.png)
-Dark or Light map theme.
-
-### Setting 2 — Distance Units
-![Setting 2](screenshots/Setting%20%232.png)
-km or mi — affects distance display, pace, and split vibrations.
-
-### Setting 3 — Clock Format
-![Setting 3](screenshots/Setting%20%233.png)
-24hr or 12hr clock on the home screen.
-
-### Setting 4 — Min Record Distance
-![Setting 4](screenshots/Setting%20%234.png)
-Minimum distance between GPS points when recording. Lower = more detail, higher = smaller file size.
-
-### Setting 5 — Min Record Time
-![Setting 5](screenshots/Setting%20%235.png)
-Minimum time between GPS points when recording.
-
-### Setting 6 — Import Track Colour
-![Setting 6](screenshots/Setting%20%236.png)
-Colour for imported GPX tracks on the map.
-
-### Setting 7 — Record Track Colour
-![Setting 7](screenshots/Setting%20%237.png)
-Colour for your live recording track on the map.
-
-### Setting 8 — Import Track Width
-![Setting 8](screenshots/Setting%20%238.png)
-Line width for imported GPX tracks.
-
-### Setting 9 — Record Track Width
-![Setting 9](screenshots/Setting%20%239.png)
-Line width for your live recording track.
-
-### Setting 10 — Auto Pause
-![Setting 10](screenshots/Setting%20%2310.png)
-Automatically pause recording when you stop moving. Resumes when you start again.
-
-### Setting 11 — Lap Splits
-![Setting 11](screenshots/Setting%20%2311.png)
-Show a split time on screen with vibration at every km or mi.
+- **Map Theme** — Fjord, Dark or Light
+- **Minimal Map** — strip map detail to save battery
+- **Distance Units** — km or mi
+- **Clock Format** — 24hr or 12hr
+- **Min Record Distance / Time** — control GPS point frequency
+- **Import / Record Track Colour and Width**
+- **Lap Splits** — on/off
+- **Lock Zoom** — fix zoom level; location button turns red when locked
+- **Keep Active** — prevent watch screen from sleeping during recording
+- **Nav Distance / Nav Elevation** — show/hide nav overlay elements
+- **Heart Rate / Steps** — toggle sensors on/off
+- **Customisable Stats Pages** — configure up to 5 pages with 10 available stat types
 
 ---
 
@@ -178,26 +131,31 @@ Show a split time on screen with vibration at every km or mi.
 
 ### Send to Watch
 
-![Phone App Send to Phone](screenshots/Phone%20App%20Send%20to%20Phone.png)
+![Phone Send Page](screenshots/Phone%20Send%20Page.png)
 
-Pick any GPX file from your phone and send it directly to your watch. Connect Strava and upload GPX files straight from your phone.
+Send GPX routes or map files directly to your watch. Map files up to 50MB supported.
 
 ### Received from Watch
 
-![Phone App Received](screenshots/Phone%20App%20Recieved.png)
+![Received Page](screenshots/Received%20Page.png)
 
 View all GPX files recorded on your watch and transferred to your phone. Tap any track to open the activity viewer — full map, elevation chart, distance, HR and elevation stats. Save to Downloads, upload to Strava, or delete.
 
 ### Plan a Route
 
-![Phone App Plan](screenshots/Phone%20App%20Plan.png)
+![Plan Tab with send to watch showing](screenshots/Plan%20Tab%20with%20send%20to%20watch%20showing.png)
 
 Built-in Trail Planner — plan a route on the map, export as GPX, name it and send directly to your watch with one tap. Powered by [boothy91.github.io/gpx-map](https://boothy91.github.io/gpx-map/).
 
 ---
 
+## Reporting Crashes
+
+If the app crashes, a log is automatically saved to `Downloads/wristnav_crash.txt` on your watch. Please attach this file when reporting issues via GitHub or Reddit.
+
+---
+
 ## Credits
 
-- Maps powered by [Mapsforge](https://github.com/mapsforge/mapsforge)
 - Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)
 - Trail Planner by [boothy91](https://boothy91.github.io/gpx-map/)
