@@ -1,746 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WristNav – App Guide</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --bg:      #0D0D1A;
-      --card:    #12122A;
-      --border:  #1E1E3A;
-      --blue:    #4FC3F7;
-      --blue2:   #1976D2;
-      --green:   #4CAF50;
-      --red:     #EF5350;
-      --amber:   #FFB300;
-      --text:    #FFFFFF;
-      --muted:   #8888AA;
-      --pill-bg: rgba(79,195,247,0.12);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 0 0 80px;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, #0D0D1A 0%, #0a1628 50%, #0D0D1A 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 48px 24px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(79,195,247,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-icon {
-      width: 64px; height: 64px;
-      background: var(--blue);
-      border-radius: 18px;
-      display: inline-flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-      box-shadow: 0 0 32px rgba(79,195,247,0.3);
-    }
-    .hero-icon svg { width: 34px; height: 34px; color: #0D0D1A; }
-    .hero h1 { font-size: 32px; font-weight: 700; color: var(--blue); letter-spacing: -0.5px; }
-    .hero p  { font-size: 14px; color: var(--muted); margin-top: 8px; }
-
-    /* ── LAYOUT ── */
-    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-
-    /* ── SECTION HEADER ── */
-    .section-wrap { margin-top: 48px; }
-    .section-header {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 20px;
-    }
-    .section-icon {
-      width: 36px; height: 36px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      font-size: 18px;
-    }
-    .section-header h2 { font-size: 18px; font-weight: 700; }
-    .section-header p  { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-    /* ── FLOWCHART ── */
-    .flow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-    .flow-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .flow-node {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 18px;
-      font-size: 13px; font-weight: 600;
-      text-align: center;
-      min-width: 120px;
-      position: relative;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .flow-node:hover { border-color: var(--blue); box-shadow: 0 0 16px rgba(79,195,247,0.15); }
-    .flow-node.primary { border-color: var(--blue); color: var(--blue); background: rgba(79,195,247,0.06); }
-    .flow-node.green   { border-color: var(--green); color: var(--green); background: rgba(76,175,80,0.06); }
-    .flow-node.amber   { border-color: var(--amber); color: var(--amber); background: rgba(255,179,0,0.06); }
-    .flow-node.red     { border-color: var(--red); color: var(--red); background: rgba(239,83,80,0.06); }
-    .flow-node small   { display: block; font-size: 10px; font-weight: 400; color: var(--muted); margin-top: 3px; }
-    .flow-arrow {
-      display: flex; flex-direction: column; align-items: center;
-      padding: 4px 0;
-    }
-    .flow-arrow svg { color: var(--muted); }
-    .flow-arrow-h svg { color: var(--muted); }
-    .flow-arrow-h { display: flex; align-items: center; }
-
-    /* ── CARD GRID ── */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      transition: border-color 0.2s;
-    }
-    .card:hover { border-color: var(--blue-dim, #2A6A8A); }
-    .card-title {
-      font-size: 13px; font-weight: 600;
-      display: flex; align-items: center; gap: 8px;
-      margin-bottom: 8px;
-    }
-    .card-title .dot {
-      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-    }
-    .card ul { list-style: none; }
-    .card ul li {
-      font-size: 12px; color: var(--muted);
-      padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
-      display: flex; gap: 8px; align-items: flex-start;
-    }
-    .card ul li:last-child { border-bottom: none; }
-    .card ul li::before { content: '–'; color: var(--blue); flex-shrink: 0; }
-
-    /* ── INDICATOR BADGES ── */
-    .badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 10px; border-radius: 20px;
-      font-size: 11px; font-weight: 600; border: 1px solid;
-    }
-    .badge .dot { width: 8px; height: 8px; border-radius: 50%; }
-    .badge.green { color: var(--green); border-color: rgba(76,175,80,0.4); background: rgba(76,175,80,0.08); }
-    .badge.red   { color: var(--red);   border-color: rgba(239,83,80,0.4);  background: rgba(239,83,80,0.08); }
-    .badge.amber { color: var(--amber); border-color: rgba(255,179,0,0.4);  background: rgba(255,179,0,0.08); }
-
-    /* ── SETTINGS LIST ── */
-    .settings-list { display: flex; flex-direction: column; gap: 6px; }
-    .setting-row {
-      display: flex; align-items: flex-start; gap: 12px;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 12px 14px;
-      transition: border-color 0.2s;
-    }
-    .setting-row:hover { border-color: rgba(79,195,247,0.3); }
-    .setting-num {
-      width: 24px; height: 24px; border-radius: 6px;
-      background: var(--pill-bg); color: var(--blue);
-      font-size: 11px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
-    }
-    .setting-name  { font-size: 13px; font-weight: 600; }
-    .setting-desc  { font-size: 11px; color: var(--muted); margin-top: 3px; }
-    .setting-opts  {
-      font-size: 10px; color: var(--blue);
-      margin-top: 5px; padding: 3px 8px;
-      background: var(--pill-bg); border-radius: 6px;
-      display: inline-block;
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      height: 1px; background: var(--border);
-      margin: 40px 0;
-    }
-
-    /* ── NOTE BOX ── */
-    .note {
-      background: rgba(255,179,0,0.06);
-      border: 1px solid rgba(255,179,0,0.25);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 12px; color: #FFD54F;
-      margin-top: 12px;
-      display: flex; gap: 10px; align-items: flex-start;
-    }
-    .note span { flex: 1; line-height: 1.5; }
-
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 24px; }
-      .flow-row { gap: 4px; }
-      .flow-node { min-width: 90px; padding: 10px 12px; font-size: 12px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0D0D1A; color: #FFFFFF; line-height: 1.6; }
+    .hero { background: linear-gradient(135deg, #1A1A2E, #0D0D1A); padding: 48px 24px 32px; text-align: center; border-bottom: 1px solid #2A2A40; }
+    .hero h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; color: #4FC3F7; margin-bottom: 8px; }
+    .hero p { color: #888; font-size: 15px; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 16px 64px; }
+    .section { margin-top: 48px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #2A2A40; }
+    .section-header .icon { font-size: 24px; }
+    .section-header h2 { font-size: 22px; font-weight: 700; color: #4FC3F7; }
+    .card { background: #1A1A2E; border-radius: 12px; padding: 20px; margin-bottom: 12px; border: 1px solid #2A2A40; }
+    .card h3 { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .card p, .card li { font-size: 14px; color: #AAAACC; line-height: 1.7; }
+    .card ul { padding-left: 18px; }
+    .card ul li { margin-bottom: 4px; }
+    .tip { background: #0A1A2E; border-left: 3px solid #4FC3F7; border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 12px; font-size: 13px; color: #AAAACC; }
+    .warn { background: #1A1000; border-left: 3px solid #F59E0B; border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 12px; font-size: 13px; color: #AAAACC; }
+    .settings-grid { display: grid; gap: 8px; }
+    .setting-row { display: grid; grid-template-columns: 24px 1fr 1fr; gap: 12px; align-items: start; background: #1A1A2E; border-radius: 8px; padding: 12px 14px; border: 1px solid #2A2A40; }
+    .setting-num { font-size: 12px; color: #555; font-weight: 700; padding-top: 2px; }
+    .setting-name { font-size: 14px; font-weight: 600; color: #FFFFFF; }
+    .setting-desc { font-size: 12px; color: #888; margin-top: 2px; }
+    .setting-value { font-size: 12px; color: #4FC3F7; text-align: right; }
+    .flow { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; }
+    .flow-item { background: #1A1A2E; border: 1px solid #2A2A40; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #AAAACC; white-space: nowrap; }
+    .flow-arrow { color: #4FC3F7; font-size: 18px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+    .stat-item { background: #1A1A2E; border: 1px solid #2A2A40; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #AAAACC; }
+    a { color: #4FC3F7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 500px) {
+      .setting-row { grid-template-columns: 20px 1fr; }
+      .setting-value { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-icon">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-      <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7M9 20l6-3M9 20V7m6 13l5.447-2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m0 13V7M9 7l6-3"/>
-    </svg>
-  </div>
   <h1>WristNav</h1>
   <p>App Guide &amp; Feature Overview</p>
 </div>
 
 <div class="container">
 
-  <!-- ═══ APP FLOW ═══ -->
-  <div class="section-wrap">
+  <!-- App Flow -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(79,195,247,0.12);">🗺️</div>
-      <div>
-        <h2>App Flow</h2>
-        <p>How the screens connect</p>
-      </div>
+      <span class="icon">🗺️</span>
+      <h2>App Flow</h2>
     </div>
-
     <div class="flow">
-      <!-- Home -->
-      <div class="flow-node primary" style="width:200px;">
-        🏠 Home Screen
-        <small>GPS Signal · Start/Stop/Pause · Nav On/Off</small>
-      </div>
-
-      <div class="flow-arrow">
-        <svg width="16" height="28" viewBox="0 0 16 28" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="20"/><polyline points="3,15 8,21 13,15"/></svg>
-      </div>
-
-      <!-- Stats row -->
-      <div class="flow-row">
-        <div class="flow-node">
-          📊 Stats Page 1
-          <small>Swipe →</small>
-        </div>
-        <div class="flow-arrow-h">
-          <svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="8" x2="20" y2="8"/><polyline points="14,3 21,8 14,13"/></svg>
-        </div>
-        <div class="flow-node">
-          📊 Stats Page 2
-          <small>Swipe →</small>
-        </div>
-        <div class="flow-arrow-h">
-          <svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="8" x2="20" y2="8"/><polyline points="14,3 21,8 14,13"/></svg>
-        </div>
-        <div class="flow-node green">
-          🗺️ Map
-          <small>Slide compass → to go back</small>
-        </div>
-      </div>
-
-      <div class="flow-arrow">
-        <svg width="16" height="28" viewBox="0 0 16 28" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="20"/><polyline points="3,15 8,21 13,15"/></svg>
-      </div>
-
-      <!-- Bottom tabs -->
-      <div class="flow-row">
-        <div class="flow-node" style="min-width:110px;">📥 Maps</div>
-        <div class="flow-node" style="min-width:110px;">🗂️ Tracks</div>
-        <div class="flow-node" style="min-width:110px;">⚙️ Settings</div>
-      </div>
+      <div class="flow-item">🏠 Home Screen</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item">📊 Stats Pages (swipe)</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-item">🗺️ Map (drag compass →)</div>
     </div>
+    <div class="flow">
+      <div class="flow-item">📥 Maps</div>
+      <div class="flow-item">🗂️ Tracks</div>
+      <div class="flow-item">⚙️ Settings</div>
+    </div>
+    <div class="tip">💡 Stats pages are fully customisable — up to <strong>10 pages</strong>, 3 stat slots each, from 15 available stat types. Configure in Settings → Stats Pages.</div>
+  </div>
 
-    <div class="note">
-      <span>💡</span>
-      <span>Stats pages are customisable — you can add up to <strong>5 pages</strong> and choose which stats appear on each. Edit this in Settings → Stats Edit.</span>
+  <!-- Home Screen -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">🏠</span>
+      <h2>Home Screen</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li>Start, pause and stop recording from the home screen</li>
+        <li>GPS status indicator — red (no fix), amber (weak), green (good)</li>
+        <li>Enable <strong>Nav mode</strong> to follow a GPX route — pressing start with Nav on goes straight to the map</li>
+        <li>Heart rate displayed live when sensor is enabled</li>
+      </ul>
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ═══ MAP SCREEN ═══ -->
-  <div class="section-wrap">
+  <!-- Map Screen -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(76,175,80,0.12);">🗺️</div>
-      <div>
-        <h2>Map Screen</h2>
-        <p>Controls and indicators</p>
-      </div>
+      <span class="icon">🗺️</span>
+      <h2>Map Screen</h2>
     </div>
+    <div class="card">
+      <h3>Controls</h3>
+      <ul>
+        <li>Pinch to zoom, swipe to pan</li>
+        <li>Long press to open the main menu</li>
+        <li><strong>Location button</strong> — red = locked, map follows your GPS position · blue = free, moveable map</li>
+        <li><strong>Compass</strong> — tap to cycle modes · drag right to go back to stats pages</li>
+        <li><strong>Map Lock</strong> — tap the clock/battery bar to fully lock the map from all motion, tap again to unlock · small dot shows lock state</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Compass Modes</h3>
+      <ul>
+        <li>🔴 <strong>Red — North locked:</strong> Map always faces north, compass tape shows N</li>
+        <li>🟢 <strong>Green — Heading mode:</strong> Map rotates with your direction of travel</li>
+        <li>🔵 <strong>Blue — Free compass:</strong> Map locked north, compass tape moves live with your bearing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Navigation Overlay</h3>
+      <ul>
+        <li>Remaining distance to end of route (toggle in Settings → Nav Distance)</li>
+        <li>Live elevation profile with your position and remaining climb (toggle in Settings → Nav Elevation)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Minimal Map Mode</h3>
+      <ul>
+        <li>Strips the map to roads, paths and water only</li>
+        <li>Pure black background — maximises battery on AMOLED displays</li>
+        <li>Select via Settings → Map Theme</li>
+      </ul>
+    </div>
+    <div class="warn">⚠️ Map lock requires swiping between pages to activate.</div>
+  </div>
 
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--blue)"></div>
-          Location Button
-        </div>
-        <div class="badge-row">
-          <div class="badge red"><div class="dot" style="background:var(--red)"></div>Locked – map follows you</div>
-          <div class="badge green"><div class="dot" style="background:var(--green)"></div>Free – moveable map</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--amber)"></div>
-          Compass
-        </div>
-        <div class="badge-row">
-          <div class="badge red"><div class="dot" style="background:var(--red)"></div>Locked North</div>
-          <div class="badge green"><div class="dot" style="background:var(--green)"></div>Rotates with heading</div>
-        </div>
-        <ul style="margin-top:10px;">
-          <li>Drag compass right to go back to stats pages</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--muted)"></div>
-          Map Lock
-        </div>
-        <ul>
-          <li>Tap the Clock/Battery bar and it will totally locks the map from motion, tap again and it will unlock</li>
-          <li>Drag compass right to return to stats</li>
-          <li>Map stays locked when you return to it</li>
-          <li>Small dot next to time &amp; battery shows lock state</li>
-        </ul>
-        <div class="badge-row" style="margin-top:8px;">
-          <div class="badge red"><div class="dot" style="background:var(--red)"></div>Map locked</div>
-          <div class="badge green"><div class="dot" style="background:var(--green)"></div>Map free</div>
-        </div>
-        <div class="note" style="margin-top:10px;">
-          <span>⚠️</span>
-          <span>Requires swiping between pages to activate. Auto-activation coming in a future update.</span>
-        </div>
-      </div>
+  <!-- Maps Page -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">📥</span>
+      <h2>Maps Page</h2>
+    </div>
+    <div class="card">
+      <h3>Manage Maps</h3>
+      <ul>
+        <li>Tap to open already downloaded maps</li>
+        <li>Tap any map to delete it</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Download Maps</h3>
+      <ul>
+        <li>Browse regions and download directly to the watch — no phone needed</li>
+        <li>Some countries have a single map file, others use leaf maps by region</li>
+        <li>Tap any region to download</li>
+        <li>Available regions: <a href="https://boothy91.github.io/wrist-nav-maps" target="_blank">boothy91.github.io/wrist-nav-maps</a></li>
+      </ul>
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ═══ MAPS PAGE ═══ -->
-  <div class="section-wrap">
+  <!-- Tracks Page -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(79,195,247,0.12);">📥</div>
-      <div>
-        <h2>Maps Page</h2>
-        <p>Download and manage offline maps</p>
-      </div>
+      <span class="icon">🗂️</span>
+      <h2>Tracks Page</h2>
     </div>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--blue)"></div>
-          Manage Maps
-        </div>
-        <ul>
-          <li>Tap to open already downloaded maps</li>
-          <li>Tap any map to delete it</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--green)"></div>
-          Download Maps
-        </div>
-        <ul>
-          <li>Tap to open the download menu</li>
-          <li>Some countries have a single map file</li>
-          <li>Others use leaf maps — each region has its own map</li>
-          <li>Tap any region to download</li>
-        </ul>
-      </div>
+    <div class="card">
+      <h3>Import GPX</h3>
+      <ul>
+        <li>Import GPX files from any file manager, Google Drive or email</li>
+        <li>Download OSM traces directly to the watch</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Track List</h3>
+      <ul>
+        <li>Each track shows name and file size</li>
+        <li>Tap a track to open its detail view</li>
+        <li>Toggle visibility — doubles as the active navigation route selector</li>
+        <li>Delete tracks</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Track Detail — 3 Pages</h3>
+      <ul>
+        <li><strong>Page 1:</strong> Distance and date</li>
+        <li><strong>Page 2:</strong> Elevation details</li>
+        <li><strong>Page 3:</strong> Elevation profile</li>
+      </ul>
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ═══ TRACKS PAGE ═══ -->
-  <div class="section-wrap">
+  <!-- Stats Pages -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(255,179,0,0.12);">🗂️</div>
-      <div>
-        <h2>Tracks Page</h2>
-        <p>Import, view and navigate GPX tracks</p>
-      </div>
+      <span class="icon">📊</span>
+      <h2>Stats Pages</h2>
     </div>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--amber)"></div>
-          Download OSM Traces
-        </div>
-        <ul>
-          <li>Download GPX traces directly from OpenStreetMap</li>
-          <li>Imported tracks appear in the tracks list</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--blue)"></div>
-          Track List
-        </div>
-        <ul>
-          <li>Each track shows name and file size</li>
-          <li>Tap a track to see its details</li>
-        </ul>
-        <div class="badge-row" style="margin-top:8px;">
-          <div class="badge red"><div class="dot" style="background:var(--red)"></div>Hidden</div>
-          <div class="badge green"><div class="dot" style="background:var(--green)"></div>Visible &amp; active for nav</div>
-        </div>
-      </div>
-
-      <div class="card" style="grid-column: 1 / -1;">
-        <div class="card-title">
-          <div class="dot" style="background:var(--green)"></div>
-          Track Detail — 3 Pages
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-          <div style="flex:1; min-width:140px; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:10px;">
-            <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:6px;">Page 1</div>
-            <div style="font-size:11px; color:var(--muted);">Distance &amp; Date</div>
-          </div>
-          <div style="flex:1; min-width:140px; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:10px;">
-            <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:6px;">Page 2</div>
-            <div style="font-size:11px; color:var(--muted);">Elevation Details</div>
-          </div>
-          <div style="flex:1; min-width:140px; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:10px;">
-            <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:6px;">Page 3</div>
-            <div style="font-size:11px; color:var(--muted);">Elevation Profile</div>
-          </div>
-        </div>
+    <div class="card">
+      <h3>Customisable Stats</h3>
+      <ul>
+        <li>Up to <strong>10 pages</strong>, 3 stat slots per page</li>
+        <li>Configure in Settings → Stats Pages</li>
+        <li>Tap any slot to change which stat it shows</li>
+        <li>Add and remove pages as needed</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Available Stats (15 total)</h3>
+      <div class="stat-grid">
+        <div class="stat-item">⏱ Time</div>
+        <div class="stat-item">📏 Distance</div>
+        <div class="stat-item">🏃 Avg Pace</div>
+        <div class="stat-item">❤️ Heart Rate</div>
+        <div class="stat-item">❤️ Avg HR</div>
+        <div class="stat-item">❤️ Max HR</div>
+        <div class="stat-item">👣 Steps</div>
+        <div class="stat-item">⛰️ Altitude</div>
+        <div class="stat-item">📈 Ascent</div>
+        <div class="stat-item">📉 Descent</div>
+        <div class="stat-item">💨 Speed</div>
+        <div class="stat-item">🏃 Lap Pace</div>
+        <div class="stat-item">📏 Lap Distance</div>
+        <div class="stat-item">🗺️ Nav Distance</div>
+        <div class="stat-item">📊 Elevation Profile</div>
       </div>
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ═══ SETTINGS ═══ -->
-  <div class="section-wrap">
+  <!-- Recording -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(239,83,80,0.12);">⚙️</div>
-      <div>
-        <h2>Settings</h2>
-        <p>All 23 options explained</p>
-      </div>
+      <span class="icon">⏺️</span>
+      <h2>Recording</h2>
     </div>
+    <div class="card">
+      <ul>
+        <li>Recording continues when the screen sleeps via a background service</li>
+        <li>Vibrates every km or mile</li>
+        <li>Lap splits with vibration and split time display</li>
+        <li>Optional countdown timer before recording starts (3s or 5s)</li>
+        <li>Adjustable minimum GPS recording distance and time interval</li>
+        <li>GPX exported with timestamps, elevation, heart rate and cadence data</li>
+        <li>Crash log auto-saved to Downloads/wristnav_crash.txt if anything goes wrong</li>
+      </ul>
+    </div>
+  </div>
 
-    <div class="settings-list">
-
+  <!-- Settings -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">⚙️</span>
+      <h2>Settings</h2>
+    </div>
+    <div class="tip">Access via long press on map → Settings. Swipe left/right to scroll through all 27 options.</div>
+    <div class="settings-grid">
       <div class="setting-row">
         <div class="setting-num">1</div>
-        <div>
-          <div class="setting-name">Watch Theme</div>
-          <div class="setting-desc">Visual style of the watch app</div>
-          <div class="setting-opts">Fjord · Light · Dark</div>
-        </div>
+        <div><div class="setting-name">Watch Theme</div><div class="setting-desc">Visual style of the watch UI</div></div>
+        <div class="setting-value">Fjord · Light · Dark</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">2</div>
-        <div>
-          <div class="setting-name">Map Theme</div>
-          <div class="setting-desc">Colour style of the map tiles, including minimal variants and custom imported themes</div>
-          <div class="setting-opts">Fjord · Light · Dark · All Minimal · Custom</div>
-        </div>
+        <div><div class="setting-name">Map Theme</div><div class="setting-desc">Colour style of the map tiles</div></div>
+        <div class="setting-value">Light · Fjord · Dark · Light Min · Fjord Min · Dark Min · Custom</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">3</div>
-        <div>
-          <div class="setting-name">Custom Edit</div>
-          <div class="setting-desc">Activate, deactivate or delete imported custom map themes</div>
-        </div>
+        <div><div class="setting-name">Custom Themes</div><div class="setting-desc">Activate, deactivate or delete imported custom map themes</div></div>
+        <div class="setting-value">Edit →</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">4</div>
-        <div>
-          <div class="setting-name">Distance Unit</div>
-          <div class="setting-desc">Affects all stats displays and lap split times</div>
-          <div class="setting-opts">km · mi</div>
-        </div>
+        <div><div class="setting-name">Compass</div><div class="setting-desc">Show or hide the compass tape on the map screen</div></div>
+        <div class="setting-value">On · Off</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">5</div>
-        <div>
-          <div class="setting-name">Clock Format</div>
-          <div class="setting-opts">12hr · 24hr</div>
-        </div>
+        <div><div class="setting-name">Distance</div><div class="setting-desc">Affects all stats displays and lap split alerts</div></div>
+        <div class="setting-value">km · mi</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">6</div>
-        <div>
-          <div class="setting-name">Rec Distance</div>
-          <div class="setting-desc">Minimum movement before a GPS point is recorded</div>
-          <div class="setting-opts">1m · 2m · 3m · 5m · 8m · 10m · 20m</div>
-        </div>
+        <div><div class="setting-name">Ele Units</div><div class="setting-desc">Units used for elevation data</div></div>
+        <div class="setting-value">m · ft</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">7</div>
-        <div>
-          <div class="setting-name">Rec Seconds</div>
-          <div class="setting-desc">Minimum time between recorded GPS points</div>
-          <div class="setting-opts">1s · 2s · 3s · 5s · 8s · 10s · 20s</div>
-        </div>
+        <div><div class="setting-name">Clock Format</div><div class="setting-desc"></div></div>
+        <div class="setting-value">24hr · 12hr</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">8</div>
-        <div>
-          <div class="setting-name">Import Colour</div>
-          <div class="setting-desc">Colour of imported tracks when visible on the map</div>
-          <div class="setting-opts">Red · Green · Yellow · Blue</div>
-        </div>
+        <div><div class="setting-name">Rec Distance</div><div class="setting-desc">Minimum movement before a GPS point is recorded</div></div>
+        <div class="setting-value">1m · 2m · 3m · 4m · 5m · 8m · 10m · 20m</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">9</div>
-        <div>
-          <div class="setting-name">Recording Colour</div>
-          <div class="setting-desc">Colour of the track being recorded on the map</div>
-          <div class="setting-opts">Red · Green · Yellow · Blue</div>
-        </div>
+        <div><div class="setting-name">Rec Time</div><div class="setting-desc">Minimum time between recorded GPS points</div></div>
+        <div class="setting-value">1s · 2s · 3s · 4s · 5s · 8s · 10s · 20s</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">10</div>
-        <div>
-          <div class="setting-name">Imported Track Width</div>
-          <div class="setting-desc">Line thickness of imported tracks on the map</div>
-          <div class="setting-opts">1px · 2px · 4px · 7px · 10px · 15px · 20px</div>
-        </div>
+        <div><div class="setting-name">Import Colour</div><div class="setting-desc">Colour of imported tracks on the map</div></div>
+        <div class="setting-value">Red · Green · Yellow · Blue</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">11</div>
-        <div>
-          <div class="setting-name">Recording Track Width</div>
-          <div class="setting-desc">Line thickness of the active recording track on the map</div>
-          <div class="setting-opts">1px · 2px · 4px · 7px · 10px · 15px · 20px</div>
-        </div>
+        <div><div class="setting-name">Record Colour</div><div class="setting-desc">Colour of the active recording track on the map</div></div>
+        <div class="setting-value">Red · Green · Yellow · Blue</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">12</div>
-        <div>
-          <div class="setting-name">Lap Splits</div>
-          <div class="setting-desc">Vibrates and shows split time every set distance (reads Distance Unit setting)</div>
-          <div class="setting-opts">On · Off</div>
-        </div>
+        <div><div class="setting-name">Import Width</div><div class="setting-desc">Line thickness of imported tracks</div></div>
+        <div class="setting-value">1px · 2px · 4px · 7px · 10px · 15px · 20px</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">13</div>
-        <div>
-          <div class="setting-name">Lock Zoom</div>
-          <div class="setting-desc">Sets the fixed zoom level when the location button is locked (red) on the map</div>
-        </div>
+        <div><div class="setting-name">Record Width</div><div class="setting-desc">Line thickness of the active recording track</div></div>
+        <div class="setting-value">1px · 2px · 4px · 7px · 10px · 15px · 20px</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">14</div>
-        <div>
-          <div class="setting-name">Keep Active</div>
-          <div class="setting-desc">Keeps the app active and prevents the watch from sleeping</div>
-        </div>
+        <div><div class="setting-name">Lap Splits</div><div class="setting-desc">Vibrates and shows split time every km or mile</div></div>
+        <div class="setting-value">On · Off</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">15</div>
-        <div>
-          <div class="setting-name">Nav Distance</div>
-          <div class="setting-desc">When Nav is on, shows remaining route distance on the home and map screens</div>
-          <div class="setting-opts">On · Off</div>
-        </div>
+        <div><div class="setting-name">Lock Zoom</div><div class="setting-desc">Fixed zoom level when location button is locked</div></div>
+        <div class="setting-value">15 · 16 · 17 · 18</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">16</div>
-        <div>
-          <div class="setting-name">Nav Elevation</div>
-          <div class="setting-desc">When Nav is on, shows elevation remaining and your position on the route profile</div>
-          <div class="setting-opts">On · Off</div>
-        </div>
+        <div><div class="setting-name">Keep Active</div><div class="setting-desc">Prevents the watch from sleeping during recording</div></div>
+        <div class="setting-value">On · Off</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">17</div>
-        <div>
-          <div class="setting-name">Stats Edit</div>
-          <div class="setting-desc">Customise the stats pages — up to 5 pages, choose which stats appear on each</div>
-        </div>
+        <div><div class="setting-name">Nav Distance</div><div class="setting-desc">Show remaining route distance overlay while navigating</div></div>
+        <div class="setting-value">On · Off</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">18</div>
-        <div>
-          <div class="setting-name">Pace Average</div>
-          <div class="setting-desc">Window used to calculate the rolling pace average</div>
-          <div class="setting-opts">10s · 20s · 30s · 60s · All</div>
-        </div>
+        <div><div class="setting-name">Nav Elevation</div><div class="setting-desc">Show elevation profile and remaining climb while navigating</div></div>
+        <div class="setting-value">On · Off</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">19</div>
-        <div>
-          <div class="setting-name">Text Size</div>
-          <div class="setting-desc">Size of text across the stats pages</div>
-          <div class="setting-opts">Small · Medium · Large · Extra Large · Huge</div>
-        </div>
+        <div><div class="setting-name">Stats Pages</div><div class="setting-desc">Configure up to 10 stats pages — choose which stats appear on each</div></div>
+        <div class="setting-value">Edit →</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">20</div>
-        <div>
-          <div class="setting-name">Heart Rate</div>
-          <div class="setting-desc">Enable or disable heart rate recording during a session</div>
-          <div class="setting-opts">On · Off</div>
-        </div>
+        <div><div class="setting-name">Pace Avg</div><div class="setting-desc">Rolling window for pace calculation</div></div>
+        <div class="setting-value">10s · 20s · 30s · 60s · All</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">21</div>
-        <div>
-          <div class="setting-name">Steps</div>
-          <div class="setting-desc">Enable or disable step count recording during a session</div>
-          <div class="setting-opts">On · Off</div>
-        </div>
+        <div><div class="setting-name">Text Size</div><div class="setting-desc">Size of text across all stats pages</div></div>
+        <div class="setting-value">Small · Medium · Large · XLarge · Huge</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">22</div>
-        <div>
-          <div class="setting-name">Countdown</div>
-          <div class="setting-desc">Adds a countdown before recording starts</div>
-          <div class="setting-opts">Off · 3s · 5s</div>
-        </div>
+        <div><div class="setting-name">Heart Rate</div><div class="setting-desc">Enable or disable heart rate recording</div></div>
+        <div class="setting-value">On · Off</div>
       </div>
-
       <div class="setting-row">
         <div class="setting-num">23</div>
-        <div>
-          <div class="setting-name">Exit App</div>
-          <div class="setting-desc">Fully close WristNav</div>
-        </div>
+        <div><div class="setting-name">Steps</div><div class="setting-desc">Enable or disable step count recording</div></div>
+        <div class="setting-value">On · Off</div>
       </div>
-
+      <div class="setting-row">
+        <div class="setting-num">24</div>
+        <div><div class="setting-name">Countdown</div><div class="setting-desc">Countdown before recording starts</div></div>
+        <div class="setting-value">Off · 3s · 5s</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-num">25</div>
+        <div><div class="setting-name">Ele Colour</div><div class="setting-desc">Colour used for elevation charts and graphs</div></div>
+        <div class="setting-value">Red · Blue · Green · Cyan · Orange · Purple · White</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-num">26</div>
+        <div><div class="setting-name">Map Text</div><div class="setting-desc">Colour of place name labels on the map</div></div>
+        <div class="setting-value">Red · Blue · Green · Cyan · Orange · Purple · White</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-num">27</div>
+        <div><div class="setting-name">Exit App</div><div class="setting-desc">Fully close WristNav</div></div>
+        <div class="setting-value">→</div>
+      </div>
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <!-- ═══ PHONE APP ═══ -->
-  <div class="section-wrap">
+  <!-- Phone App -->
+  <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(79,195,247,0.12);">📱</div>
-      <div>
-        <h2>Phone App</h2>
-        <p>Companion app features</p>
-      </div>
+      <span class="icon">📱</span>
+      <h2>Phone Companion App</h2>
     </div>
-
-    <div class="card-grid">
-
-      <!-- Send Tab -->
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--blue)"></div>
-          Send Tab
-        </div>
-        <ul>
-          <li>Send GPX files to your watch</li>
-          <li>Send <code>.map</code> files to your watch</li>
-          <li>Log in to Strava to sync activities</li>
-        </ul>
-      </div>
-
-      <!-- Received Tab -->
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--green)"></div>
-          Received Tab
-        </div>
-        <ul>
-          <li>View files shared from your watch</li>
-          <li>Upload received files</li>
-          <li>Delete received files</li>
-        </ul>
-      </div>
-
-      <!-- Plan -->
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--amber)"></div>
-          Plan
-        </div>
-        <ul>
-          <li>Plan a route directly in the app</li>
-          <li>Save the route for later</li>
-          <li>Send the route to your watch</li>
-        </ul>
-      </div>
-
-      <!-- Theme -->
-      <div class="card">
-        <div class="card-title">
-          <div class="dot" style="background:var(--red)"></div>
-          Theme
-        </div>
-        <ul>
-          <li>Create custom map themes for the watch</li>
-          <li>10 presets to start from</li>
-          <li>Tap any element line to change its colour</li>
-        </ul>
-      </div>
-
-      <!-- Settings -->
-      <div class="card" style="grid-column: 1 / -1;">
-        <div class="card-title">
-          <div class="dot" style="background:var(--muted)"></div>
-          Settings
-        </div>
-        <ul>
-          <li>Mirrors the watch settings — configure the app from your phone</li>
-        </ul>
-      </div>
-
+    <div class="tip">The watch app works fully standalone — the phone app is optional.</div>
+    <div class="card">
+      <h3>Send Tab</h3>
+      <ul>
+        <li>Send GPX route files directly to the watch</li>
+        <li>Send <code>.map</code> files to the watch for offline use</li>
+        <li>Log in to Strava to sync recorded activities</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Received Tab</h3>
+      <ul>
+        <li>View GPX files recorded on the watch and transferred to your phone</li>
+        <li>Upload to Strava</li>
+        <li>Save to phone storage</li>
+        <li>Delete files</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Plan Tab</h3>
+      <ul>
+        <li>Plan a route directly on the map</li>
+        <li>Save for later or send straight to the watch</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Theme Tab</h3>
+      <ul>
+        <li>Create custom map themes for the watch</li>
+        <li>10 colour presets to start from</li>
+        <li>Tap any element to change its colour with a full colour picker</li>
+        <li>Live map preview — see exactly what the theme looks like before sending</li>
+        <li>Send finished themes to the watch</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Settings Tab</h3>
+      <ul>
+        <li>Configure watch app settings from your phone</li>
+      </ul>
     </div>
   </div>
 
-</div><!-- /container -->
+  <!-- Reporting -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">🐛</span>
+      <h2>Reporting Crashes</h2>
+    </div>
+    <div class="card">
+      <p>If the app crashes, a log is automatically saved to <code>Downloads/wristnav_crash.txt</code> on your watch. Please attach this file when reporting issues via GitHub or Reddit.</p>
+    </div>
+  </div>
 
+  <!-- Credits -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">🙏</span>
+      <h2>Credits</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li>Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a></li>
+        <li>Trail Planner by <a href="https://boothy91.github.io/gpx-map/" target="_blank">boothy91</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>
