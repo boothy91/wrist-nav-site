@@ -52,10 +52,7 @@
 
   <!-- App Flow -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">🗺️</span>
-      <h2>App Flow</h2>
-    </div>
+    <div class="section-header"><span class="icon">🗺️</span><h2>App Flow</h2></div>
     <div class="flow">
       <div class="flow-item">🏠 Home Screen</div>
       <span class="flow-arrow">→</span>
@@ -68,35 +65,29 @@
       <div class="flow-item">🗂️ Tracks</div>
       <div class="flow-item">⚙️ Settings</div>
     </div>
-    <div class="tip">💡 Stats pages are fully customisable — up to <strong>10 pages</strong>, 3 stat slots each, from 15 available stat types. Configure in Settings → Stats Pages.</div>
+    <div class="tip">💡 Stats pages are fully customisable — up to <strong>10 pages</strong>, 3 or 6 stat slots per page, from 16 available stat types. Configure in Settings → Stats Pages.</div>
   </div>
 
   <!-- Home Screen -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">🏠</span>
-      <h2>Home Screen</h2>
-    </div>
+    <div class="section-header"><span class="icon">🏠</span><h2>Home Screen</h2></div>
     <div class="card">
       <ul>
         <li>Start, pause and stop recording from the home screen</li>
         <li>GPS status indicator — red (no fix), amber (weak), green (good)</li>
         <li>Enable <strong>Nav mode</strong> to follow a GPX route — pressing start with Nav on goes straight to the map</li>
-        <li>Heart rate displayed live when sensor is enabled</li>
       </ul>
     </div>
   </div>
 
   <!-- Map Screen -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">🗺️</span>
-      <h2>Map Screen</h2>
-    </div>
+    <div class="section-header"><span class="icon">🗺️</span><h2>Map Screen</h2></div>
     <div class="card">
       <h3>Controls</h3>
       <ul>
         <li>Pinch to zoom, swipe to pan</li>
+        <li>Crown scroll on Pixel Watch — one tick = one zoom level</li>
         <li>Long press to open the main menu</li>
         <li><strong>Location button</strong> — red = locked, map follows your GPS position · blue = free, moveable map</li>
         <li><strong>Compass</strong> — tap to cycle modes · drag right to go back to stats pages</li>
@@ -114,8 +105,17 @@
     <div class="card">
       <h3>Navigation Overlay</h3>
       <ul>
-        <li>Remaining distance to end of route (toggle in Settings → Nav Distance)</li>
-        <li>Live elevation profile with your position and remaining climb (toggle in Settings → Nav Elevation)</li>
+        <li>Remaining distance to end of route (toggle in Map Settings → Nav Distance)</li>
+        <li>Live elevation profile with your position and remaining climb (toggle in Map Settings → Nav Elevation)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Bezel Stats</h3>
+      <ul>
+        <li>Shows live workout data curved along the bottom of round watch screens</li>
+        <li>Straight bar on square watches</li>
+        <li>3 configurable stat slots — enable and configure in Map Settings → Bezel Stats</li>
+        <li>Colour controlled by Map Text colour setting</li>
       </ul>
     </div>
     <div class="card">
@@ -131,10 +131,7 @@
 
   <!-- Maps Page -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">📥</span>
-      <h2>Maps Page</h2>
-    </div>
+    <div class="section-header"><span class="icon">📥</span><h2>Maps Page</h2></div>
     <div class="card">
       <h3>Manage Maps</h3>
       <ul>
@@ -155,10 +152,7 @@
 
   <!-- Tracks Page -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">🗂️</span>
-      <h2>Tracks Page</h2>
-    </div>
+    <div class="section-header"><span class="icon">🗂️</span><h2>Tracks Page</h2></div>
     <div class="card">
       <h3>Import GPX</h3>
       <ul>
@@ -187,21 +181,19 @@
 
   <!-- Stats Pages -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">📊</span>
-      <h2>Stats Pages</h2>
-    </div>
+    <div class="section-header"><span class="icon">📊</span><h2>Stats Pages</h2></div>
     <div class="card">
       <h3>Customisable Stats</h3>
       <ul>
-        <li>Up to <strong>10 pages</strong>, 3 stat slots per page</li>
+        <li>Up to <strong>10 pages</strong>, 3 or 6 stat slots per page</li>
+        <li>Tap <strong>3</strong> or <strong>6</strong> either side of the circle in Stats Edit to switch slot count</li>
+        <li>Text scales automatically to fit</li>
         <li>Configure in Settings → Stats Pages</li>
-        <li>Tap any slot to change which stat it shows</li>
         <li>Add and remove pages as needed</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Available Stats (15 total)</h3>
+      <h3>Available Stats (16 total)</h3>
       <div class="stat-grid">
         <div class="stat-item">⏱ Time</div>
         <div class="stat-item">📏 Distance</div>
@@ -218,16 +210,14 @@
         <div class="stat-item">📏 Lap Distance</div>
         <div class="stat-item">🗺️ Nav Distance</div>
         <div class="stat-item">📊 Elevation Profile</div>
+        <div class="stat-item">🔥 Calories</div>
       </div>
     </div>
   </div>
 
   <!-- Recording -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">⏺️</span>
-      <h2>Recording</h2>
-    </div>
+    <div class="section-header"><span class="icon">⏺️</span><h2>Recording</h2></div>
     <div class="card">
       <ul>
         <li>Recording continues when the screen sleeps via a background service</li>
@@ -235,164 +225,93 @@
         <li>Lap splits with vibration and split time display</li>
         <li>Optional countdown timer before recording starts (3s or 5s)</li>
         <li>Adjustable minimum GPS recording distance and time interval</li>
+        <li>Activity type written into GPX — Run, Trail Run, Walk, Hike, Road Cycle, Mountain Bike, Gravel, Kayak, Ski, Snowboard</li>
         <li>GPX exported with timestamps, elevation, heart rate and cadence data</li>
-        <li>Crash log auto-saved to Downloads/wristnav_crash.txt if anything goes wrong</li>
       </ul>
+    </div>
+  </div>
+
+  <!-- Watch Face Complications -->
+  <div class="section">
+    <div class="section-header"><span class="icon">⌚</span><h2>Watch Face Complications</h2></div>
+    <div class="tip">Assign any WristNav stat to a complication slot on your watch face. Updates live during recording.</div>
+    <div class="card">
+      <ul>
+        <li>15 complication providers available — one per stat</li>
+        <li>Select from your watch face customisation screen</li>
+        <li>Tap any complication to open WristNav</li>
+        <li>Shows live data during recording, placeholder when not recording</li>
+      </ul>
+      <div class="stat-grid" style="margin-top:12px;">
+        <div class="stat-item">Time</div>
+        <div class="stat-item">Distance</div>
+        <div class="stat-item">Avg Pace</div>
+        <div class="stat-item">Heart Rate</div>
+        <div class="stat-item">Avg HR</div>
+        <div class="stat-item">Max HR</div>
+        <div class="stat-item">Steps</div>
+        <div class="stat-item">Altitude</div>
+        <div class="stat-item">Ascent</div>
+        <div class="stat-item">Descent</div>
+        <div class="stat-item">Speed</div>
+        <div class="stat-item">Lap Pace</div>
+        <div class="stat-item">Lap Distance</div>
+        <div class="stat-item">Nav Distance</div>
+        <div class="stat-item">Calories</div>
+      </div>
     </div>
   </div>
 
   <!-- Settings -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">⚙️</span>
-      <h2>Settings</h2>
-    </div>
-    <div class="tip">Access via long press on map → Settings. Swipe left/right to scroll through all 27 options.</div>
+    <div class="section-header"><span class="icon">⚙️</span><h2>Settings</h2></div>
+    <div class="tip">Access via long press on map → Settings. Swipe left/right to scroll through all 24 options.</div>
     <div class="settings-grid">
-      <div class="setting-row">
-        <div class="setting-num">1</div>
-        <div><div class="setting-name">Watch Theme</div><div class="setting-desc">Visual style of the watch UI</div></div>
-        <div class="setting-value">Fjord · Light · Dark</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">2</div>
-        <div><div class="setting-name">Map Theme</div><div class="setting-desc">Colour style of the map tiles</div></div>
-        <div class="setting-value">Light · Fjord · Dark · Light Min · Fjord Min · Dark Min · Custom</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">3</div>
-        <div><div class="setting-name">Custom Themes</div><div class="setting-desc">Activate, deactivate or delete imported custom map themes</div></div>
-        <div class="setting-value">Edit →</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">4</div>
-        <div><div class="setting-name">Compass</div><div class="setting-desc">Show or hide the compass tape on the map screen</div></div>
-        <div class="setting-value">On · Off</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">5</div>
-        <div><div class="setting-name">Distance</div><div class="setting-desc">Affects all stats displays and lap split alerts</div></div>
-        <div class="setting-value">km · mi</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">6</div>
-        <div><div class="setting-name">Ele Units</div><div class="setting-desc">Units used for elevation data</div></div>
-        <div class="setting-value">m · ft</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">7</div>
-        <div><div class="setting-name">Clock Format</div><div class="setting-desc"></div></div>
-        <div class="setting-value">24hr · 12hr</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">8</div>
-        <div><div class="setting-name">Rec Distance</div><div class="setting-desc">Minimum movement before a GPS point is recorded</div></div>
-        <div class="setting-value">1m · 2m · 3m · 4m · 5m · 8m · 10m · 20m</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">9</div>
-        <div><div class="setting-name">Rec Time</div><div class="setting-desc">Minimum time between recorded GPS points</div></div>
-        <div class="setting-value">1s · 2s · 3s · 4s · 5s · 8s · 10s · 20s</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">10</div>
-        <div><div class="setting-name">Import Colour</div><div class="setting-desc">Colour of imported tracks on the map</div></div>
-        <div class="setting-value">Red · Green · Yellow · Blue</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">11</div>
-        <div><div class="setting-name">Record Colour</div><div class="setting-desc">Colour of the active recording track on the map</div></div>
-        <div class="setting-value">Red · Green · Yellow · Blue</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">12</div>
-        <div><div class="setting-name">Import Width</div><div class="setting-desc">Line thickness of imported tracks</div></div>
-        <div class="setting-value">1px · 2px · 4px · 7px · 10px · 15px · 20px</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">13</div>
-        <div><div class="setting-name">Record Width</div><div class="setting-desc">Line thickness of the active recording track</div></div>
-        <div class="setting-value">1px · 2px · 4px · 7px · 10px · 15px · 20px</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">14</div>
-        <div><div class="setting-name">Lap Splits</div><div class="setting-desc">Vibrates and shows split time every km or mile</div></div>
-        <div class="setting-value">On · Off</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">15</div>
-        <div><div class="setting-name">Lock Zoom</div><div class="setting-desc">Fixed zoom level when location button is locked</div></div>
-        <div class="setting-value">15 · 16 · 17 · 18</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">16</div>
-        <div><div class="setting-name">Keep Active</div><div class="setting-desc">Prevents the watch from sleeping during recording</div></div>
-        <div class="setting-value">On · Off</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">17</div>
-        <div><div class="setting-name">Nav Distance</div><div class="setting-desc">Show remaining route distance overlay while navigating</div></div>
-        <div class="setting-value">On · Off</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">18</div>
-        <div><div class="setting-name">Nav Elevation</div><div class="setting-desc">Show elevation profile and remaining climb while navigating</div></div>
-        <div class="setting-value">On · Off</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">19</div>
-        <div><div class="setting-name">Stats Pages</div><div class="setting-desc">Configure up to 10 stats pages — choose which stats appear on each</div></div>
-        <div class="setting-value">Edit →</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">20</div>
-        <div><div class="setting-name">Pace Avg</div><div class="setting-desc">Rolling window for pace calculation</div></div>
-        <div class="setting-value">10s · 20s · 30s · 60s · All</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">21</div>
-        <div><div class="setting-name">Text Size</div><div class="setting-desc">Size of text across all stats pages</div></div>
-        <div class="setting-value">Small · Medium · Large · XLarge · Huge</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">22</div>
-        <div><div class="setting-name">Heart Rate</div><div class="setting-desc">Enable or disable heart rate recording</div></div>
-        <div class="setting-value">On · Off</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">23</div>
-        <div><div class="setting-name">Steps</div><div class="setting-desc">Enable or disable step count recording</div></div>
-        <div class="setting-value">On · Off</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">24</div>
-        <div><div class="setting-name">Countdown</div><div class="setting-desc">Countdown before recording starts</div></div>
-        <div class="setting-value">Off · 3s · 5s</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">25</div>
-        <div><div class="setting-name">Ele Colour</div><div class="setting-desc">Colour used for elevation charts and graphs</div></div>
-        <div class="setting-value">Red · Blue · Green · Cyan · Orange · Purple · White</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">26</div>
-        <div><div class="setting-name">Map Text</div><div class="setting-desc">Colour of place name labels on the map</div></div>
-        <div class="setting-value">Red · Blue · Green · Cyan · Orange · Purple · White</div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-num">27</div>
-        <div><div class="setting-name">Exit App</div><div class="setting-desc">Fully close WristNav</div></div>
-        <div class="setting-value">→</div>
-      </div>
+      <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Watch Theme</div><div class="setting-desc">Visual style of the watch UI</div></div><div class="setting-value">Fjord · Light · Dark</div></div>
+      <div class="setting-row"><div class="setting-num">2</div><div><div class="setting-name">Map Theme</div><div class="setting-desc">Colour style of the map tiles</div></div><div class="setting-value">Light · Fjord · Dark · Light Min · Fjord Min · Dark Min · Custom</div></div>
+      <div class="setting-row"><div class="setting-num">3</div><div><div class="setting-name">Custom Themes</div><div class="setting-desc">Activate, deactivate or delete imported custom map themes</div></div><div class="setting-value">Edit →</div></div>
+      <div class="setting-row"><div class="setting-num">4</div><div><div class="setting-name">Map Settings</div><div class="setting-desc">Compass, nav overlay, bezel, activity type, map text colour</div></div><div class="setting-value">Edit →</div></div>
+      <div class="setting-row"><div class="setting-num">5</div><div><div class="setting-name">Distance</div><div class="setting-desc">Affects all stats displays and lap split alerts</div></div><div class="setting-value">km · mi</div></div>
+      <div class="setting-row"><div class="setting-num">6</div><div><div class="setting-name">Ele Units</div><div class="setting-desc">Units used for elevation data</div></div><div class="setting-value">m · ft</div></div>
+      <div class="setting-row"><div class="setting-num">7</div><div><div class="setting-name">Clock Format</div><div class="setting-desc"></div></div><div class="setting-value">24hr · 12hr</div></div>
+      <div class="setting-row"><div class="setting-num">8</div><div><div class="setting-name">Rec Distance</div><div class="setting-desc">Minimum movement before a GPS point is recorded</div></div><div class="setting-value">1m – 20m</div></div>
+      <div class="setting-row"><div class="setting-num">9</div><div><div class="setting-name">Rec Time</div><div class="setting-desc">Minimum time between recorded GPS points</div></div><div class="setting-value">1s – 20s</div></div>
+      <div class="setting-row"><div class="setting-num">10</div><div><div class="setting-name">Import Colour</div><div class="setting-desc">Colour of imported tracks on the map</div></div><div class="setting-value">Red · Green · Yellow · Blue</div></div>
+      <div class="setting-row"><div class="setting-num">11</div><div><div class="setting-name">Record Colour</div><div class="setting-desc">Colour of the active recording track on the map</div></div><div class="setting-value">Red · Green · Yellow · Blue</div></div>
+      <div class="setting-row"><div class="setting-num">12</div><div><div class="setting-name">Import Width</div><div class="setting-desc">Line thickness of imported tracks</div></div><div class="setting-value">1px – 20px</div></div>
+      <div class="setting-row"><div class="setting-num">13</div><div><div class="setting-name">Record Width</div><div class="setting-desc">Line thickness of the active recording track</div></div><div class="setting-value">1px – 20px</div></div>
+      <div class="setting-row"><div class="setting-num">14</div><div><div class="setting-name">Lap Splits</div><div class="setting-desc">Vibrates and shows split time every km or mile</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">15</div><div><div class="setting-name">Keep Active</div><div class="setting-desc">Prevents the watch from sleeping during navigation</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">16</div><div><div class="setting-name">Stats Pages</div><div class="setting-desc">Configure up to 10 stats pages — 3 or 6 slots each</div></div><div class="setting-value">Edit →</div></div>
+      <div class="setting-row"><div class="setting-num">17</div><div><div class="setting-name">Pace Avg</div><div class="setting-desc">Rolling window for pace calculation</div></div><div class="setting-value">10s · 20s · 30s · 60s · All</div></div>
+      <div class="setting-row"><div class="setting-num">18</div><div><div class="setting-name">Text Size</div><div class="setting-desc">Size of text across all stats pages</div></div><div class="setting-value">Small · Medium · Large · XLarge · Huge</div></div>
+      <div class="setting-row"><div class="setting-num">19</div><div><div class="setting-name">Heart Rate</div><div class="setting-desc">Enable or disable heart rate recording</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">20</div><div><div class="setting-name">Steps</div><div class="setting-desc">Enable or disable step count recording</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">21</div><div><div class="setting-name">Countdown</div><div class="setting-desc">Countdown before recording starts</div></div><div class="setting-value">Off · 3s · 5s</div></div>
+      <div class="setting-row"><div class="setting-num">22</div><div><div class="setting-name">Ele Colour</div><div class="setting-desc">Colour used for elevation charts and graphs</div></div><div class="setting-value">Red · Blue · Green · Cyan · Orange · Purple · White</div></div>
+      <div class="setting-row"><div class="setting-num">23</div><div><div class="setting-name">Calories</div><div class="setting-desc">Set weight and age for live calorie calculation during recording</div></div><div class="setting-value">Edit →</div></div>
+      <div class="setting-row"><div class="setting-num">24</div><div><div class="setting-name">Exit App</div><div class="setting-desc">Fully close WristNav</div></div><div class="setting-value">→</div></div>
+    </div>
+  </div>
+
+  <!-- Map Settings -->
+  <div class="section">
+    <div class="section-header"><span class="icon">🗺️</span><h2>Map Settings</h2></div>
+    <div class="tip">Access via Settings → Map Settings. Swipe left/right through all options.</div>
+    <div class="settings-grid">
+      <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Activity</div><div class="setting-desc">Written into GPX on export for correct Strava and Garmin categorisation</div></div><div class="setting-value">Run · Trail Run · Walk · Hike · Road Cycle · MTB · Gravel · Kayak · Ski · Snowboard</div></div>
+      <div class="setting-row"><div class="setting-num">2</div><div><div class="setting-name">Compass</div><div class="setting-desc">Show or hide the compass tape on the map screen</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">3</div><div><div class="setting-name">Nav Distance</div><div class="setting-desc">Show remaining route distance overlay while navigating</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">4</div><div><div class="setting-name">Nav Elevation</div><div class="setting-desc">Show elevation profile and remaining climb while navigating</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">5</div><div><div class="setting-name">Map Text</div><div class="setting-desc">Colour of nav overlay text, elevation labels and bezel stats</div></div><div class="setting-value">Red · Blue · Green · Cyan · Orange · Purple · White</div></div>
+      <div class="setting-row"><div class="setting-num">6</div><div><div class="setting-name">Bezel Stats</div><div class="setting-desc">Live stats curved along the bottom of the screen while in map mode — swipe right to configure 3 stat slots</div></div><div class="setting-value">On · Off</div></div>
+      <div class="setting-row"><div class="setting-num">7</div><div><div class="setting-name">Lock Zoom</div><div class="setting-desc">Fixed zoom level when location button is locked to your position</div></div><div class="setting-value">15 · 16 · 17 · 18</div></div>
     </div>
   </div>
 
   <!-- Phone App -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">📱</span>
-      <h2>Phone Companion App</h2>
-    </div>
+    <div class="section-header"><span class="icon">📱</span><h2>Phone Companion App</h2></div>
     <div class="tip">The watch app works fully standalone — the phone app is optional.</div>
     <div class="card">
       <h3>Send Tab</h3>
@@ -414,8 +333,11 @@
     <div class="card">
       <h3>Plan Tab</h3>
       <ul>
-        <li>Plan a route directly on the map</li>
-        <li>Save for later or send straight to the watch</li>
+        <li>Plan a route directly on the map with routed or straight-line segments</li>
+        <li>Load existing GPX files to view on the map</li>
+        <li>OSM, Topo and Satellite map styles</li>
+        <li>3D terrain view</li>
+        <li>Export as GPX or send straight to the watch</li>
       </ul>
     </div>
     <div class="card">
@@ -442,10 +364,7 @@
 
   <!-- Reporting -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">🐛</span>
-      <h2>Reporting Crashes</h2>
-    </div>
+    <div class="section-header"><span class="icon">🐛</span><h2>Reporting Crashes</h2></div>
     <div class="card">
       <p>If the app crashes, crash reports are automatically sent to the development team via Sentry the next time the watch connects to the internet. You do not need to do anything — crashes are captured and reported automatically.</p>
     </div>
@@ -453,10 +372,7 @@
 
   <!-- Credits -->
   <div class="section">
-    <div class="section-header">
-      <span class="icon">🙏</span>
-      <h2>Credits</h2>
-    </div>
+    <div class="section-header"><span class="icon">🙏</span><h2>Credits</h2></div>
     <div class="card">
       <ul>
         <li>Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a></li>
