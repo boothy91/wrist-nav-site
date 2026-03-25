@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WristNav – Known Issues</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0D0D1A; color: #FFFFFF; line-height: 1.6; }
+    .hero { background: linear-gradient(135deg, #1A1A2E, #0D0D1A); padding: 48px 24px 32px; text-align: center; border-bottom: 1px solid #2A2A40; }
+    .hero h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; color: #4FC3F7; margin-bottom: 8px; }
+    .hero p { color: #888; font-size: 15px; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 16px 64px; }
+    .section { margin-top: 48px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #2A2A40; }
+    .section-header .icon { font-size: 24px; }
+    .section-header h2 { font-size: 22px; font-weight: 700; color: #4FC3F7; }
+    .card { background: #1A1A2E; border-radius: 12px; padding: 20px; margin-bottom: 12px; border: 1px solid #2A2A40; }
+    .card h3 { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+    .card p, .card li { font-size: 14px; color: #AAAACC; line-height: 1.7; }
+    .card ul { padding-left: 18px; }
+    .card ul li { margin-bottom: 6px; }
+    .warn { background: #1A1000; border-left: 3px solid #F59E0B; border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 12px; font-size: 13px; color: #AAAACC; }
+    .status { font-size: 12px; margin-top: 6px; color: #4FC3F7; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>WristNav</h1>
+  <p>Known Issues &amp; Upcoming Features</p>
+</div>
+
+<div class="container">
+
+  <!-- Intro -->
+  <div class="section">
+    <div class="warn">
+      ⚠️ These are known issues currently under investigation. Behaviour may vary depending on device, OS version, and usage.
+    </div>
+  </div>
+
+  <!-- Issues -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">🐞</span>
+      <h2>Current Issues</h2>
+    </div>
+
+    <div class="card">
+      <h3>Zoom buttons on map</h3>
+      <ul>
+        <li>Limited screen space on watch displays makes placement difficult</li>
+        <li>Conflicts with existing gesture controls (pinch, crown, swipe)</li>
+      </ul>
+      <div class="status">Status: Investigating UI approaches</div>
+    </div>
+
+    <div class="card">
+      <h3>Strava disconnecting</h3>
+      <ul>
+        <li>Users report Strava sessions unlinking unexpectedly</li>
+        <li>May require re-authentication between uploads</li>
+        <li>Potential API/session persistence issue</li>
+      </ul>
+      <div class="status">Status: Investigating stability and auth flow</div>
+    </div>
+
+    <div class="card">
+      <h3>Multi upload to Plan tab</h3>
+      <ul>
+        <li>Uploading multiple GPX files at once is not fully supported</li>
+        <li>Files may fail to appear or only partially import</li>
+      </ul>
+      <div class="status">Status: Investigating batch import handling</div>
+    </div>
+
+  </div>
+
+  <!-- Planned -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">🛠️</span>
+      <h2>Planned</h2>
+    </div>
+
+    <div class="card">
+      <h3>Auto-detect map region</h3>
+      <ul>
+        <li>Automatically suggest or prioritise map downloads based on current location</li>
+        <li>Reduces friction when setting up maps on-device</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Haptic navigation</h3>
+      <ul>
+        <li>Vibration alerts when going off-route</li>
+        <li>Advance warning for upcoming turns</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Health Connect integration</h3>
+      <ul>
+        <li>Sync workouts and health data with Android Health Connect</li>
+        <li>Improves compatibility with other fitness apps</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Final workout summary</h3>
+      <ul>
+        <li>Post-activity screen with key stats</li>
+        <li>Distance, time, elevation, pace and summary metrics</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
