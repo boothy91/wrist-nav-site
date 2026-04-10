@@ -6,16 +6,12 @@ A fully featured outdoor sports app for Wear OS with offline maps, GPX navigatio
 
 ---
 
-## Site
+## Download
+
+**Now available on Google Play!**
+[Download WristNav](https://play.google.com/store/apps/details?id=com.wristnav.app)
 
 Full app guide and feature overview: [boothy91.github.io/wrist-nav-site](https://boothy91.github.io/wrist-nav-site/)
-
----
-
-## Status
-
-**Currently in closed testing on the Play Store.**
-DM on Reddit to join: [reddit.com/u/Due-Sand7582](https://www.reddit.com/u/Due-Sand7582)
 
 ---
 
@@ -23,7 +19,15 @@ DM on Reddit to join: [reddit.com/u/Due-Sand7582](https://www.reddit.com/u/Due-S
 
 If WristNav has been useful on a run, hike or ride — a coffee goes a long way!
 
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-wristnav-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/wristnav) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-wristnavv-FFDD00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/wristnavv)
+[
+
+![Ko-fi](https://img.shields.io/badge/Ko--fi-wristnav-FF5E5B?logo=ko-fi&logoColor=white)
+
+](https://ko-fi.com/wristnav) [
+
+![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-wristnavv-FFDD00?logo=buy-me-a-coffee&logoColor=black)
+
+](https://buymeacoffee.com/wristnavv)
 
 ---
 
@@ -132,7 +136,7 @@ Built-in trail planner — mark out a route on the map, then send it directly to
 
 ## Reporting Crashes
 
-If the app crashes, a log is automatically saved to `Downloads/wristnav_crash.txt` on your watch. Please attach this file when reporting issues via GitHub or Reddit.
+Crashes are automatically detected and reported. If you experience an issue, you can also find a log saved to `Downloads/wristnav_crash.txt` on your watch — please attach this when reporting via GitHub Issues.
 
 ---
 
@@ -140,4 +144,3 @@ If the app crashes, a log is automatically saved to `Downloads/wristnav_crash.tx
 
 - Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)
 - Trail Planner by [boothy91](https://boothy91.github.io/gpx-map/)
-- 
