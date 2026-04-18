@@ -268,26 +268,40 @@
     </div>
 
     <!-- App Flow -->
-    <div class="section" id="flow">
-      <div class="section-header"><span class="icon">🗺️</span><h2>App <span>Flow</span></h2></div>
-      <div class="flow">
-        <div class="flow-item">🏠 Home</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-item">🗺️ Map</div>
-        <div>
-          <div>
-        <span class="flow-arrow">·</span>
-        <div class="flow-item">📊 Stats Pages</div>
-      </div>
-      <div class="flow">
-        <div class="flow-item">📥 Download Maps</div>
-        <span class="flow-arrow">·</span>
-        <div class="flow-item">🗂️ Tracks</div>
-        <span class="flow-arrow">·</span>
-        <div class="flow-item">⚙️ Settings</div>
-      </div>
-      <div class="tip">💡 Long press anywhere on the map to open the main menu — Home, Stats/Map, Download Maps, GPX Tracks, Settings.</div>
-    </div>
+<div class="section" id="flow">
+  <div class="section-header">
+    <span class="icon">🗺️</span>
+    <h2>App <span>Flow</span></h2>
+  </div>
+
+  <!-- Home <-> Map Viewer -->
+  <div class="flow">
+    <div class="flow-item">🏠 Home</div>
+    <span class="flow-arrow">↔</span>
+    <div class="flow-item">🗺️ Map Viewer</div>
+  </div>
+
+  <!-- Divider (optional) -->
+  <div class="flow-divider"></div>
+
+  <!-- Main Menu (from Home only) -->
+  <div class="flow-vertical">
+    <div class="flow-item">📊 Stats</div>
+    <div class="flow-line">│</div>
+
+    <div class="flow-item">📥 Maps</div>
+    <div class="flow-line">│</div>
+
+    <div class="flow-item">🗂️ Tracks</div>
+    <div class="flow-line">│</div>
+
+    <div class="flow-item">⚙️ Settings</div>
+  </div>
+
+  <div class="tip">
+    💡 Map Viewer is only accessible from Home and returns to Home. All other sections are accessed via the Home menu.
+  </div>
+</div>
 
     <!-- Home Screen -->
     <div class="section" id="home">
