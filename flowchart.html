@@ -1,463 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WristNav Navigation Flow</title>
+<title>WristNav Flow (Collapsible)</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
   :root {
-    --bg: #0a0a0e;
-    --surface: #111118;
-    --card: #18181f;
-    --border: #25253a;
-    --orange: #ff6b2b;
-    --blue: #4fc3f7;
-    --green: #4caf50;
-    --purple: #9c6fff;
-    --yellow: #ffd740;
-    --red: #f44336;
-    --teal: #26c6da;
-    --text: #e0e0f0;
-    --dim: #55556a;
-  }
+    --bg:#0a0a0f;--card:#18181f;--border:#25253a;
+    --orange:#ff6b2b;--blue:#4fc3f7;--green:#4caf50;
+    --purple:#9c6fff;--yellow:#ffd740;--teal:#26c6da;
+    --text:#e0e0f0;--dim:#666;
+  }*{box-sizing:border-box;margin:0;padding:0}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+body{ background:var(--bg); color:var(--text); font-family:sans-serif; padding:20px 14px 60px; max-width:900px; margin:auto; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    padding: 40px 24px 80px;
-    min-width: 0;
-    overflow-x: hidden;
-  }
+h1{text-align:center;color:var(--orange);margin-bottom:6px} .subtitle{text-align:center;font-size:12px;color:var(--dim);margin-bottom:20px}
 
-  h1 {
-    font-family: 'Space Mono', monospace;
-    font-size: 22px;
-    color: var(--orange);
-    letter-spacing: 3px;
-    text-align: center;
-    margin-bottom: 4px;
-  }
-  .subtitle {
-    text-align: center;
-    font-size: 11px;
-    color: var(--dim);
-    font-family: 'Space Mono', monospace;
-    letter-spacing: 2px;
-    margin-bottom: 48px;
-  }
+.node{ border:1px solid var(--border); background:var(--card); padding:10px; border-radius:10px; margin-top:8px; }
 
-  /* ── GRID LAYOUT ── */
-  .flow {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px;
-    grid-template-rows: auto auto auto auto;
-    gap: 0;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-  }
+.n{font-weight:700;font-size:13px} .d{font-size:11px;color:var(--dim)}
 
-  /* ── NODE BASE ── */
-  .node {
-    border-radius: 10px;
-    border: 1.5px solid var(--border);
-    background: var(--card);
-    padding: 8px 12px;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-  .node .n { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
-  .node .d { font-size: 10px; color: var(--dim); line-height: 1.4; }
+.home{ border:2px solid var(--orange); border-radius:50%; width:110px;height:110px; display:flex;align-items:center;justify-content:center; text-align:center;margin:0 auto 16px; }
 
-  .node.o  { border-color: var(--orange); background: #1c1208; } .node.o .n  { color: var(--orange); }
-  .node.b  { border-color: var(--blue);   background: #08121c; } .node.b .n  { color: var(--blue); }
-  .node.g  { border-color: var(--green);  background: #081c08; } .node.g .n  { color: var(--green); }
-  .node.p  { border-color: var(--purple); background: #120c1c; } .node.p .n  { color: var(--purple); }
-  .node.y  { border-color: var(--yellow); background: #1c1800; } .node.y .n  { color: var(--yellow); }
-  .node.t  { border-color: var(--teal);   background: #081818; } .node.t .n  { color: var(--teal); }
-  .node.xx { border-color: #333; background: #111; } .node.xx .n { color: #444; }
+details{ border:1px solid var(--border); border-radius:12px; padding:10px; margin-top:10px; background:#111; }
 
-  /* HOME special */
-  .home-node {
-    border: 2px solid var(--orange);
-    background: #1c1208;
-    border-radius: 50%;
-    width: 110px; height: 110px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center;
-    box-shadow: 0 0 30px #ff6b2b44;
-    flex-shrink: 0;
-  }
-  .home-node .n { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: var(--orange); letter-spacing: 1px; }
-  .home-node .d { font-size: 9px; color: var(--dim); margin-top: 2px; line-height: 1.3; }
+summary{ cursor:pointer; font-weight:600; font-size:14px; }
 
-  /* ── SECTION CONTAINERS ── */
-  .section {
-    border: 1px dashed #252535;
-    border-radius: 14px;
-    padding: 10px 12px 12px;
-    position: relative;
-    margin: 4px;
-  }
-  .section-title {
-    position: absolute; top: -9px; left: 10px;
-    background: var(--bg); padding: 0 6px;
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase;
-  }
-
-  /* ── ARROWS ── */
-  .arr-h { display: flex; align-items: center; gap: 2px; padding: 0 4px; }
-  .arr-h .line { height: 1.5px; background: var(--border); flex: 1; }
-  .arr-h .tip-r { width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 6px solid var(--border); }
-  .arr-h .tip-l { width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-right: 6px solid var(--border); }
-
-  .arr-v { display: flex; flex-direction: column; align-items: center; gap: 0; }
-  .arr-v .line { width: 1.5px; background: var(--border); }
-  .arr-v .tip  { width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--border); }
-
-  .lbl { font-family: 'Space Mono', monospace; font-size: 8px; color: var(--dim); letter-spacing: 1px; white-space: nowrap; }
-
-  /* ── LAYOUT HELPERS ── */
-  .row   { display: flex; align-items: center; gap: 8px; }
-  .col   { display: flex; flex-direction: column; align-items: center; gap: 0; }
-  .hcol  { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
-  .wrap  { display: flex; flex-wrap: wrap; gap: 6px; }
-  .center { display: flex; justify-content: center; }
-  .mt4  { margin-top: 4px; }
-  .mt8  { margin-top: 8px; }
-  .mt12 { margin-top: 12px; }
-  .mt20 { margin-top: 20px; }
-  .mb4  { margin-bottom: 4px; }
-  .gap4 { gap: 4px; }
-  .gap6 { gap: 6px; }
-  .gap8 { gap: 8px; }
-  .gap12 { gap: 12px; }
-  .gap16 { gap: 16px; }
-  .gap20 { gap: 20px; }
-
-  /* legend */
-  .legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
-  .legend-i { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--dim); font-family: 'Space Mono', monospace; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
 </style>
 </head>
-<body>
-
-<h1>WRISTNAV</h1>
-<div class="subtitle">Complete Navigation &amp; Settings Reference</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     HORIZONTAL HOME STRIP
-════════════════════════════════════════════════════════════════ -->
-<div class="center mt8">
-  <div class="row gap8" style="align-items:flex-start">
-
-    <!-- QUICK SETTINGS LAUNCHER -->
-    <div class="col">
-      <div class="lbl mb4">← SWIPE LEFT</div>
-      <div class="node p">
-        <div class="n">Quick Settings</div>
-        <div class="d">Launcher page</div>
-      </div>
-      <div class="arr-v mt4"><div class="line" style="height:16px"></div><div class="tip"></div></div>
-      <div class="section" style="border-color:#9c6fff44;margin-top:0">
-        <div class="section-title" style="color:var(--purple)">TAP → opens activity, swipe through</div>
-        <div class="wrap gap4 mt8" style="max-width:220px">
-          <div class="node p gap4"><div class="n">Watch Theme</div></div>
-          <div class="node p"><div class="n">Map Theme</div></div>
-          <div class="node p"><div class="n">Units</div><div class="d">km / mi</div></div>
-          <div class="node p"><div class="n">Small Units</div><div class="d">m / ft</div></div>
-          <div class="node p"><div class="n">Map Control</div><div class="d">Off/Compass/Zoom</div></div>
-          <div class="node p"><div class="n">Control Side</div><div class="d">Left / Right</div></div>
-          <div class="node p"><div class="n">Top Bar</div><div class="d">On/5s/10s/Off</div></div>
-          <div class="node p"><div class="n">Nav Distance</div><div class="d">On / Off</div></div>
-          <div class="node p"><div class="n">Nav Arrows</div><div class="d">On / Off</div></div>
-          <div class="node p"><div class="n">Scale Bar</div><div class="d">On / Off</div></div>
-          <div class="node p"><div class="n">Activity</div><div class="d">10 types</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SWIPE LABEL + ARROW -->
-    <div class="col" style="margin-top:22px">
-      <div class="lbl mb4">SWIPE</div>
-      <div class="arr-h" style="width:48px">
-        <div class="tip-l"></div><div class="line"></div><div class="tip-r"></div>
-      </div>
-    </div>
-
-    <!-- HOME -->
-    <div class="col" style="margin-top:10px">
-      <div class="home-node">
-        <div class="n">HOME</div>
-        <div class="d">Record<br>Nav Toggle<br>GPS Status</div>
-      </div>
-      <div class="arr-v mt4"><div class="line" style="height:16px"></div><div class="tip"></div></div>
-      <!-- Home sub-controls -->
-      <div class="section" style="border-color:#ff6b2b44;margin-top:0">
-        <div class="section-title" style="color:var(--orange)">HOME CONTROLS</div>
-        <div class="hcol mt8 gap4">
-          <div class="node o"><div class="n">▶ Record</div><div class="d">Start / Stop / Pause</div></div>
-          <div class="node o"><div class="n">Nav Toggle</div><div class="d">On / Off — pick track</div></div>
-          <div class="node o"><div class="n">GPS Status</div><div class="d">Signal indicator</div></div>
-          <div class="node o"><div class="n">Battery</div><div class="d">% display</div></div>
-          <div class="node o"><div class="n">Clock</div><div class="d">Current time</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SWIPE LABEL + ARROW -->
-    <div class="col" style="margin-top:22px">
-      <div class="lbl mb4">SWIPE</div>
-      <div class="arr-h" style="width:48px">
-        <div class="tip-l"></div><div class="line"></div><div class="tip-r"></div>
-      </div>
-    </div>
-
-    <!-- HOME MAP -->
-    <div class="col">
-      <div class="lbl mb4">SWIPE RIGHT →</div>
-      <div class="node b">
-        <div class="n">Home Map</div>
-        <div class="d">Live map view<br>during recording</div>
-      </div>
-    </div>
-
+<body><h1>WRISTNAV</h1>
+<div class="subtitle">Full Navigation Structure</div><div class="home">
+  <div>
+    <div class="n">HOME</div>
+    <div class="d">Record · Nav · GPS</div>
   </div>
-</div>
-
-<!-- VERTICAL PAGER ARROW -->
-<div class="center mt12">
-  <div class="col">
-    <div class="lbl">↕ VERTICAL SWIPE — MAIN PAGER</div>
-    <div class="arr-v mt4"><div class="line" style="height:20px"></div><div class="tip"></div></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     STATS
-════════════════════════════════════════════════════════════════ -->
-<div class="center mt4">
-  <div class="col">
-    <div class="node g" style="min-width:120px;text-align:center;padding:10px 20px">
-      <div class="n" style="text-align:center">Stats</div>
-      <div class="d" style="text-align:center">Swipeable stat pages</div>
-    </div>
-  </div>
-</div>
-
-<div class="center mt4"><div class="arr-v"><div class="line" style="height:20px"></div><div class="tip"></div></div></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     MAPS + TRACKS
-════════════════════════════════════════════════════════════════ -->
-<div class="center mt4">
-  <div class="row gap20" style="align-items:flex-start">
-
-    <!-- MAPS -->
-    <div class="col">
-      <div class="node b" style="min-width:120px;text-align:center;padding:10px 16px">
-        <div class="n" style="text-align:center">Maps</div>
-        <div class="d" style="text-align:center">Download manager</div>
-      </div>
-      <div class="arr-v mt4"><div class="line" style="height:14px"></div><div class="tip"></div></div>
-      <div class="node xx">
-        <div class="n">Download / Delete</div>
-        <div class="d">Map regions</div>
-      </div>
-    </div>
-
-    <!-- TRACKS -->
-    <div class="col">
-      <div class="node y" style="min-width:120px;text-align:center;padding:10px 16px">
-        <div class="n" style="text-align:center">Tracks</div>
-        <div class="d" style="text-align:center">GPX list</div>
-      </div>
-      <div class="arr-v mt4"><div class="line" style="height:14px"></div><div class="tip"></div></div>
-      <div class="node y">
-        <div class="n">Track Detail</div>
-        <div class="d">View only</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="center mt4"><div class="arr-v"><div class="line" style="height:20px"></div><div class="tip"></div></div></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SETTINGS
-════════════════════════════════════════════════════════════════ -->
-<div class="center mt4">
-  <div class="col">
-    <div class="node o" style="min-width:140px;text-align:center;padding:10px 20px">
-      <div class="n" style="text-align:center">Settings</div>
-      <div class="d" style="text-align:center">6 categories — swipe</div>
-    </div>
-    <div class="arr-v mt4"><div class="line" style="height:14px"></div><div class="tip"></div></div>
-
-    <!-- 6 SETTINGS COLUMNS -->
-    <div class="row gap8 mt4" style="align-items:flex-start">
-
-      <!-- DISPLAY -->
-      <div class="col">
-        <div class="section" style="border-color:#ff6b2b44">
-          <div class="section-title" style="color:var(--orange)">Display</div>
-          <div class="hcol mt8 gap4">
-            <div class="node o"><div class="n">Watch Theme</div><div class="d">Light/Fjord/Dark/Forest/Sand</div></div>
-            <div class="node o"><div class="n">Stats Text Size</div><div class="d">S / M / L</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MAP (Map Theme Settings → Map Settings) -->
-      <div class="col">
-        <div class="section" style="border-color:#ff6b2b44">
-          <div class="section-title" style="color:var(--orange)">Map</div>
-          <div class="hcol mt8 gap4">
-            <div class="node o"><div class="n">Map Theme</div><div class="d">Light/Fjord/Dark/Min×3/Custom</div></div>
-            <div class="node o"><div class="n">Custom Themes →</div><div class="d">Opens CustomThemeActivity</div></div>
-            <div class="node o"><div class="n">Map Settings →</div><div class="d">Opens MapSettingsActivity</div></div>
-            <div class="node o"><div class="n">Lock Zoom</div><div class="d">15 / 16 / 17 / 18</div></div>
-            <div class="node o"><div class="n">Ele Colour</div><div class="d">Red/Blue/Green/Cyan/Orange/Purple/White</div></div>
-          </div>
-        </div>
-        <!-- MAP SETTINGS DRILL-DOWN -->
-        <div class="arr-v mt4"><div class="line" style="height:12px"></div><div class="tip"></div></div>
-        <div class="section" style="border-color:#4fc3f744;margin-top:0">
-          <div class="section-title" style="color:var(--blue)">Map Settings</div>
-          <div class="hcol mt8 gap4">
-            <div class="node b"><div class="n">Map Control</div><div class="d">Off / Compass / Zoom</div></div>
-            <div class="node b"><div class="n">Control Side</div><div class="d">Left / Right</div></div>
-            <div class="node b"><div class="n">Top Bar</div><div class="d">On / 5s / 10s / Off</div></div>
-            <div class="node b"><div class="n">Nav Distance</div><div class="d">On / Off</div></div>
-            <div class="node b"><div class="n">Nav Elevation</div><div class="d">On / Off</div></div>
-            <div class="node b"><div class="n">Nav Arrows</div><div class="d">On / Off</div></div>
-            <div class="node b"><div class="n">Map Text Colour</div><div class="d">7 colours</div></div>
-            <div class="node b"><div class="n">Location Button</div><div class="d">Lock colour / Free colour</div></div>
-            <div class="node b"><div class="n">Scale Bar</div><div class="d">On / Off</div></div>
-            <div class="node b"><div class="n">Bezel Stats</div><div class="d">On / Off → 3 slots picker</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RECORDING -->
-      <div class="col">
-        <div class="section" style="border-color:#ff6b2b44">
-          <div class="section-title" style="color:var(--orange)">Recording</div>
-          <div class="hcol mt8 gap4">
-            <div class="node o"><div class="n">Activity</div><div class="d">Run/Trail/Walk/Hike/Cycle/MTB/Gravel/Kayak/Ski/Snowboard</div></div>
-            <div class="node o"><div class="n">Rec Distance</div><div class="d">Min GPS point distance</div></div>
-            <div class="node o"><div class="n">Rec Time</div><div class="d">Min GPS point interval</div></div>
-            <div class="node o"><div class="n">Auto Pause</div><div class="d">Off / 2s / 5s / 10s</div></div>
-            <div class="node o"><div class="n">Pause Speed</div><div class="d">Speed threshold</div></div>
-            <div class="node o"><div class="n">Record Colour</div><div class="d">Red / Green / Yellow / Blue</div></div>
-            <div class="node o"><div class="n">Record Width</div><div class="d">Track line width</div></div>
-            <div class="node o"><div class="n">Heart Rate</div><div class="d">On / Off</div></div>
-            <div class="node o"><div class="n">Steps</div><div class="d">On / Off</div></div>
-            <div class="node o"><div class="n">Countdown</div><div class="d">Off / 3s / 5s</div></div>
-            <div class="node o"><div class="n">Lap Splits</div><div class="d">On / Off</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- NAVIGATION -->
-      <div class="col">
-        <div class="section" style="border-color:#ff6b2b44">
-          <div class="section-title" style="color:var(--orange)">Navigation</div>
-          <div class="hcol mt8 gap4">
-            <div class="node o"><div class="n">Import Colour</div><div class="d">Red / Green / Yellow / Blue</div></div>
-            <div class="node o"><div class="n">Import Width</div><div class="d">Track line width</div></div>
-            <div class="node o"><div class="n">Pace Avg</div><div class="d">Averaging window</div></div>
-            <div class="node o"><div class="n">Keep Screen On</div><div class="d">AOD display on / off</div></div>
-            <div class="node o"><div class="n">Keep Active</div><div class="d">Background service on / off</div></div>
-            <div class="node o"><div class="n">Battery Saver</div><div class="d">On / Off</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STATS SETTINGS -->
-      <div class="col">
-        <div class="section" style="border-color:#ff6b2b44">
-          <div class="section-title" style="color:var(--orange)">Stats</div>
-          <div class="hcol mt8 gap4">
-            <div class="node o"><div class="n">Stats Pages →</div><div class="d">Opens StatsConfigActivity</div></div>
-            <div class="node o"><div class="n">Calories →</div><div class="d">Opens CaloriesActivity</div></div>
-            <div class="node o"><div class="n">Barometer</div><div class="d">On / Off</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SYSTEM -->
-      <div class="col">
-        <div class="section" style="border-color:#ff6b2b44">
-          <div class="section-title" style="color:var(--orange)">System</div>
-          <div class="hcol mt8 gap4">
-            <div class="node o"><div class="n">Distance</div><div class="d">km / mi</div></div>
-            <div class="node o"><div class="n">Small Units</div><div class="d">Metres / Feet</div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="center mt4"><div class="arr-v"><div class="line" style="height:20px"></div><div class="tip"></div></div></div>
-
-<!-- EXIT -->
-<div class="center mt4">
-  <div class="node xx" style="padding:8px 24px">
-    <div class="n" style="color:#444">Exit</div>
-    <div class="d">Close app</div>
-  </div>
-</div>
-
-<!-- AUTO-LAUNCHED -->
-<div class="center mt20">
-  <div class="row gap16" style="align-items:flex-start">
-    <div class="col">
-      <div class="lbl mb4" style="color:var(--green)">AUTO ON RECORDING STOP</div>
-      <div class="node g">
-        <div class="n">Workout Summary</div>
-        <div class="d">Stats · Map · Save prompt</div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="lbl mb4" style="color:var(--yellow)">GPX INTENT IMPORT</div>
-      <div class="node y">
-        <div class="n">GPX Import</div>
-        <div class="d">File picker → track added</div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="lbl mb4" style="color:var(--teal)">FROM TRACKS → TRACK DETAIL</div>
-      <div class="node t">
-        <div class="n">Nav Track Picker</div>
-        <div class="d">Select track for navigation</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- LEGEND -->
-<div class="legend">
-  <div class="legend-i"><div class="dot" style="background:var(--orange)"></div>Home / Settings</div>
-  <div class="legend-i"><div class="dot" style="background:var(--blue)"></div>Map</div>
-  <div class="legend-i"><div class="dot" style="background:var(--green)"></div>Stats / Recording</div>
-  <div class="legend-i"><div class="dot" style="background:var(--purple)"></div>Quick Settings</div>
-  <div class="legend-i"><div class="dot" style="background:var(--yellow)"></div>Tracks / GPX</div>
-  <div class="legend-i"><div class="dot" style="background:var(--teal)"></div>Navigation</div>
-  <div class="legend-i"><div class="dot" style="background:#444"></div>Sub-screen</div>
-</div>
-
-</body>
+</div><!-- GESTURES --><details open>
+  <summary>Home Gestures</summary>
+  <div class="node"><div class="n">← Swipe Left</div><div class="d">Quick Settings</div></div>
+  <div class="node"><div class="n">Swipe Right →</div><div class="d">Home Map</div></div>
+  <div class="node"><div class="n">↓ Vertical Swipe</div><div class="d">Main Pages</div></div>
+</details><!-- QUICK SETTINGS --><details>
+  <summary>Quick Settings</summary>
+  <div class="node"><div class="n">Watch Theme</div></div>
+  <div class="node"><div class="n">Map Theme</div></div>
+  <div class="node"><div class="n">Units</div></div>
+  <div class="node"><div class="n">Map Control</div></div>
+  <div class="node"><div class="n">Nav Arrows</div></div>
+  <div class="node"><div class="n">Scale Bar</div></div>
+</details><!-- STATS --><details>
+  <summary>Stats</summary>
+  <div class="node"><div class="n">Multiple stat pages</div></div>
+</details><!-- MAPS --><details>
+  <summary>Maps</summary>
+  <div class="node"><div class="n">Download Maps</div></div>
+  <div class="node"><div class="n">Delete Maps</div></div>
+</details><!-- TRACKS --><details>
+  <summary>Tracks</summary>
+  <div class="node"><div class="n">GPX List</div></div>
+  <div class="node"><div class="n">Track Detail</div></div>
+</details><!-- SETTINGS --><details>
+  <summary>Settings</summary>  <details>
+    <summary>Display</summary>
+    <div class="node"><div class="n">Themes</div></div>
+    <div class="node"><div class="n">Text Size</div></div>
+  </details>  <details>
+    <summary>Map</summary>
+    <div class="node"><div class="n">Map Theme</div></div>
+    <div class="node"><div class="n">Controls</div></div>
+    <div class="node"><div class="n">Nav UI</div></div>
+  </details>  <details>
+    <summary>Recording</summary>
+    <div class="node"><div class="n">Activity Types</div></div>
+    <div class="node"><div class="n">Auto Pause</div></div>
+  </details>  <details>
+    <summary>Navigation</summary>
+    <div class="node"><div class="n">Track Display</div></div>
+  </details>  <details>
+    <summary>Stats Settings</summary>
+    <div class="node"><div class="n">Pages</div></div>
+    <div class="node"><div class="n">Calories</div></div>
+  </details>  <details>
+    <summary>System</summary>
+    <div class="node"><div class="n">Units</div></div>
+  </details></details><!-- AUTO ACTIONS --><details>
+  <summary>Auto Actions</summary>
+  <div class="node"><div class="n">Workout Summary</div></div>
+  <div class="node"><div class="n">GPX Import</div></div>
+  <div class="node"><div class="n">Track Picker</div></div>
+</details><!-- EXIT --><div class="node">
+  <div class="n">Exit</div>
+</div></body>
 </html>
