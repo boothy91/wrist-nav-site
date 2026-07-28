@@ -1,0 +1,7 @@
+{
+  "watch": {
+    "message": "Thanks for using WristNav! Check out the latest features in this update.",
+    "min_version": 43,
+    "max_version": 43
+  }
+}
