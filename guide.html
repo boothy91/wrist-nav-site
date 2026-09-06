@@ -236,6 +236,7 @@
   <aside class="sidebar">
     <div class="sidebar-title">Contents</div>
     <nav>
+      <a href="#phone" class="slink"><span class="sicon">📱</span> Phone App</a>
       <a href="#install" class="slink"><span class="sicon">⌚</span> Get WristNav</a>
       <a href="#flow" class="slink"><span class="sicon">🗺️</span> App Flow</a>
       <a href="#home" class="slink"><span class="sicon">🏠</span> Home Screen</a>
@@ -246,7 +247,6 @@
       <a href="#recording" class="slink"><span class="sicon">⏺️</span> Recording</a>
       <a href="#complications" class="slink"><span class="sicon">⌚</span> Complications</a>
       <a href="#settings" class="slink"><span class="sicon">⚙️</span> Settings</a>
-      <a href="#phone" class="slink"><span class="sicon">📱</span> Phone App</a>
       <a href="#crashes" class="slink"><span class="sicon">🐛</span> Crashes</a>
       <a href="#credits" class="slink"><span class="sicon">🙏</span> Credits</a>
     </nav>
@@ -254,6 +254,146 @@
 
   <!-- Main -->
   <main>
+
+    <!-- Phone Companion App -->
+    <div class="section" id="phone">
+      <div class="section-header"><span class="icon">📱</span><h2>Phone <span>Companion App</span></h2></div>
+      <div class="tip">The watch app works fully standalone — the phone app is optional.</div>
+      <div class="flow">
+        <div class="flow-item">📱 Companion App</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">Send</div>
+        <div class="flow-item">Routes</div>
+        <div class="flow-item">Plan</div>
+        <div class="flow-item">Watch</div>
+        <div class="flow-item">Settings</div>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Send Tab</h3>
+          <ul>
+            <li>Send GPX route files directly to the watch</li>
+            <li>Send <code>.map</code> files for offline use</li>
+            <li>Send a URL of a <code>.map</code> file — the watch downloads it directly</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Routes Tab</h3>
+          <ul>
+            <li>List of routes stored on the phone — recorded on the watch or planned in the Plan tab</li>
+            <li>View — opens the route with full stats, configured via Settings → Route View</li>
+            <li>Export as a shareable PNG snapshot, optionally overlaid on your own photo</li>
+            <li>Save as GPX or TCX to phone storage</li>
+            <li>Upload to Health Connect, Intervals.icu (API key in Settings), or manually to Strava via the browser (Strava's direct API connect has been removed due to subscription costs)</li>
+            <li>Rename</li>
+            <li>Delete</li>
+            <li>Send to Watch</li>
+            <li>Navigate To — opens the phone's maps app with directions to the route's start</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Plan Tab</h3>
+          <ul>
+            <li>Plan routes with routed or straight-line segments</li>
+            <li>Load existing GPX files on the map</li>
+            <li>OSM, Topo and Satellite styles</li>
+            <li>3D terrain view</li>
+            <li>Create Route via the down-arrow menu — export as GPX, send straight to the watch, or save to the Routes tab</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Watch Tab</h3>
+          <ul>
+            <li>Flow Guide — opens the interactive watch app flow diagram as a popup</li>
+            <li>Custom Theme Viewer — create custom map themes for the watch</li>
+            <li>Name the theme</li>
+            <li>Full colour picker per element, with 10 colour presets to start from</li>
+            <li>Live map preview before sending</li>
+            <li>Import a theme from an XML file — custom or downloaded; must be XML, zip files aren't accepted</li>
+            <li>Send Theme to Watch</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Health Connect</h3>
+        <ul>
+          <li>Push a recorded route straight to Health Connect for other health apps to read</li>
+          <li>Syncs route path, distance, elevation gain and heart rate samples</li>
+          <li>Session times use the route's real GPX timestamps, not the upload time</li>
+          <li>No account or subscription required</li>
+        </ul>
+      </div>
+
+      <!-- Configure TOPO Area -->
+      <div class="subsection">
+        <div class="subsection-title">Configure TOPO Area (Send Tab)</div>
+        <div class="tip">Downloads a custom topographic map area to the watch, built around a specific route.</div>
+        <div class="settings-grid">
+          <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Upload GPX</div><div class="setting-desc">Loads a route into the Topo Preview screen</div></div><div class="setting-value">Tap to open →</div></div>
+          <div class="setting-row"><div class="setting-num">2</div><div><div class="setting-name">Fix GPX</div><div class="setting-desc">Adjusts the TOPO area's boundary box so the whole route fits inside it</div></div><div class="setting-value">Tap to run →</div></div>
+          <div class="setting-row"><div class="setting-num">3</div><div><div class="setting-name">Area Name</div><div class="setting-desc">Name for this downloaded TOPO region</div></div><div class="setting-value">Text entry</div></div>
+          <div class="setting-row"><div class="setting-num">4</div><div><div class="setting-name">Zoom Level</div><div class="setting-desc">Shown below the preview box</div></div><div class="setting-value">—</div></div>
+          <div class="setting-row"><div class="setting-num">5</div><div><div class="setting-name">Min / Max Zoom</div><div class="setting-desc">Zoom range to download tiles for</div></div><div class="setting-value">—</div></div>
+          <div class="setting-row"><div class="setting-num">6</div><div><div class="setting-name">Map Source</div><div class="setting-desc">Tile provider for this TOPO area</div></div><div class="setting-value">OpenTopo · SwissTopo · TraceStack · USGS Topo · Kartverket</div></div>
+          <div class="setting-row"><div class="setting-num">7</div><div><div class="setting-name">Download Area</div><div class="setting-desc">Sends the tiles to the watch — can take a while, as tiles aren't self-hosted</div></div><div class="setting-value">Tap to start →</div></div>
+          <div class="setting-row"><div class="setting-num">8</div><div><div class="setting-name">Refresh Download Area</div><div class="setting-desc">Reads installed TOPO files on the watch and lists them below — tap an area to highlight it green and preview it on the map, tap again to remove</div></div><div class="setting-value">Tap to refresh →</div></div>
+        </div>
+        <div class="tip">Map sources: OpenTopo works worldwide · SwissTopo covers Switzerland only · TraceStack works worldwide but needs an API key (set in Settings → Accounts) · USGS Topo covers the USA only · Kartverket covers Norway only.</div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div class="subsection">
+        <div class="subsection-title">Settings Tab</div>
+
+        <div style="margin-top:6px;">
+          <div class="subsection-title" style="font-size:12px; opacity:0.85;">Accounts</div>
+          <div class="settings-grid">
+            <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Strava</div><div class="setting-desc">Manual upload link — direct API connect was removed due to subscription costs</div></div><div class="setting-value">Link</div></div>
+            <div class="setting-row"><div class="setting-num">2</div><div><div class="setting-name">Intervals.icu API Key</div><div class="setting-desc">Enables uploading routes to Intervals.icu</div></div><div class="setting-value">Text entry</div></div>
+            <div class="setting-row"><div class="setting-num">3</div><div><div class="setting-name">TraceStack API Key</div><div class="setting-desc">Required to use TraceStack as a TOPO area map source</div></div><div class="setting-value">Text entry</div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="subsection-title" style="font-size:12px; opacity:0.85;">Companion App</div>
+          <div class="settings-grid">
+            <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Theme</div><div class="setting-desc">Visual theme for the companion app itself</div></div><div class="setting-value">Light · Fjord · Dark</div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="subsection-title" style="font-size:12px; opacity:0.85;">Route View</div>
+          <div class="settings-grid">
+            <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Distance Units</div><div class="setting-desc">Used throughout route view</div></div><div class="setting-value">km · mi</div></div>
+            <div class="setting-row"><div class="setting-num">2</div><div><div class="setting-name">Map Style</div><div class="setting-desc">Base map style for viewing a route</div></div><div class="setting-value">Standard · Topo</div></div>
+            <div class="setting-row"><div class="setting-num">3</div><div><div class="setting-name">Show Elevation Chart</div><div class="setting-desc">Elevation profile on the route view</div></div><div class="setting-value">On · Off</div></div>
+            <div class="setting-row"><div class="setting-num">4</div><div><div class="setting-name">Show Status Bar</div><div class="setting-desc">Distance/time/elevation summary bar</div></div><div class="setting-value">On · Off</div></div>
+            <div class="setting-row"><div class="setting-num">5</div><div><div class="setting-name">Route Line Colour</div><div class="setting-desc">Colour of the route line on the map</div></div><div class="setting-value">Multiple colours</div></div>
+            <div class="setting-row"><div class="setting-num">6</div><div><div class="setting-name">Route Thickness</div><div class="setting-desc">Width of the route line</div></div><div class="setting-value">—</div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="subsection-title" style="font-size:12px; opacity:0.85;">Routes Tab</div>
+          <div class="settings-grid">
+            <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Auto Delete Routes</div><div class="setting-desc">Automatically remove received route files after a set time</div></div><div class="setting-value">Off · 7 Days · 30 Days</div></div>
+            <div class="setting-row"><div class="setting-num">2</div><div><div class="setting-name">Sort Files</div><div class="setting-desc">Order routes are listed in</div></div><div class="setting-value">Newest · Oldest · Name</div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div class="subsection-title" style="font-size:12px; opacity:0.85;">Watch Extras</div>
+          <div class="settings-grid">
+            <div class="setting-row"><div class="setting-num">1</div><div><div class="setting-name">Stats Labels</div><div class="setting-desc">Show stat name labels on watch stats pages</div></div><div class="setting-value">On · Off</div></div>
+            <div class="setting-row"><div class="setting-num">2</div><div><div class="setting-name">Show Maps Tab on Watch</div><div class="setting-desc">Toggle the Maps tab on the watch to clean up its UI</div></div><div class="setting-value">On · Off</div></div>
+            <div class="setting-row"><div class="setting-num">3</div><div><div class="setting-name">Show Tracks Tab on Watch</div><div class="setting-desc">Toggle the Tracks tab on the watch to clean up its UI</div></div><div class="setting-value">On · Off</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- Install -->
     <div class="section" id="install">
@@ -603,73 +743,6 @@
           <div class="setting-row"><div class="setting-num">4</div><div><div class="setting-name">Keep Active</div><div class="setting-desc">Keep app active and GPS running in background when not recording a route</div></div><div class="setting-value">On · Off</div></div>
           <div class="setting-row"><div class="setting-num">5</div><div><div class="setting-name">Battery Saver</div><div class="setting-desc">Minimal dark map during navigation to reduce battery — restores on disable</div></div><div class="setting-value">On · Off</div></div>
         </div>
-      </div>
-    </div>
-
-    <!-- Phone Companion App -->
-    <div class="section" id="phone">
-      <div class="section-header"><span class="icon">📱</span><h2>Phone <span>Companion App</span></h2></div>
-      <div class="tip">The watch app works fully standalone — the phone app is optional.</div>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Send Tab</h3>
-          <ul>
-            <li>Send GPX route files directly to the watch</li>
-            <li>Send <code>.map</code> files for offline use</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Received Tab</h3>
-          <ul>
-            <li>View GPX files recorded on the watch</li>
-            <li>Open a route to view it on a map with full stats</li>
-            <li>Export a route as a shareable PNG snapshot, optionally overlaid on your own photo</li>
-            <li>Sync a route to Health Connect — route, distance, elevation gain and heart rate</li>
-            <li>Manual upload to Strava via the browser (Strava's direct API connect has been removed due to subscription costs)</li>
-            <li>Save to phone storage</li>
-            <li>Delete files</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Plan Tab</h3>
-          <ul>
-            <li>Plan routes with routed or straight-line segments</li>
-            <li>Load existing GPX files on the map</li>
-            <li>OSM, Topo and Satellite styles</li>
-            <li>3D terrain view</li>
-            <li>Export as GPX or send straight to watch</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Theme Tab</h3>
-          <ul>
-            <li>Create custom map themes for the watch</li>
-            <li>10 colour presets to start from</li>
-            <li>Full colour picker per element</li>
-            <li>Live map preview before sending</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Health Connect</h3>
-        <ul>
-          <li>Push a recorded route straight to Health Connect for other health apps to read</li>
-          <li>Syncs route path, distance, elevation gain and heart rate samples</li>
-          <li>Session times use the route's real GPX timestamps, not the upload time</li>
-          <li>No account or subscription required</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Settings Tab</h3>
-        <ul>
-          <li>Phone app theme — Light / Fjord / Dark</li>
-          <li>Distance units — km / mi</li>
-          <li>Map style — Standard / Topo</li>
-          <li>Route colour and width</li>
-          <li>Stats labels — show or hide stat name labels on watch stats pages</li>
-          <li>Auto delete received files — Off / 7 days / 30 days</li>
-          <li>Toggle on or off the maps and tracks menu options on the watch to clean up the UI</li>
-        </ul>
       </div>
     </div>
 
