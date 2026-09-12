@@ -4,7 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WristNav | Standalone Wear OS Navigation</title><style>
     /* Primary Brand Color: #FF7708 */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
     body {
         background: #0A0A0E;
@@ -40,7 +45,10 @@
         color: #FF7708;
     }
 
-    /* Known Issues Banner */
+    /* =========================
+       Update / Known Issues
+       ========================= */
+
     .issues-banner {
         position: relative;
         margin: 85px auto 0;
@@ -58,7 +66,7 @@
         color: #FF5252;
         font-size: 19px;
         font-weight: 800;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
 
     .issues-text {
@@ -85,6 +93,91 @@
         margin-bottom: 3px;
     }
 
+    /* =========================
+       Coming Soon
+       ========================= */
+
+    .coming-soon {
+        max-width: 900px;
+        width: calc(100% - 40px);
+        margin: 30px auto 0;
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255, 119, 8, 0.15),
+                rgba(255, 119, 8, 0.04)
+            );
+        border: 1px solid rgba(255, 119, 8, 0.55);
+        border-radius: 18px;
+        padding: 28px;
+        text-align: center;
+        box-shadow: 0 0 35px rgba(255, 119, 8, 0.08);
+    }
+
+    .coming-soon-heading {
+        color: #FF7708;
+        font-size: 22px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .coming-soon-subtitle {
+        color: #AAA;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .climb-title {
+        color: #fff;
+        font-size: 25px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    .coming-badge {
+        display: inline-block;
+        background: #FF7708;
+        color: #000;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 4px 9px;
+        border-radius: 5px;
+        margin-left: 7px;
+        vertical-align: middle;
+        text-transform: uppercase;
+    }
+
+    .climb-description {
+        color: #CCC;
+        font-size: 15px;
+        max-width: 700px;
+        margin: 0 auto 22px;
+    }
+
+    .climb-preview {
+        display: block;
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 14px;
+        border: 1px solid #2A2A35;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .preview-caption {
+        color: #777;
+        font-size: 12px;
+        margin-top: 10px;
+        font-style: italic;
+    }
+
+    /* =========================
+       Hero
+       ========================= */
+
     .hero {
         display: flex;
         flex-direction: column;
@@ -93,11 +186,12 @@
         min-height: 100vh;
         padding: 60px 20px 60px;
         text-align: center;
-        background: radial-gradient(
-            circle at 50% 30%,
-            rgba(255, 119, 8, 0.15) 0%,
-            transparent 60%
-        );
+        background:
+            radial-gradient(
+                circle at 50% 30%,
+                rgba(255, 119, 8, 0.15) 0%,
+                transparent 60%
+            );
     }
 
     .logo-img {
@@ -126,7 +220,10 @@
         margin-bottom: 35px;
     }
 
-    /* Testimonials */
+    /* =========================
+       Testimonials
+       ========================= */
+
     .testimonials {
         display: flex;
         flex-direction: column;
@@ -158,7 +255,10 @@
         letter-spacing: 1px;
     }
 
-    /* Section */
+    /* =========================
+       Section
+       ========================= */
+
     .section-heading {
         font-size: 22px;
         color: #8888AA;
@@ -209,7 +309,10 @@
         font-size: 14px;
     }
 
-    /* New / Beta section */
+    /* =========================
+       Beta Section
+       ========================= */
+
     .beta-section {
         max-width: 900px;
         width: 100%;
@@ -258,6 +361,10 @@
         text-transform: uppercase;
     }
 
+    /* =========================
+       CTA
+       ========================= */
+
     .cta-container {
         display: flex;
         flex-direction: column;
@@ -288,6 +395,10 @@
         transform: scale(1.05);
     }
 
+    /* =========================
+       Footer
+       ========================= */
+
     footer {
         margin-top: 80px;
         padding: 40px 20px;
@@ -304,7 +415,12 @@
         margin: 0 10px;
     }
 
+    /* =========================
+       Mobile
+       ========================= */
+
     @media (max-width: 600px) {
+
         h1 {
             font-size: 40px;
         }
@@ -313,7 +429,8 @@
             grid-template-columns: 1fr;
         }
 
-        .issues-banner {
+        .issues-banner,
+        .coming-soon {
             width: calc(100% - 30px);
             padding: 17px 18px;
         }
@@ -326,27 +443,46 @@
             margin: 0 7px;
             font-size: 12px;
         }
+
+        .climb-title {
+            font-size: 21px;
+        }
+
+        .climb-preview {
+            border-radius: 10px;
+        }
     }
 </style>
 
 </head><body><nav>
     <a href="#features">Features</a>
+    <a href="#coming-soon">Coming Soon</a>
     <a href="#beta">What's New</a>
     <a href="guide.html">User Guide</a>
     <a href="flowchart.html">Flow Chart</a>
     <a href="privacy.html">Privacy Policy</a>
-</nav><!-- Known Issue --><div class="issues-banner">
-    <!-- Known Issues --><div class="issues-banner"><div class="issues-title">
-    ⚠️ Known Issues
+</nav><!-- =========================
+     UPDATE / KNOWN ISSUES
+     ========================= --><div class="issues-banner"><div class="issues-title">
+    ⚠️ Update & Known Issues
 </div>
 
 <div class="issues-text">
-    <strong>Map Style:</strong> There is currently an issue when changing map styles
-    where the <strong>app theme can turn blue and switch to the Fjord theme</strong>.
-    This does not mean the map itself has turned blue.
+    <strong>Upcoming Update:</strong> An update was planned to be sent for
+    review today. However, a <strong>bug was identified during final
+    testing</strong>. A fix has now been implemented, but it needs
+    <strong>further testing</strong> before the update can be submitted
+    for review.
+</div>
+
+<div class="issues-text">
+    <strong>Map Style:</strong> There is currently an issue when changing
+    map styles where the <strong>app theme can turn blue and switch to the
+    Fjord theme</strong>. This does not mean the map itself has turned blue.
 </div>
 
 <div class="issues-workaround">
+
     <strong>Map Style Workaround:</strong>
 
     <ol>
@@ -356,17 +492,59 @@
         <li>Re-open WristNav.</li>
         <li><strong>Topo</strong> should now be selected correctly.</li>
     </ol>
+
 </div>
 
 <div class="issues-text" style="margin-top: 18px; margin-bottom: 0;">
-    <strong>Heart Rate:</strong> Heart-rate recording is currently affected by
-    a <strong>permission issue</strong> in the current release. The issue has
-    been identified and <strong>is fixed in the next update</strong>.
+
+    <strong>Heart Rate:</strong> Heart-rate recording is currently affected
+    by a <strong>permission issue</strong> in the current release.
+    The issue has been identified and <strong>is fixed in the next
+    update</strong>.
+
 </div>
 
-    </div>
+</div><!-- =========================
+     CLIMB VIEW - COMING SOON
+     ========================= --><div id="coming-soon" class="coming-soon"><div class="coming-soon-heading">
+    🔜 Coming Soon
+</div>
 
-</div><div class="hero"><img src="ic_launcher.png" alt="WristNav Logo" class="logo-img">
+<p class="coming-soon-subtitle">
+    Something new is currently being tested for WristNav
+</p>
+
+<div class="climb-title">
+    ⛰️ Climb View
+    <span class="coming-badge">Coming Soon</span>
+</div>
+
+<p class="climb-description">
+    A new dedicated <strong>Climb View</strong> is coming to WristNav,
+    giving you a clearer way to see your route's elevation profile and
+    climb information while out on an activity.
+    <br><br>
+    The feature is currently undergoing additional testing and refinement
+    before it is ready for release. We want to make sure it performs
+    correctly across different routes and activities before making it
+    available.
+</p>
+
+<img
+    src="Climb View.png"
+    alt="WristNav Climb View Preview"
+    class="climb-preview">
+
+<p class="preview-caption">
+    Climb View preview — feature shown is currently in development.
+</p>
+
+</div><!-- =========================
+     HERO
+     ========================= --><div class="hero"><img
+    src="ic_launcher.png"
+    alt="WristNav Logo"
+    class="logo-img">
 
 <h1>
     Wrist<span class="accent">Nav</span>
@@ -377,304 +555,477 @@
     Offline maps, GPX routes, GPS tracking and more — directly on your wrist.
 </p>
 
+
+<!-- Testimonials -->
+
 <div class="testimonials">
 
     <div class="quote-card">
+
         <p class="quote-text">
             "The app stands head and shoulders above the rest, keep up the good work!"
         </p>
+
         <p class="quote-author">
             Supporter on Buy Me a Coffee
         </p>
+
     </div>
 
+
     <div class="quote-card">
+
         <p class="quote-text">
             "I really appreciate your work, you have created the perfect app I needed for my new smartwatch!"
         </p>
+
         <p class="quote-author">
             Supporter on Buy Me a Coffee
         </p>
+
     </div>
 
 </div>
 
-<!-- Features -->
+
+<!-- =========================
+     FEATURES
+     ========================= -->
+
 <h2 id="features" class="section-heading">
     Features
 </h2>
 
+
 <div class="feature-bullets">
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🗺️</div>
+
         <div class="feature-content">
+
             <h3>Offline Maps</h3>
+
             <p>
                 Download maps directly to your Wear OS watch and navigate without
                 relying on your phone or a mobile data connection.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">⛰️</div>
+
         <div class="feature-content">
+
             <h3>TOPO Maps</h3>
+
             <p>
                 Access downloadable topographic maps from OpenTopoMap, SwissTopo,
                 Tracestrack, USGS and Kartverket, with a resizable download area
                 and direct watch synchronisation.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🌄</div>
+
         <div class="feature-content">
+
             <h3>Hillshading</h3>
+
             <p>
                 Add a hillshading overlay to Mapsforge maps to make terrain,
                 slopes and the shape of the landscape easier to understand.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">📍</div>
+
         <div class="feature-content">
+
             <h3>GPS Route Recording</h3>
+
             <p>
                 Record your activities directly on the watch with GPS,
                 distance, speed, elevation and other activity data.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">📁</div>
+
         <div class="feature-content">
+
             <h3>GPX Import & Navigation</h3>
+
             <p>
                 Import GPX routes and follow them directly from your watch,
                 with your route displayed over the map.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">💾</div>
+
         <div class="feature-content">
+
             <h3>GPX Export</h3>
+
             <p>
                 Export recorded routes as GPX files so you can keep,
                 share or use your routes elsewhere.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">📈</div>
+
         <div class="feature-content">
+
             <h3>Elevation & Climb Tracking</h3>
+
             <p>
                 Monitor elevation, ascent and descent during your activity,
                 making WristNav useful for hiking and other outdoor activities.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">❤️</div>
+
         <div class="feature-content">
+
             <h3>Heart Rate Tracking</h3>
+
             <p>
                 Record heart-rate data alongside your activity. A permission
                 issue affecting heart-rate recording in the current release
                 has been fixed for the next update.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">👣</div>
+
         <div class="feature-content">
+
             <h3>Step Tracking</h3>
+
             <p>
                 Track steps during recorded activities alongside your
                 route and other activity statistics.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">📊</div>
+
         <div class="feature-content">
+
             <h3>Customisable Statistics</h3>
+
             <p>
                 Configure your statistics pages to display the information
                 that matters most to you while you're moving.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">⌚</div>
+
         <div class="feature-content">
+
             <h3>Watch Face Complications</h3>
+
             <p>
                 Display live WristNav information directly on compatible
                 Wear OS watch faces using complications.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🔄</div>
+
         <div class="feature-content">
+
             <h3>Health Connect Integration</h3>
+
             <p>
                 Sync activity information with Health Connect without
                 requiring a WristNav cloud account.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🖼️</div>
+
         <div class="feature-content">
+
             <h3>Route Snapshots</h3>
+
             <p>
                 Create shareable route images from your recorded activities,
                 including the route displayed over your own photos.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🔗</div>
+
         <div class="feature-content">
+
             <h3>Map Downloads via URL</h3>
+
             <p>
                 Download maps using a direct URL and transfer them to your
                 watch without having to rely on a fixed selection of sources.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🎨</div>
+
         <div class="feature-content">
+
             <h3>Custom Map Themes</h3>
+
             <p>
                 Import custom map theme XML files and transfer them
                 directly to the watch.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🧭</div>
+
         <div class="feature-content">
+
             <h3>Standalone Navigation</h3>
+
             <p>
                 WristNav is designed to provide navigation directly from
                 your Wear OS watch, without requiring your phone during
                 your activity.
             </p>
+
         </div>
+
     </div>
 
+
     <div class="feature-item">
+
         <div class="feature-icon">🚫</div>
+
         <div class="feature-content">
+
             <h3>No Subscription</h3>
+
             <p>
                 No monthly subscription and no mandatory WristNav account.
                 Use the app without being locked into a recurring payment.
             </p>
+
         </div>
+
     </div>
+
 
 </div>
 
-<!-- What's New / Beta -->
+
+<!-- =========================
+     WHAT'S NEW / BETA
+     ========================= -->
+<h3>
+                Downloadable TOPO Maps
+                <span class="beta-badge">Beta</span>
+            </h3>
+
+            <p>
+                WristNav now supports downloadable topographic maps from
+                <strong>OpenTopoMap, SwissTopo, Tracestrack, USGS and Kartverket</strong>.
+                Choose a map source, resize the download area to suit your route,
+                download it and sync it directly to your watch.
+                Go to <strong>Map Settings → Map Style</strong> to switch between
+                available map styles.
+            </p>
+
+        </div>
+
+
+        <div class="beta-card">
+
+            <h3>
+                Hillshading for Mapsforge
+                <span class="beta-badge">Beta</span>
+            </h3>
+
+            <p>
+                A new hillshading overlay is available for Mapsforge maps,
+                providing additional terrain detail and making slopes and
+                elevation changes easier to identify at a glance.
+            </p>
+
+        </div>
+
+
+        <div class="beta-card">
+
+            <h3>
+                Tracestrack Map Source
+            </h3>
+
+            <p>
+                Tracestrack maps require your own free API key.
+                You can obtain one from the Tracestrack console.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CTA
+         ========================= -->
+
+    <div class="cta-container">
+
+        <a href="https://play.google.com/store/apps/details?id=com.wristnav.app">
+
+            <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+                class="play-store-badge">
+
+        </a>
+
+
+        <a
+            href="https://buymeacoffee.com/wristnavv"
+            class="btn-donate">
+
+            Buy Me a Coffee
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 WristNav. Built for the adventurous.
+        </p>
+
+        <div style="margin-top: 10px;">
+
+            <a href="privacy.html">
+                Privacy Policy
+            </a>
+
+            <a href="guide.html">
+                Full Guide
+            </a>
+
+        </div>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
 <div id="beta" class="beta-section">
 
     <h2 class="beta-heading">
         🆕 What's New — Beta
     </h2>
 
-    <div class="beta-card">
-        <h3>
-            Downloadable TOPO Maps
-            <span class="beta-badge">Beta</span>
-        </h3>
-
-        <p>
-            WristNav now supports downloadable topographic maps from
-            <strong>OpenTopoMap, SwissTopo, Tracestrack, USGS and Kartverket</strong>.
-            Choose a map source, resize the download area to suit your route,
-            download it and sync it directly to your watch.
-            Go to <strong>Map Settings → Map Style</strong> to switch between
-            available map styles.
-        </p>
-    </div>
 
     <div class="beta-card">
-        <h3>
-            Hillshading for Mapsforge
-            <span class="beta-badge">Beta</span>
-        </h3>
 
-        <p>
-            A new hillshading overlay is available for Mapsforge maps,
-            providing additional terrain detail and making slopes and
-            elevation changes easier to identify at a glance.
-        </p>
-    </div>
-
-    <div class="beta-card">
-        <h3>Tracestrack Map Source</h3>
-
-        <p>
-            Tracestrack maps require your own free API key.
-            You can obtain one from the Tracestrack console.
-        </p>
-    </div>
-
-</div>
-
-<!-- CTA -->
-<div class="cta-container">
-
-    <a href="https://play.google.com/store/apps/details?id=com.wristnav.app">
-        <img
-            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-            alt="Get it on Google Play"
-            class="play-store-badge">
-    </a>
-
-    <a
-        href="https://buymeacoffee.com/wristnavv"
-        class="btn-donate">
-        Buy Me a Coffee
-    </a>
-
-</div>
-
-<footer>
-
-    <p>
-        &copy; 2026 WristNav. Built for the adventurous.
-    </p>
-
-    <div style="margin-top: 10px;">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="guide.html">Full Guide</a>
-    </div>
-
-</footer>
-
-</div></body>
-</html>
+        
