@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WristNav — Field Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #ECE0C7;
+    --panel: #F8F2E4;
+    --panel-alt: #F1E5C9;
+    --border: #D8C39A;
+    --ink: #2B2013;
+    --ink-soft: #6E5A3D;
+    --ink-faint: #9A876A;
+    --accent: #8C6328;
+    --accent-soft: #C9AD79;
+    --good: #3F7D45;
+    --off: #A8483A;
+    --info: #3B6690;
+    --radius: 10px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(255,255,255,0.35), transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(140,99,40,0.06), transparent 55%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 96px;
+  }
+
+  header.hero{ margin-bottom: 40px; }
+
+  .route-mark{ display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .route-mark svg{ flex-shrink: 0; }
+  .route-mark .line{ flex: 1; height: 1px; background: linear-gradient(to right, var(--accent-soft), transparent); }
+
+  .eyebrow{ font-size: 13px; color: var(--ink-soft); letter-spacing: 0.02em; }
+
+  h1.title{
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.05;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+
+  .tagline{ font-size: 16px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px; }
+
+  .gesture-map{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .gesture-row{ display: grid; grid-template-columns: 88px 1fr; gap: 14px; align-items: start; }
+  .gesture-label{ font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; padding-top: 2px; }
+  .gesture-detail{ font-size: 14.5px; color: var(--ink); }
+  .gesture-detail .dim{ color: var(--ink-soft); }
+  .gesture-divider{ height: 1px; background: var(--border); margin: 0; }
+
+  .trail{ position: relative; margin-top: 44px; }
+  .trail::before{
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--accent-soft) 0, var(--accent-soft) 4px,
+      transparent 4px, transparent 9px
+    );
+  }
+
+  details.waypoint{ position: relative; margin-bottom: 14px; padding-left: 52px; }
+
+  .waypoint-badge{
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent);
+    z-index: 1;
+  }
+
+  details.waypoint[open] .waypoint-badge{
+    background: var(--accent);
+    color: var(--panel);
+    border-color: var(--accent);
+  }
+
+  summary.waypoint-summary{
+    list-style: none;
+    cursor: pointer;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  summary.waypoint-summary::-webkit-details-marker{ display: none; }
+
+  .waypoint-title{ font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; color: var(--ink); }
+  .waypoint-sub{ font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+  .chevron{ flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); transition: transform 0.18s ease; }
+  details.waypoint[open] > summary .chevron{ transform: rotate(90deg); }
+
+  .waypoint-body{ padding: 16px 4px 4px 0; }
+
+  .item{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .item:last-child{ border-bottom: none; }
+  .item-name{ font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .item-detail{ font-size: 13.5px; color: var(--ink-soft); grid-column: 1 / -1; }
+  .item-value{
+    font-size: 12.5px;
+    color: var(--accent);
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+    white-space: nowrap;
+  }
+
+  .state-list{
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 5px;
+    margin-top: 2px;
+  }
+  .state-row{
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .state-dot{
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 3px;
+  }
+  .state-dot.off{ background: var(--off); }
+  .state-dot.good{ background: var(--good); }
+  .state-dot.info{ background: var(--info); }
+  .state-row b{ color: var(--ink); font-weight: 600; }
+
+  .subgroup{ margin: 6px 0 18px; border-left: 2px solid var(--accent-soft); padding-left: 14px; }
+  .subgroup-title{ font-family: 'Source Serif 4', serif; font-size: 15.5px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+
+  .note{ font-size: 13px; color: var(--ink-faint); font-style: italic; margin-top: 14px; }
+
+  .pending-note{
+    font-size: 13px;
+    color: var(--ink-faint);
+    background: var(--panel-alt);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+  }
+
+  .legend{
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    padding: 18px 20px;
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .legend-item{ display: flex; align-items: center; gap: 7px; }
+  .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .dot.good{ background: var(--good); }
+  .dot.off{ background: var(--off); }
+  .dot.info{ background: var(--info); }
+
+  footer{ margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); }
+
+  @media (max-width: 480px){
+    h1.title{ font-size: 34px; }
+    .gesture-row{ grid-template-columns: 70px 1fr; }
+    details.waypoint{ padding-left: 44px; }
+    .waypoint-badge{ width: 34px; height: 34px; font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ .chevron{ transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="route-mark">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#8C6328" stroke-width="1.4"/>
+        <path d="M12 5.5V8.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 15.5V18.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M5.5 12H8.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M15.5 12H18.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="2" fill="#8C6328"/>
+      </svg>
+      <span class="eyebrow">Field reference · v2</span>
+      <span class="line"></span>
+    </div>
+    <h1 class="title">WristNav</h1>
+    <p class="tagline">A waypoint-by-waypoint map of every screen, gesture, and setting in the watch app.</p>
+
+    <div class="gesture-map">
+      <div class="gesture-row">
+        <div class="gesture-label">Opens on</div>
+        <div class="gesture-detail">
+          The <span class="dim">Map screen</span>, directly. First launch prompts a map download — a local map is suggested from your current GPS position.
+        </div>
+      </div>
+      <div class="gesture-divider"></div>
+      <div class="gesture-row">
+        <div class="gesture-label">Hold</div>
+        <div class="gesture-detail">
+          Press and hold anywhere on the Map screen to open the <span class="dim">Navigation menu</span>.
+        </div>
+      </div>
+      <div class="gesture-divider"></div>
+      <div class="gesture-row">
+        <div class="gesture-label">Menu icon</div>
+        <div class="gesture-detail">
+          A dedicated button on the Map screen opens the <span class="dim">Global menu</span>.
+        </div>
+      </div>
+      <div class="gesture-divider"></div>
+      <div class="gesture-row">
+        <div class="gesture-label">Note</div>
+        <div class="gesture-detail">
+          Settings content below is carried over unchanged from the previous flow — flag anything that needs updating.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="trail">
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">1</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Map Screen</div>
+          <div class="waypoint-sub">The app's home — opens here directly</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="item">
+          <span class="item-name">First Launch</span>
+          <span class="item-detail">New users are directed to download a map — a local map from the current GPS position is offered automatically.</span>
+        </div>
+
+        <div class="item">
+          <span class="item-name">Location Button</span>
+          <div class="state-list">
+            <div class="state-row"><span class="state-dot off"></span><b>Red</b> — snaps back to your current location</div>
+            <div class="state-row"><span class="state-dot good"></span><b>Green</b> — free movement, pan the map freely</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="item-name">Clock (tap)</span>
+          <div class="state-list">
+            <div class="state-row"><span class="state-dot off"></span><b>Red dot</b> — locks the map; the menu is still usable</div>
+            <div class="state-row"><span class="state-dot good"></span><b>Green dot</b> — free movement map</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="item-name">Compass</span>
+          <div class="state-list">
+            <div class="state-row"><span class="state-dot off"></span><b>Red</b> — locked north</div>
+            <div class="state-row"><span class="state-dot good"></span><b>Green</b> — compass moves with the map</div>
+            <div class="state-row"><span class="state-dot info"></span><b>Blue</b> — map locked north, compass moves</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="item-name">Zoom</span>
+          <span class="item-value">+ / −</span>
+        </div>
+
+      </div>
+    </details>
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">2</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Navigation Menu</div>
+          <div class="waypoint-sub">Opened with a long press on the Map screen</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="subgroup">
+          <div class="subgroup-title">Navigation</div>
+          <div class="item"><span class="item-name">Add Route</span><span class="item-detail">Opens the GPX list to add a route to the map</span></div>
+          <div class="item"><span class="item-name">Start</span></div>
+          <div class="item"><span class="item-name">Stop</span></div>
+          <div class="item"><span class="item-name">Pause</span></div>
+          <div class="item"><span class="item-name">Reverse Route</span><span class="item-detail">Requires a route to already be added</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Quick Settings</div>
+          <div class="item"><span class="item-name">Watch Theme</span></div>
+          <div class="item"><span class="item-name">Units</span></div>
+          <div class="item"><span class="item-name">Small Units</span></div>
+          <div class="item"><span class="item-name">Map Control</span><span class="item-value">Compass / Zoom / Off</span></div>
+          <div class="item"><span class="item-name">Nav Distance</span><span class="item-detail">Shows remaining distance if a GPX route is loaded on the Map screen</span></div>
+          <div class="item"><span class="item-name">Nav Turns</span><span class="item-detail">Turn-by-turn notifications, plus an overlay on the Map screen</span></div>
+          <div class="item"><span class="item-name">Auto Pause</span></div>
+        </div>
+
+      </div>
+    </details>
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">3</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Global Menu</div>
+          <div class="waypoint-sub">Opened with the menu button on the Map screen</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="subgroup">
+          <div class="subgroup-title">Stats</div>
+          <div class="item"><span class="item-name">Stats Pages</span><span class="item-detail">Configured in Settings — up to 10 pages, 3 stats per page</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Maps</div>
+          <div class="item"><span class="item-name">Local Maps</span><span class="item-detail">Gets your location and suggests the local map</span></div>
+          <div class="item"><span class="item-name">Installed</span><span class="item-detail">Tap to delete an installed map</span></div>
+          <div class="item"><span class="item-name">Main Map</span><span class="item-detail">The world split into sections — smaller than full maps, so easier to download</span></div>
+          <div class="item"><span class="item-name">Hillshading</span><span class="item-detail">Same layout as Main Map — adds relief hillshading to the map</span></div>
+          <div class="item"><span class="item-name">Contours</span><span class="item-detail">Adds contour lines to the map</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">GPX Tracks</div>
+          <div class="item"><span class="item-name">Download OSM</span><span class="item-detail">Via an OSM traces URL / trace number</span></div>
+          <div class="item"><span class="item-name">Track List</span><span class="item-detail">Imported and recorded tracks — tap for details, swipe across to view distance, elevation details, elevation chart, send to phone, and delete</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Settings</div>
+          <div class="item"><span class="item-name">Settings</span><span class="item-detail">Opens the full Settings list — see below</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Home / Map</div>
+          <div class="item"><span class="item-name">Home / Map</span><span class="item-detail">Returns to the Map screen</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Exit</div>
+          <div class="item"><span class="item-name">Exit</span><span class="item-detail">Tap twice to exit</span></div>
+        </div>
+
+      </div>
+    </details>
+
+    <details class="waypoint">
+      <div class="waypoint-badge">4</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Settings</div>
+          <div class="waypoint-sub">Carried over unchanged — pending your review</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="pending-note">This section hasn't been re-checked against the new flow yet — content below matches the previous version.</div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Display</div>
+          <div class="item"><span class="item-name">Watch Theme</span><span class="item-value">Light / Fjord / Dark / Forest / Sand</span></div>
+          <div class="item"><span class="item-name">Stats Text Size</span><span class="item-value">S / M / L</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Map</div>
+          <div class="item"><span class="item-name">Map Style</span><span class="item-value">Mapsforge / TOPO</span></div>
+          <div class="item"><span class="item-name">Map Theme</span><span class="item-value">Light / Fjord / Dark / Min×3 / Custom</span></div>
+          <div class="item"><span class="item-name">Custom Themes</span><span class="item-detail">Build in-app, or import an XML file from the companion app</span></div>
+          <div class="item"><span class="item-name">Topo Zoom</span><span class="item-value">1× / 1.5× / 2×</span><span class="item-detail">Replaces Map Theme when Map Style is TOPO</span></div>
+          <div class="item"><span class="item-name">Map Settings</span><span class="item-detail">Opens the detailed overlay controls below</span></div>
+          <div class="item"><span class="item-name">Lock Zoom</span><span class="item-value">15 / 16 / 17 / 18</span></div>
+          <div class="item"><span class="item-name">Ele Colour</span><span class="item-value">7 colours</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Map Settings</div>
+          <div class="item"><span class="item-name">Map Control</span><span class="item-value">Off / Compass / Zoom</span></div>
+          <div class="item"><span class="item-name">Control Side</span><span class="item-value">Left / Right</span></div>
+          <div class="item"><span class="item-name">Top Bar</span><span class="item-value">On / 5s / 10s / Off</span></div>
+          <div class="item"><span class="item-name">Map Text Colour</span><span class="item-value">7 colours</span></div>
+          <div class="item"><span class="item-name">Location Button</span><span class="item-value">Lock / Free colour</span></div>
+          <div class="item"><span class="item-name">Scale Bar</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Bezel Stats</span><span class="item-value">On / Off</span><span class="item-detail">On opens a 3-slot picker</span></div>
+          <div class="item"><span class="item-name">Import Colour</span><span class="item-value">Red / Green / Yellow / Blue</span></div>
+          <div class="item"><span class="item-name">Import Width</span><span class="item-value">Track line width</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Recording</div>
+          <div class="item"><span class="item-name">Activity</span><span class="item-value">10 types</span></div>
+          <div class="item"><span class="item-name">Rec Distance</span><span class="item-value">Min GPS point distance</span></div>
+          <div class="item"><span class="item-name">Rec Time</span><span class="item-value">Min GPS point interval</span></div>
+          <div class="item"><span class="item-name">Auto Pause</span><span class="item-value">Off / 2s / 5s / 10s</span></div>
+          <div class="item"><span class="item-name">Pause Speed</span><span class="item-value">Speed threshold</span></div>
+          <div class="item"><span class="item-name">Record Colour</span><span class="item-value">Red / Green / Yellow / Blue</span></div>
+          <div class="item"><span class="item-name">Record Width</span><span class="item-value">Track line width</span></div>
+          <div class="item"><span class="item-name">Heart Rate</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Steps</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Countdown</span><span class="item-value">Off / 3s / 5s</span></div>
+          <div class="item"><span class="item-name">Lap Splits</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">GPS Filtering</span><span class="item-value">On / Off</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Navigation</div>
+          <div class="item"><span class="item-name">Nav Distance</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Nav Elevation</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Nav Turns</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Nav Arrows</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Off-Route Alert</span><span class="item-value">On / Off</span><span class="item-detail">Haptic vibration — fires even with the screen off</span></div>
+          <div class="item"><span class="item-name">Alert Distance</span><span class="item-value">20 / 30 / 40 / 50m</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Stats Settings</div>
+          <div class="item"><span class="item-name">Stats Pages</span><span class="item-detail">Opens the stats page config screen</span></div>
+          <div class="item"><span class="item-name">Calories</span><span class="item-detail">Opens the calories screen</span></div>
+          <div class="item"><span class="item-name">Barometer</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Pace Avg</span><span class="item-value">Averaging window</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">System</div>
+          <div class="item"><span class="item-name">Distance</span><span class="item-value">km / mi</span></div>
+          <div class="item"><span class="item-name">Small Units</span><span class="item-value">Metres / Feet</span></div>
+          <div class="item"><span class="item-name">Keep Screen On</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Keep Active</span><span class="item-value">Background service on / off</span></div>
+          <div class="item"><span class="item-name">Battery Saver</span><span class="item-detail">Dark theme, minimal map, disables HR / Steps / Nav overlays / Bezel. Restores all on disable.</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Auto Actions</div>
+          <div class="item"><span class="item-name">Workout Summary</span><span class="item-value">Stats · Map · Save prompt</span></div>
+        </div>
+
+      </div>
+    </details>
+
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot"></span> Setting or control</div>
+    <div class="legend-item"><span class="dot good"></span> Green state</div>
+    <div class="legend-item"><span class="dot off"></span> Red state</div>
+    <div class="legend-item"><span class="dot info"></span> Blue state</div>
+  </div>
+
+  <footer>WristNav Field Reference · v2</footer>
+
+</div>
+</body>
+</html>
