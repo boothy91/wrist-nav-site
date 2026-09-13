@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WristNav Companion — Field Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #ECE0C7;
+    --panel: #F8F2E4;
+    --panel-alt: #F1E5C9;
+    --border: #D8C39A;
+    --ink: #2B2013;
+    --ink-soft: #6E5A3D;
+    --ink-faint: #9A876A;
+    --accent: #8C6328;
+    --accent-soft: #C9AD79;
+    --good: #3F7D45;
+    --off: #A8483A;
+    --info: #3B6690;
+    --radius: 10px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(255,255,255,0.35), transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(140,99,40,0.06), transparent 55%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 48px 20px 96px; }
+
+  header.hero{ margin-bottom: 40px; }
+  .route-mark{ display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .route-mark svg{ flex-shrink: 0; }
+  .route-mark .line{ flex: 1; height: 1px; background: linear-gradient(to right, var(--accent-soft), transparent); }
+  .eyebrow{ font-size: 13px; color: var(--ink-soft); letter-spacing: 0.02em; }
+
+  h1.title{
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.05;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+
+  .tagline{ font-size: 16px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px; }
+
+  .gesture-map{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    display: grid;
+    gap: 16px;
+  }
+  .gesture-row{ display: grid; grid-template-columns: 88px 1fr; gap: 14px; align-items: start; }
+  .gesture-label{ font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; padding-top: 2px; }
+  .gesture-detail{ font-size: 14.5px; color: var(--ink); }
+  .gesture-detail .dim{ color: var(--ink-soft); }
+  .gesture-divider{ height: 1px; background: var(--border); margin: 0; }
+
+  .trail{ position: relative; margin-top: 44px; }
+  .trail::before{
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--accent-soft) 0, var(--accent-soft) 4px,
+      transparent 4px, transparent 9px
+    );
+  }
+
+  details.waypoint{ position: relative; margin-bottom: 14px; padding-left: 52px; }
+  .waypoint-badge{
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent);
+    z-index: 1;
+  }
+  details.waypoint[open] .waypoint-badge{ background: var(--accent); color: var(--panel); border-color: var(--accent); }
+
+  summary.waypoint-summary{
+    list-style: none;
+    cursor: pointer;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  summary.waypoint-summary::-webkit-details-marker{ display: none; }
+
+  .waypoint-title{ font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; color: var(--ink); }
+  .waypoint-sub{ font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+  .chevron{ flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); transition: transform 0.18s ease; }
+  details.waypoint[open] > summary .chevron{ transform: rotate(90deg); }
+
+  .waypoint-body{ padding: 16px 4px 4px 0; }
+
+  .item{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .item:last-child{ border-bottom: none; }
+  .item-name{ font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .item-detail{ font-size: 13.5px; color: var(--ink-soft); grid-column: 1 / -1; }
+  .item-value{
+    font-size: 12.5px;
+    color: var(--accent);
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+    white-space: nowrap;
+  }
+
+  .subgroup{ margin: 6px 0 18px; border-left: 2px solid var(--accent-soft); padding-left: 14px; }
+  .subgroup-title{ font-family: 'Source Serif 4', serif; font-size: 15.5px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+
+  .lead-note{ font-size: 13.5px; color: var(--ink-soft); margin: 0 0 14px; }
+
+  /* Numbered step list, for the TOPO area walkthrough and Settings tab groups */
+  .step-list{ display: grid; gap: 12px; margin: 4px 0 4px; }
+  .step{ display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+  .step-num{
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .step-body .step-name{ font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .step-body .step-detail{ font-size: 13.5px; color: var(--ink-soft); margin-top: 2px; }
+  .step-body .step-value{
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 9px;
+  }
+
+  .callout{
+    font-size: 13px;
+    color: var(--ink-faint);
+    background: var(--panel-alt);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 4px 0 16px;
+  }
+
+  .legend{
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    padding: 18px 20px;
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .legend-item{ display: flex; align-items: center; gap: 7px; }
+  .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  footer{ margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); }
+
+  @media (max-width: 480px){
+    h1.title{ font-size: 34px; }
+    .gesture-row{ grid-template-columns: 70px 1fr; }
+    details.waypoint{ padding-left: 44px; }
+    .waypoint-badge{ width: 34px; height: 34px; font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce){ .chevron{ transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="route-mark">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <rect x="4" y="2.5" width="16" height="19" rx="2.5" stroke="#8C6328" stroke-width="1.4"/>
+        <path d="M9 19.2H15" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span class="eyebrow">Companion app · phone flow v2</span>
+      <span class="line"></span>
+    </div>
+    <h1 class="title">WristNav Companion</h1>
+    <p class="tagline">Everything the phone app does — sending routes, planning, and watch extras. The watch works fully standalone; this app is optional.</p>
+
+    <div class="gesture-map">
+      <div class="gesture-row">
+        <div class="gesture-label">Tabs</div>
+        <div class="gesture-detail">
+          <span class="dim">Send · Routes · Plan · Watch · Settings</span> — five tabs across the bottom of the app.
+        </div>
+      </div>
+      <div class="gesture-divider"></div>
+      <div class="gesture-row">
+        <div class="gesture-label">Optional</div>
+        <div class="gesture-detail">
+          Offline maps, GPX routes and GPS recording all work directly on the watch. The phone app adds planning, sync, and extras.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="trail">
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">1</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Send Tab</div>
+          <div class="waypoint-sub">Push routes and maps straight to the watch</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+        <div class="item"><span class="item-name">Send GPX</span><span class="item-detail">Send route files directly to the watch</span></div>
+        <div class="item"><span class="item-name">Send .map Files</span><span class="item-detail">For offline map use on the watch</span></div>
+        <div class="item"><span class="item-name">Send a .map URL</span><span class="item-detail">The watch downloads the file directly from the link</span></div>
+        <div class="item"><span class="item-name">Topo Download Area</span><span class="item-detail">Opens as a popup — full walkthrough below</span></div>
+      </div>
+    </details>
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">2</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Routes Tab</div>
+          <div class="waypoint-sub">Everything stored on the phone — recorded or planned</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+        <div class="item"><span class="item-name">Route List</span><span class="item-detail">Routes recorded on the watch or planned in the Plan tab</span></div>
+        <div class="item"><span class="item-name">View</span><span class="item-detail">Opens the route with full stats, configured via Settings → Route View</span></div>
+        <div class="item"><span class="item-name">Export</span><span class="item-detail">Shareable PNG snapshot, optionally overlaid on your own photo</span></div>
+        <div class="item"><span class="item-name">Save</span><span class="item-value">GPX / TCX</span><span class="item-detail">To phone storage</span></div>
+        <div class="item"><span class="item-name">Upload</span><span class="item-detail">Health Connect, Intervals.icu (API key in Settings), or manually to Strava via browser — Strava's direct API connect was removed due to subscription costs</span></div>
+        <div class="item"><span class="item-name">Rename</span></div>
+        <div class="item"><span class="item-name">Delete</span></div>
+        <div class="item"><span class="item-name">Send to Watch</span></div>
+        <div class="item"><span class="item-name">Navigate To</span><span class="item-detail">Opens the phone's maps app with directions to the route's start</span></div>
+      </div>
+    </details>
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">3</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Plan Tab</div>
+          <div class="waypoint-sub">Build routes on the phone before sending them out</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+        <div class="item"><span class="item-name">Route Planning</span><span class="item-detail">Routed or straight-line segments</span></div>
+        <div class="item"><span class="item-name">Load Existing GPX</span><span class="item-detail">Open a saved file on the map to edit or continue</span></div>
+        <div class="item"><span class="item-name">Map Styles</span><span class="item-value">OSM / Topo / Satellite</span></div>
+        <div class="item"><span class="item-name">3D Terrain View</span></div>
+        <div class="item"><span class="item-name">Create Route</span><span class="item-detail">Via the down-arrow menu — export as GPX, send straight to the watch, or save to the Routes tab</span></div>
+      </div>
+    </details>
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">4</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Watch Tab</div>
+          <div class="waypoint-sub">Themes and flow reference for the watch app</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="subgroup">
+          <div class="subgroup-title">Flow Guide</div>
+          <div class="item"><span class="item-name">Flow Guide</span><span class="item-detail">Opens the interactive watch app flow diagram as a popup</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Custom Theme Viewer</div>
+          <div class="item"><span class="item-name">Name Theme</span></div>
+          <div class="item"><span class="item-name">Colour Picker</span><span class="item-detail">Full picker per element, with 10 presets to start from</span></div>
+          <div class="item"><span class="item-name">Live Preview</span><span class="item-detail">See the map update before sending</span></div>
+          <div class="item"><span class="item-name">Import Theme</span><span class="item-detail">From an XML file — custom or downloaded; must be XML, zip files aren't accepted</span></div>
+          <div class="item"><span class="item-name">Send Theme to Watch</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Health Connect</div>
+          <div class="item"><span class="item-name">Push to Health Connect</span><span class="item-detail">Send a recorded route straight through for other health apps to read</span></div>
+          <div class="item"><span class="item-name">Synced Data</span><span class="item-detail">Route path, distance, elevation gain, and heart rate samples</span></div>
+          <div class="item"><span class="item-name">Session Times</span><span class="item-detail">Uses the route's real GPX timestamps, not the upload time</span></div>
+          <div class="item"><span class="item-name">Account</span><span class="item-detail">No account or subscription required</span></div>
+        </div>
+
+      </div>
+    </details>
+
+    <details class="waypoint">
+      <div class="waypoint-badge">5</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Configure TOPO Area</div>
+          <div class="waypoint-sub">Popup from the Send tab — builds a custom map area around a route</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="step-list">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-name">Upload GPX</div><div class="step-detail">Loads a route into the Topo Preview screen</div></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-name">Fix GPX</div><div class="step-detail">Adjusts the TOPO area's boundary box so the whole route fits inside it</div></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-name">Area Name</div><div class="step-detail">Text entry — name for this downloaded TOPO region</div></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-name">Zoom Level</div><div class="step-detail">Shown below the preview box</div></div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-name">Min / Max Zoom</div><div class="step-detail">Zoom range to download tiles for</div></div></div>
+          <div class="step"><div class="step-num">6</div><div class="step-body"><div class="step-name">Map Source</div><div class="step-value">OpenTopo · SwissTopo · TraceStack · USGS Topo · Kartverket</div></div></div>
+          <div class="step"><div class="step-num">7</div><div class="step-body"><div class="step-name">Download Area</div><div class="step-detail">Sends the tiles to the watch — can take a while, as tiles aren't self-hosted</div></div></div>
+          <div class="step"><div class="step-num">8</div><div class="step-body"><div class="step-name">Refresh Download Area</div><div class="step-detail">Reads installed TOPO files on the watch and lists them below — tap an area to highlight it green and preview it on the map, tap again to remove</div></div></div>
+        </div>
+
+        <p class="lead-note" style="margin-top:14px;">Map source coverage: OpenTopo works worldwide · SwissTopo covers Switzerland only · TraceStack works worldwide but needs an API key (Settings → Accounts) · USGS Topo covers the USA only · Kartverket covers Norway only.</p>
+
+      </div>
+    </details>
+
+    <details class="waypoint">
+      <div class="waypoint-badge">6</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Settings Tab</div>
+          <div class="waypoint-sub">Accounts, companion app preferences, and watch extras</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="subgroup">
+          <div class="subgroup-title">Accounts</div>
+          <div class="item"><span class="item-name">Strava</span><span class="item-detail">Manual upload link — direct API connect was removed due to subscription costs</span></div>
+          <div class="item"><span class="item-name">Intervals.icu API Key</span><span class="item-detail">Enables uploading routes to Intervals.icu</span></div>
+          <div class="item"><span class="item-name">TraceStack API Key</span><span class="item-detail">Required to use TraceStack as a TOPO area map source</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Companion App</div>
+          <div class="item"><span class="item-name">Theme</span><span class="item-value">Light / Fjord / Dark</span><span class="item-detail">Visual theme for the companion app itself</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Route View</div>
+          <div class="item"><span class="item-name">Distance Units</span><span class="item-value">km / mi</span></div>
+          <div class="item"><span class="item-name">Map Style</span><span class="item-value">Standard / Topo</span></div>
+          <div class="item"><span class="item-name">Show Elevation Chart</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Show Status Bar</span><span class="item-value">On / Off</span><span class="item-detail">Distance / time / elevation summary bar</span></div>
+          <div class="item"><span class="item-name">Route Line Colour</span><span class="item-value">Multiple colours</span></div>
+          <div class="item"><span class="item-name">Route Thickness</span><span class="item-detail">Width of the route line</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Routes Tab</div>
+          <div class="item"><span class="item-name">Auto Delete Routes</span><span class="item-value">Off / 7 Days / 30 Days</span></div>
+          <div class="item"><span class="item-name">Sort Files</span><span class="item-value">Newest / Oldest / Name</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Watch Extras</div>
+          <div class="item"><span class="item-name">Stats Labels</span><span class="item-value">On / Off</span><span class="item-detail">Show stat name labels on watch stats pages</span></div>
+          <div class="item"><span class="item-name">Show Maps Tab on Watch</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Show Tracks Tab on Watch</span><span class="item-value">On / Off</span></div>
+        </div>
+
+      </div>
+    </details>
+
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot"></span> Tab, action, or setting</div>
+  </div>
+
+  <footer>WristNav Companion — Phone Flow · v2</footer>
+
+</div>
+</body>
+</html>
