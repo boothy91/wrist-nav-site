@@ -8,21 +8,32 @@ A fully featured outdoor sports app for Wear OS with offline maps, GPX navigatio
 
 ## Download
 
-**Now available on Google Play!**
-[Download WristNav](https://play.google.com/store/apps/details?id=com.wristnav.app)
-
-Full app guide and feature overview: [boothy91.github.io/wrist-nav-site](https://boothy91.github.io/wrist-nav-site/)
-
----
-
-## Beta
-
-Testing the latest changes ahead of the next Play Store release.
+**This is a beta build, updated daily ahead of the next Play Store release.**
 
 - [Download Watch Beta](https://github.com/boothy91/wrist-nav-site/raw/main/WristNavWatchBeta.apk)
 - [Download Phone Beta](https://github.com/boothy91/wrist-nav-site/raw/main/WristNavPhoneBeta.apk)
+
+Having issues? Email wristnav@gmail.com, it's the easiest way to reach me while this isn't the official release yet.
 - [Watch App Flow](https://boothy91.github.io/wrist-nav-site/flowchartbeta.html)
 - [Phone App Flow](https://boothy91.github.io/wrist-nav-site/PhoneFlowbeta.html)
+
+---
+
+## Release Notes
+
+- General errors and bug fixes
+- Map style selection fix
+- Fixes HR, Off Route Notification
+- Redesigned Companion app and updated watch app fully, better onboarding
+- Added Backup and Restore routes on Routes Tab
+- Added split times — turn on in Recording, or if a loaded GPX has lap splits on, reads the GPX and shows + or - per mi/km
+- Global menu — tap any sub menu item and a menu loads so you can jump anywhere in the app
+- Route Complete screen
+- Redesign of Bezel Stats and Nav items when Nav is on
+- Climb Viewer (Settings → Navigation) — shows climbs on imported GPX routes when Nav is on; tap a climb number on screen for details, and it shows automatically while you're on a climb
+- Added email crash logs, at the bottom of the Watch tab on the phone app
+
+Full app guide and feature overview: [boothy91.github.io/wrist-nav-site](https://boothy91.github.io/wrist-nav-site/)
 
 ---
 
