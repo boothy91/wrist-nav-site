@@ -4,24 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — WristNav</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root{
+            --bg: #ECE0C7;
+            --panel: #F8F2E4;
+            --panel-alt: #F1E5C9;
+            --border: #D8C39A;
+            --ink: #2B2013;
+            --ink-soft: #6E5A3D;
+            --ink-faint: #9A876A;
+            --accent: #8C6328;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0D0D1A; color: #fff; font-family: -apple-system, sans-serif;
-               max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        h1 { color: #4FC3F7; font-size: 32px; margin-bottom: 8px; }
-        .date { color: #888; font-size: 14px; margin-bottom: 40px; }
-        h2 { color: #4FC3F7; font-size: 18px; margin: 32px 0 12px; }
-        p { color: #ccc; line-height: 1.7; margin-bottom: 12px; }
-        ul { color: #ccc; line-height: 1.7; margin: 0 0 12px 24px; }
-        a { color: #4FC3F7; }
-        .back { display: inline-block; margin-bottom: 32px; color: #4FC3F7;
-                text-decoration: none; font-size: 14px; }
+        body {
+            background: var(--bg);
+            background-image:
+                radial-gradient(ellipse at top left, rgba(255,255,255,0.35), transparent 55%),
+                radial-gradient(ellipse at bottom right, rgba(140,99,40,0.06), transparent 55%);
+            background-attachment: fixed;
+            color: var(--ink);
+            font-family: 'Public Sans', system-ui, sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px 20px 96px;
+        }
+        h1 {
+            font-family: 'Source Serif 4', serif;
+            font-weight: 700;
+            color: var(--ink);
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+        .date { color: var(--ink-faint); font-size: 13px; margin-bottom: 36px; }
+        h2 {
+            font-family: 'Source Serif 4', serif;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 17px;
+            margin: 30px 0 10px;
+        }
+        p { color: var(--ink-soft); margin-bottom: 12px; }
+        ul { color: var(--ink-soft); margin: 0 0 12px 24px; }
+        a { color: var(--accent); }
+        .back {
+            display: inline-block;
+            margin-bottom: 32px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
     <a href="index.html" class="back">← Back to WristNav</a>
     <h1>Privacy Policy</h1>
-    <p class="date">Last updated: April 2026</p>
+    <p class="date">Last updated: September 2026</p>
 
     <p>WristNav is a Wear OS application for offline map navigation and GPS activity tracking. This privacy policy explains what data the app collects, how it is used, and your rights.</p>
 
@@ -57,6 +100,7 @@
     <ul>
         <li>When you explicitly upload an activity to Strava</li>
         <li>When you explicitly share a GPX file using your device's share functionality</li>
+        <li>When you tap the button to manually send a crash log via email</li>
     </ul>
 
     <h2>Data Storage</h2>
@@ -94,6 +138,8 @@
         <li>Battery level and charging state at time of crash</li>
     </ul>
     <p>No GPS coordinates, health data, activity data or GPX files are ever sent to Sentry. Crash reports are used solely to identify and fix bugs. Sentry's own privacy policy applies to data processed by Sentry. See <a href="https://sentry.io/privacy/" target="_blank">sentry.io/privacy</a>.</p>
+
+    <p>Some crashes are not captured automatically by Sentry. As a backup, WristNav includes a button that lets you manually send a crash log to the developer via email — this only happens if you tap the button and choose to send it; it is never sent automatically. If you do this, only the crash log itself is included — the technical record of what happened at the time of the crash. No GPS coordinates, health data, activity data, GPX files, or any other personal information are included.</p>
 
     <h2>Contact</h2>
     <p>If you have any questions about this privacy policy, please open an issue on our GitHub repository.</p>
