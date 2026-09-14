@@ -15,6 +15,12 @@ Full app guide and feature overview: [boothy91.github.io/wrist-nav-site](https:/
 
 ---
 
+## Beta
+
+Trying the latest beta build? Check out the [Beta README](https://github.com/boothy91/wrist-nav-site/blob/main/READMEV2.md) for the newest features, plus beta APK downloads and app flow guides.
+
+---
+
 ## Support
 
 If WristNav has been useful on a run, hike or ride — a coffee goes a long way!

@@ -15,6 +15,17 @@ Full app guide and feature overview: [boothy91.github.io/wrist-nav-site](https:/
 
 ---
 
+## Beta
+
+Testing the latest changes ahead of the next Play Store release.
+
+- [Download Watch Beta](https://github.com/boothy91/wrist-nav-site/raw/main/WristNavWatchBeta.apk)
+- [Download Phone Beta](https://github.com/boothy91/wrist-nav-site/raw/main/WristNavPhoneBeta.apk)
+- [Watch App Flow](https://boothy91.github.io/wrist-nav-site/flowchartbeta.html)
+- [Phone App Flow](https://boothy91.github.io/wrist-nav-site/PhoneFlowbeta.html)
+
+---
+
 ## Support
 
 If WristNav has been useful on a run, hike or ride — a coffee goes a long way! WristNav will always be free.
