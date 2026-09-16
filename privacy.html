@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,84 +63,101 @@
 <body>
     <a href="index.html" class="back">← Back to WristNav</a>
     <h1>Privacy Policy</h1>
-    <p class="date">Last updated: September 2026</p>
+    <p class="date">Last updated: September 2026</p><p>WristNav is a Wear OS application for offline map navigation and GPS activity tracking. This privacy policy explains what data the app collects, how it is used, how it is shared, and your rights.</p>
 
-    <p>WristNav is a Wear OS application for offline map navigation and GPS activity tracking. This privacy policy explains what data the app collects, how it is used, and your rights.</p>
+<h2>Data We Collect</h2>
+<p>WristNav may collect and process the following data on your device:</p>
+<ul>
+    <li><strong>Location data</strong> — GPS coordinates used for map display and route recording</li>
+    <li><strong>Health data</strong> — Heart rate and step count collected from your watch's sensors during activity recording</li>
+    <li><strong>Activity data</strong> — Distance, pace, elevation, and duration of recorded activities</li>
+    <li><strong>GPX files</strong> — Route files you import or that are generated from your recordings</li>
+</ul>
 
-    <h2>Data We Collect</h2>
-    <p>WristNav may collect and process the following data on your device:</p>
-    <ul>
-        <li><strong>Location data</strong> — GPS coordinates used for map display and route recording</li>
-        <li><strong>Health data</strong> — Heart rate and step count from your watch's sensors during activity recording</li>
-        <li><strong>Activity data</strong> — Distance, pace, elevation, and duration of recorded activities</li>
-        <li><strong>GPX files</strong> — Route files you import or that are generated from your recordings</li>
-    </ul>
+<h2>Health Data</h2>
+<p>WristNav may access health-related data from your Wear OS watch when you use activity recording features. This includes <strong>heart rate</strong> measured by the watch's heart-rate sensor and <strong>step count</strong> provided by the watch's activity sensors or supported health-data services.</p>
 
-    <h2>How We Use Your Data</h2>
-    <p>All data collected by WristNav is processed locally on your device. We do not transmit your personal data to any external servers operated by us.</p>
-    <ul>
-        <li>Location data is used solely to display your position on the map and record your route</li>
-        <li>Health data is used solely to display live stats and save to GPX files</li>
-        <li>GPX files are stored on your device and only shared when you explicitly choose to do so</li>
-    </ul>
+<p><strong>How health data is collected:</strong> Health data is collected only when the relevant WristNav activity-recording features are being used and the required permissions have been granted. WristNav requests the appropriate Android and Wear OS permissions before accessing heart rate or activity data.</p>
 
-    <h2>Strava Integration</h2>
-    <p>WristNav offers optional integration with Strava. If you choose to connect your Strava account:</p>
-    <ul>
-        <li>You will be redirected to Strava's authorisation page</li>
-        <li>WristNav will request permission to upload activities on your behalf</li>
-        <li>Your Strava credentials are never stored by WristNav — only the access token provided by Strava</li>
-        <li>You can revoke access at any time via your Strava account settings</li>
-    </ul>
-    <p>Strava's own privacy policy applies to data held by Strava. See <a href="https://www.strava.com/legal/privacy" target="_blank">strava.com/legal/privacy</a>.</p>
+<p><strong>How health data is used:</strong> Heart rate and step-count data is used to provide activity statistics while you are recording an activity and, where applicable, to include relevant activity information in locally stored GPX records. Health data is used only to provide WristNav's activity-tracking functionality.</p>
 
-    <h2>Data Sharing</h2>
-    <p>WristNav does not sell, rent, or share your personal data with third parties, except:</p>
-    <ul>
-        <li>When you explicitly upload an activity to Strava</li>
-        <li>When you explicitly share a GPX file using your device's share functionality</li>
-        <li>When you tap the button to manually send a crash log via email</li>
-    </ul>
+<p><strong>How health data is stored:</strong> Health data processed by WristNav is stored locally on your device as part of your activity records. WristNav does not operate a server that stores your health data.</p>
 
-    <h2>Data Storage</h2>
-    <p>All data is stored locally on your device. GPX recordings are saved to your device's Downloads folder. You can delete any data at any time by removing files from your device or uninstalling the app.</p>
+<p><strong>How health data is shared:</strong> WristNav does not automatically transmit your heart rate, step count, or other health data to WristNav-operated servers or analytics services. Health data is not sent to Firebase Analytics or Sentry. Health data is only shared outside the device when you explicitly choose to use a feature that shares an activity or file, such as uploading an activity to Strava or sharing a GPX file through your device's sharing functionality. Any data received by those third-party services is subject to their own privacy policies.</p>
 
-    <h2>Permissions</h2>
-    <p>WristNav requests the following permissions:</p>
-    <ul>
-        <li><strong>Location</strong> — for GPS tracking and map display</li>
-        <li><strong>Body Sensors</strong> — for heart rate monitoring during activities</li>
-        <li><strong>Activity Recognition</strong> — for step counting during activities</li>
-        <li><strong>Storage</strong> — to save and read GPX files</li>
-    </ul>
+<p>WristNav does not sell health data and does not use health data for advertising, advertising profiling, or unrelated purposes.</p>
 
-    <h2>Analytics</h2>
-    <p>WristNav uses Firebase Analytics to collect anonymous usage data. This helps us understand how the app is used and improve the experience. The following data may be collected:</p>
-    <ul>
-        <li>Screens and features visited within the app</li>
-        <li>Device model, manufacturer and Android version</li>
-        <li>App version and build number</li>
-        <li>Country and language settings</li>
-        <li>Session duration and frequency of use</li>
-    </ul>
-    <p>No GPS coordinates, health data, activity data or GPX files are ever sent to Firebase. All analytics data is anonymous and not linked to any personal identity. Analytics collection can be disabled by uninstalling the app. If you have concerns about analytics data, please contact us via our GitHub repository. Firebase's own privacy policy applies. See <a href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy</a>.</p>
+<h2>How We Use Your Data</h2>
+<p>WristNav processes your data locally on your device to provide the app's navigation and activity-recording features. WristNav does not transmit your personal data to external servers operated by us.</p>
+<ul>
+    <li>Location data is used to display your position on the map and record your route</li>
+    <li>Health data is used to display live activity statistics and, where applicable, save relevant information with your activity records</li>
+    <li>Activity data is used to provide distance, pace, elevation and duration statistics</li>
+    <li>GPX files are stored on your device and only shared when you explicitly choose to do so</li>
+</ul>
 
-    <h2>Crash Reporting</h2>
-    <p>WristNav uses Sentry to automatically collect crash reports. When the app crashes or encounters an error, the following data may be sent to Sentry's servers:</p>
-    <ul>
-        <li>Stack trace and error type</li>
-        <li>Device model, manufacturer and Android version</li>
-        <li>App version and build number</li>
-        <li>Approximate geographic location (city/country level, derived from IP address)</li>
-        <li>Device hardware information (memory, storage, screen size)</li>
-        <li>A randomly generated anonymous user ID (not linked to any personal identity)</li>
-        <li>Battery level and charging state at time of crash</li>
-    </ul>
-    <p>No GPS coordinates, health data, activity data or GPX files are ever sent to Sentry. Crash reports are used solely to identify and fix bugs. Sentry's own privacy policy applies to data processed by Sentry. See <a href="https://sentry.io/privacy/" target="_blank">sentry.io/privacy</a>.</p>
+<h2>Strava Integration</h2>
+<p>WristNav offers optional integration with Strava. If you choose to connect your Strava account:</p>
+<ul>
+    <li>You will be redirected to Strava's authorisation page</li>
+    <li>WristNav will request permission to upload activities on your behalf</li>
+    <li>Your Strava credentials are never stored by WristNav — only the access token provided by Strava</li>
+    <li>You can revoke access at any time via your Strava account settings</li>
+</ul>
+<p>If an activity containing health-related information is uploaded to Strava, that information is shared with Strava only because you have explicitly chosen to upload the activity. Strava's own privacy policy applies to data held by Strava. See <a href="https://www.strava.com/legal/privacy" target="_blank">strava.com/legal/privacy</a>.</p>
 
-    <p>Some crashes are not captured automatically by Sentry. As a backup, WristNav includes a button that lets you manually send a crash log to the developer via email — this only happens if you tap the button and choose to send it; it is never sent automatically. If you do this, only the crash log itself is included — the technical record of what happened at the time of the crash. No GPS coordinates, health data, activity data, GPX files, or any other personal information are included.</p>
+<h2>Data Sharing</h2>
+<p>WristNav does not sell, rent, or share your personal data with third parties, except when you explicitly initiate a sharing feature:</p>
+<ul>
+    <li>When you explicitly upload an activity to Strava</li>
+    <li>When you explicitly share a GPX file using your device's share functionality</li>
+    <li>When you tap the button to manually send a crash log via email</li>
+</ul>
 
-    <h2>Contact</h2>
-    <p>If you have any questions about this privacy policy, please open an issue on our GitHub repository.</p>
+<p>WristNav does not share health data with advertising networks or use health data for advertising purposes.</p>
+
+<h2>Data Storage</h2>
+<p>Data processed by WristNav is stored locally on your device. GPX recordings are saved to your device's Downloads folder. You can delete any data at any time by removing files from your device or uninstalling the app.</p>
+
+<h2>Permissions</h2>
+<p>WristNav requests the following permissions where required by the features you use:</p>
+<ul>
+    <li><strong>Location</strong> — for GPS tracking and map display</li>
+    <li><strong>Body Sensors</strong> — for heart rate monitoring during activities</li>
+    <li><strong>Activity Recognition</strong> — for step counting during activities</li>
+    <li><strong>Health data permissions</strong> — where required to access supported health and activity data</li>
+    <li><strong>Storage / file access</strong> — to save and read GPX files where supported by the Android version and storage model</li>
+</ul>
+
+<h2>Analytics</h2>
+<p>WristNav uses Firebase Analytics to collect usage data. This helps us understand how the app is used and improve the experience. The following data may be collected:</p>
+<ul>
+    <li>Screens and features visited within the app</li>
+    <li>Device model, manufacturer and Android version</li>
+    <li>App version and build number</li>
+    <li>Country and language settings</li>
+    <li>Session duration and frequency of use</li>
+</ul>
+<p>No GPS coordinates, health data, activity data or GPX files are sent to Firebase Analytics. Analytics is not used to collect or analyse health information. Firebase's own privacy policy applies. See <a href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy</a>.</p>
+
+<h2>Crash Reporting</h2>
+<p>WristNav uses Sentry to automatically collect crash reports. When the app crashes or encounters an error, the following technical data may be sent to Sentry's servers:</p>
+<ul>
+    <li>Stack trace and error type</li>
+    <li>Device model, manufacturer and Android version</li>
+    <li>App version and build number</li>
+    <li>Approximate geographic location (city/country level, derived from IP address)</li>
+    <li>Device hardware information (memory, storage, screen size)</li>
+    <li>A randomly generated anonymous user ID (not linked to any personal identity)</li>
+    <li>Battery level and charging state at time of crash</li>
+</ul>
+
+<p>No GPS coordinates, heart rate, step count, other health data, activity data or GPX files are intentionally sent to Sentry. Crash reports are used solely to identify and fix bugs. Sentry's own privacy policy applies to data processed by Sentry. See <a href="https://sentry.io/privacy/" target="_blank">sentry.io/privacy</a>.</p>
+
+<p>Some crashes are not captured automatically by Sentry. As a backup, WristNav includes a button that lets you manually send a crash log to the developer via email — this only happens if you tap the button and choose to send it; it is never sent automatically. The crash log contains technical information about what happened at the time of the crash. WristNav does not intentionally include GPS coordinates, health data, activity data, GPX files, or other personal information in this crash log.</p>
+
+<h2>Contact</h2>
+<p>If you have any questions about this privacy policy, please open an issue on our GitHub repository.</p>
+
 </body>
 </html>
