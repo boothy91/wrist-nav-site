@@ -380,12 +380,15 @@
 
         <div class="subgroup">
           <div class="subgroup-title">Navigation Menu</div>
-          <div class="item"><span class="item-name">Load Route</span><span class="item-detail">Opens the GPX list to load a route onto the map</span></div>
+          <div class="item"><span class="item-name">Load Route</span><span class="item-detail">Opens the GPX list to load a route onto the map. With a saved waypoint it routes you to it (needs the router)</span></div>
           <div class="item"><span class="item-name">Live Route Editing</span><span class="item-detail">If Nav is active and you edit the route on the phone, send the updated GPX to the watch using the same filename. The watch detects the update and automatically refreshes the active route.</span></div>
           <div class="item"><span class="item-name">Start</span></div>
           <div class="item"><span class="item-name">Stop</span></div>
           <div class="item"><span class="item-name">Pause</span></div>
           <div class="item"><span class="item-name">Reverse Route</span><span class="item-detail">Requires a route to already be added</span></div>
+          <div class="item"><span class="item-name">Back to Start</span><span class="item-detail">Shown while recording. Guides you back to where you started. Needs the router</span></div>
+          <div class="item"><span class="item-name">Add Waypoint</span><span class="item-detail">Saves a waypoint at your current location</span></div>
+          <div class="item"><span class="item-name">Training</span><span class="item-detail">Loads a training session sent from the phone. Starts when recording starts</span></div>
         </div>
 
         <div class="subgroup">
@@ -425,17 +428,19 @@
 
         <div class="subgroup">
           <div class="subgroup-title">Maps</div>
-          <div class="item"><span class="item-name">Local Maps</span><span class="item-detail">Gets your location and suggests the local map</span></div>
-          <div class="item"><span class="item-name">Installed</span><span class="item-detail">Tap to delete an installed map</span></div>
-          <div class="item"><span class="item-name">Main Map</span><span class="item-detail">The world split into sections — smaller than full maps, so easier to download</span></div>
-          <div class="item"><span class="item-name">Hillshading</span><span class="item-detail">Same layout as Main Map — adds relief hillshading to the map</span></div>
-          <div class="item"><span class="item-name">Contours</span><span class="item-detail">Adds contour lines to the map</span></div>
+          <div class="item"><span class="item-name">Manage Maps</span><span class="item-detail">All maps in one menu. The map provider changed, so reinstall any maps you already have</span></div>
+          <div class="item"><span class="item-name">Installed Maps</span><span class="item-detail">Tap to delete an installed map or its routing data</span></div>
+          <div class="item"><span class="item-name">Local Map</span><span class="item-detail">Gets your location and suggests the local map</span></div>
+          <div class="item"><span class="item-name">Main Map</span><span class="item-detail">Opens the regions. Pick a region, choose Base Map, Hillshading, Contours and/or Routing, then download at the bottom</span></div>
+          <div class="item"><span class="item-name">Update Maps</span><span class="item-detail">Checks for the latest maps</span></div>
         </div>
 
         <div class="subgroup">
-          <div class="subgroup-title">GPX Tracks</div>
+          <div class="subgroup-title">Tracks and Waypoints</div>
           <div class="item"><span class="item-name">Download OSM</span><span class="item-detail">Via an OSM traces URL / trace number</span></div>
           <div class="item"><span class="item-name">Track List</span><span class="item-detail">Imported and recorded tracks — tap for details, swipe across to view distance, elevation details, elevation chart, send to phone, and delete</span></div>
+          <div class="item"><span class="item-name">Waypoints</span><span class="item-detail">Saved waypoints. Tap to manage or delete. Import a waypoint GPX sent from the phone</span></div>
+          <div class="item"><span class="item-name">Training Sessions</span><span class="item-detail">Sessions sent from the phone. Manage or delete here</span></div>
         </div>
 
         <div class="subgroup">
@@ -475,7 +480,7 @@
         <div class="subgroup">
           <div class="subgroup-title">Map</div>
           <div class="item"><span class="item-name">Map Style</span><span class="item-value">Mapsforge / TOPO</span></div>
-          <div class="item"><span class="item-name">Map Theme</span><span class="item-value">Light / Fjord / Dark / Min×3 / Trail Difficulty / Custom</span></div>
+          <div class="item"><span class="item-name">Map Theme</span><span class="item-value">Light / Fjord / Dark / Min×3 / Trail Difficulty / Hiking / Custom</span></div>
           <div class="item"><span class="item-name">Trail Difficulty</span><span class="item-detail">Mapsforge theme using OSM SAC trail difficulty: Strolling / T1 / T2 / T3 / T4 / T5 / T6</span></div>
           <div class="item"><span class="item-name">Custom Themes</span><span class="item-detail">Build in-app, or import an XML file from the companion app</span></div>
           <div class="item"><span class="item-name">Topo Zoom</span><span class="item-value">1× / 1.5× / 2×</span><span class="item-detail">Replaces Map Theme when Map Style is TOPO</span></div>
