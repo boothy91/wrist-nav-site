@@ -3,159 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WristNav Flow (Collapsible Reference)</title>
+<title>WristNav — Field Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap');
-
-  :root {
+  :root{
     --bg: #ECE0C7;
-    --surface: #F8F2E4;
-    --card: #F1E5C9;
+    --panel: #F8F2E4;
+    --panel-alt: #F1E5C9;
     --border: #D8C39A;
-    --text: #2B2013;
-    --dim: #6E5A3D;
-    --faint: #9A876A;
-
-    /* category accents — same roles as the original palette, retoned for sand */
-    --orange: #8C6328;   /* Home / Settings */
-    --blue:   #3B6690;   /* Map */
-    --green:  #3F7D45;   /* Stats / Recording */
-    --purple: #7D5A7F;   /* Quick Settings */
-    --yellow: #B08B3D;   /* Tracks / GPX */
-    --teal:   #4E8074;   /* Navigation */
-    --grey:   #8A7A5C;   /* Sub-screen */
+    --ink: #2B2013;
+    --ink-soft: #6E5A3D;
+    --ink-faint: #9A876A;
+    --accent: #8C6328;
+    --accent-soft: #C9AD79;
+    --good: #3F7D45;
+    --off: #A8483A;
+    --info: #3B6690;
+    --radius: 10px;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *{ box-sizing: border-box; }
 
-  body {
-    background:
+  body{
+    margin: 0;
+    background: var(--bg);
+    background-image:
       radial-gradient(ellipse at top left, rgba(255,255,255,0.35), transparent 55%),
-      radial-gradient(ellipse at bottom right, rgba(140,99,40,0.06), transparent 55%),
-      var(--bg);
-    color: var(--text);
+      radial-gradient(ellipse at bottom right, rgba(140,99,40,0.06), transparent 55%);
+    background-attachment: fixed;
+    color: var(--ink);
     font-family: 'Public Sans', system-ui, sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    padding: 44px 16px 64px;
-    max-width: 780px;
-    margin: 0 auto;
   }
 
-  h1 {
+  .wrap{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 96px;
+  }
+
+  header.hero{ margin-bottom: 40px; }
+
+  .route-mark{ display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .route-mark svg{ flex-shrink: 0; }
+  .route-mark .line{ flex: 1; height: 1px; background: linear-gradient(to right, var(--accent-soft), transparent); }
+
+  .eyebrow{ font-size: 13px; color: var(--ink-soft); letter-spacing: 0.02em; }
+
+  h1.title{
     font-family: 'Source Serif 4', serif;
     font-weight: 700;
-    font-size: 34px;
-    letter-spacing: 0.01em;
-    text-align: center;
-    color: var(--text);
-    margin-bottom: 6px;
+    font-size: 44px;
+    line-height: 1.05;
+    margin: 0 0 10px;
+    color: var(--ink);
   }
 
-  .subtitle {
-    text-align: center;
-    font-size: 12.5px;
-    color: var(--dim);
-    letter-spacing: 0.03em;
-    margin-bottom: 30px;
-  }
+  .tagline{ font-size: 16px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px; }
 
-  .hero {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: minmax(160px, 220px) 1fr;
-    margin-bottom: 30px;
-  }
-
-  @media (max-width: 620px) {
-    .hero { grid-template-columns: 1fr; }
-  }
-
-  .panel {
+  .gesture-map{
+    background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    background: var(--surface);
-    box-shadow: 0 6px 18px rgba(43, 32, 19, 0.06);
-    padding: 16px;
-  }
-
-  .home-panel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 156px;
-  }
-
-  .home-node {
-    border: 2px solid var(--orange);
-    background: rgba(140, 99, 40, 0.08);
-    border-radius: 50%;
-    width: 122px;
-    height: 122px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0 0 0 6px rgba(140, 99, 40, 0.05);
-    padding: 10px;
-  }
-
-  .home-node .n,
-  .node .n {
-    font-family: 'Source Serif 4', serif;
-    font-weight: 600;
-  }
-
-  .home-node .n {
-    font-size: 16px;
-    color: var(--orange);
-    letter-spacing: 0.01em;
-  }
-
-  .home-node .d {
-    font-size: 10.5px;
-    color: var(--dim);
-    line-height: 1.5;
-    margin-top: 6px;
-  }
-
-  .glance {
+    border-radius: var(--radius);
+    padding: 20px 22px;
     display: grid;
-    gap: 10px;
+    gap: 16px;
   }
 
-  .glance-card {
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    padding: 12px 14px;
-  }
+  .gesture-row{ display: grid; grid-template-columns: 88px 1fr; gap: 14px; align-items: start; }
+  .gesture-label{ font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; padding-top: 2px; }
+  .gesture-detail{ font-size: 14.5px; color: var(--ink); }
+  .gesture-detail .dim{ color: var(--ink-soft); }
+  .gesture-divider{ height: 1px; background: var(--border); margin: 0; }
 
-  .glance-card .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 600;
-    color: var(--orange);
-    margin-bottom: 5px;
-  }
-
-  .glance-card .value {
-    font-size: 13.5px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  /* ===== Waypoint trail — top-level sections only ===== */
-
-  .trail {
-    position: relative;
-    margin-top: 8px;
-    counter-reset: waypoint;
-  }
-
-  .trail::before {
+  .trail{ position: relative; margin-top: 44px; }
+  .trail::before{
     content: "";
     position: absolute;
     left: 19px;
@@ -164,586 +89,487 @@
     width: 1px;
     background: repeating-linear-gradient(
       to bottom,
-      var(--border) 0, var(--border) 4px,
+      var(--accent-soft) 0, var(--accent-soft) 4px,
       transparent 4px, transparent 9px
     );
   }
 
-  .trail > details {
-    position: relative;
-    counter-increment: waypoint;
-    margin-bottom: 12px;
-    margin-left: 50px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--surface);
-    box-shadow: 0 4px 14px rgba(43, 32, 19, 0.05);
-    overflow: hidden;
-  }
+  details.waypoint{ position: relative; margin-bottom: 14px; padding-left: 52px; }
 
-  .trail > details::before {
-    content: counter(waypoint);
+  .waypoint-badge{
     position: absolute;
-    left: -50px;
-    top: 6px;
-    width: 36px;
-    height: 36px;
+    left: 0;
+    top: 2px;
+    width: 39px;
+    height: 39px;
     border-radius: 50%;
-    background: var(--surface);
+    background: var(--panel);
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Source Serif 4', serif;
     font-weight: 600;
-    font-size: 14px;
-    color: var(--orange);
+    font-size: 15px;
+    color: var(--accent);
     z-index: 1;
   }
 
-  .trail > details[open]::before {
-    background: var(--orange);
-    color: var(--surface);
-    border-color: var(--orange);
+  details.waypoint[open] .waypoint-badge{
+    background: var(--accent);
+    color: var(--panel);
+    border-color: var(--accent);
   }
 
-  /* nested (non-top-level) details, e.g. Map Settings inside Map */
-  details details {
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--blue);
-    border-radius: 10px;
-    background: var(--card);
-    margin-top: 10px;
-    overflow: hidden;
-  }
-
-  summary {
+  summary.waypoint-summary{
     list-style: none;
     cursor: pointer;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 14px 16px;
-    font-weight: 600;
+  }
+  summary.waypoint-summary::-webkit-details-marker{ display: none; }
+
+  .waypoint-title{ font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; color: var(--ink); }
+  .waypoint-sub{ font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+  .chevron{ flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); transition: transform 0.18s ease; }
+  details.waypoint[open] > summary .chevron{ transform: rotate(90deg); }
+
+  .waypoint-body{ padding: 16px 4px 4px 0; }
+
+  .item{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .item:last-child{ border-bottom: none; }
+  .item-name{ font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .item-detail{ font-size: 13.5px; color: var(--ink-soft); grid-column: 1 / -1; }
+  .item-value{
+    font-size: 12.5px;
+    color: var(--accent);
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+    white-space: nowrap;
   }
 
-  summary::-webkit-details-marker { display: none; }
-
-  .summary-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-  }
-
-  .summary-title {
-    font-family: 'Source Serif 4', serif;
-    font-size: 15.5px;
-    font-weight: 600;
-  }
-
-  .summary-meta {
-    color: var(--dim);
-    font-size: 12px;
-    font-weight: 400;
+  .state-list{
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 5px;
     margin-top: 2px;
   }
-
-  .chevron {
-    color: var(--faint);
-    font-size: 15px;
-    transition: transform 0.18s ease;
-    flex-shrink: 0;
-  }
-
-  details[open] > summary .chevron {
-    transform: rotate(90deg);
-  }
-
-  .accent {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .o .accent, .o .summary-title { color: var(--orange); }
-  .b .accent, .b .summary-title { color: var(--blue); }
-  .g .accent, .g .summary-title { color: var(--green); }
-  .p .accent, .p .summary-title { color: var(--purple); }
-  .y .accent, .y .summary-title { color: var(--yellow); }
-  .t .accent, .t .summary-title { color: var(--teal); }
-  .x .accent, .x .summary-title { color: var(--grey); }
-
-  .o .accent { background: var(--orange); }
-  .b .accent { background: var(--blue); }
-  .g .accent { background: var(--green); }
-  .p .accent { background: var(--purple); }
-  .y .accent { background: var(--yellow); }
-  .t .accent { background: var(--teal); }
-  .x .accent { background: var(--grey); }
-
-  .content {
-    padding: 0 16px 16px;
-  }
-
-  .stack {
-    display: grid;
+  .state-row{
+    display: flex;
+    align-items: baseline;
     gap: 8px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
   }
-
-  .grid-2,
-  .grid-3 {
-    display: grid;
-    gap: 10px;
-  }
-
-  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-
-  .node {
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    padding: 10px 13px;
-  }
-
-  .node .n {
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'Public Sans', sans-serif;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .node .d {
-    font-size: 12px;
-    color: var(--dim);
-    line-height: 1.45;
-  }
-
-  .beta-tag {
-    display: inline-block;
-    margin-left: 6px;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--teal);
-    background: rgba(78, 128, 116, 0.12);
-    border: 1px solid var(--teal);
-    border-radius: 999px;
-    padding: 1px 7px;
-    vertical-align: middle;
-  }
-
-  .node.o  { border-color: var(--orange); }
-  .node.b  { border-color: var(--blue); }
-  .node.g  { border-color: var(--green); }
-  .node.p  { border-color: var(--purple); }
-  .node.y  { border-color: var(--yellow); }
-  .node.t  { border-color: var(--teal); }
-  .node.x  { border-color: var(--border); }
-
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-    justify-content: center;
-    margin-top: 34px;
-    padding: 16px 18px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--dim);
-    font-size: 12.5px;
-  }
-
-  .legend-i {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .dot {
+  .state-dot{
+    flex-shrink: 0;
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    margin-top: 3px;
+  }
+  .state-dot.off{ background: var(--off); }
+  .state-dot.good{ background: var(--good); }
+  .state-dot.info{ background: var(--info); }
+  .state-row b{ color: var(--ink); font-weight: 600; }
+
+  .subgroup{ margin: 6px 0 18px; border-left: 2px solid var(--accent-soft); padding-left: 14px; }
+  .subgroup-title{ font-family: 'Source Serif 4', serif; font-size: 15.5px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+
+  .note{ font-size: 13px; color: var(--ink-faint); font-style: italic; margin-top: 14px; }
+
+  .screenshot{
+    margin: 14px 0 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .screenshot img{
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 22px rgba(43,32,19,0.12);
+    background: var(--panel);
+  }
+  .screenshot figcaption{
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: center;
   }
 
-  @media (max-width: 600px) {
-    body { padding: 32px 12px 48px; }
-    h1 { font-size: 28px; }
-    .subtitle { margin-bottom: 22px; }
-    .home-node { width: 104px; height: 104px; }
-    summary { padding: 12px 13px; }
-    .content { padding: 0 13px 13px; }
-    .trail > details { margin-left: 42px; }
-    .trail > details::before { left: -42px; width: 30px; height: 30px; font-size: 12px; }
-    .trail::before { left: 15px; }
+  .pending-note{
+    font-size: 13px;
+    color: var(--ink-faint);
+    background: var(--panel-alt);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .chevron { transition: none; }
+  .legend{
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    padding: 18px 20px;
+    background: var(--panel-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: var(--ink-soft);
   }
+  .legend-item{ display: flex; align-items: center; gap: 7px; }
+  .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .dot.good{ background: var(--good); }
+  .dot.off{ background: var(--off); }
+  .dot.info{ background: var(--info); }
+
+  footer{ margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); }
+
+  @media (max-width: 480px){
+    h1.title{ font-size: 34px; }
+    .gesture-row{ grid-template-columns: 70px 1fr; }
+    details.waypoint{ padding-left: 44px; }
+    .waypoint-badge{ width: 34px; height: 34px; font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ .chevron{ transition: none; } }
 </style>
 </head>
-<body>
-  <h1>WristNav</h1>
-  <div class="subtitle">Complete Navigation &amp; Settings Reference</div>
+<body><div id="wn-switch" style="position:sticky;top:0;z-index:9999;display:flex;gap:8px;justify-content:center;padding:8px;background:#2B2013;font:600 13px sans-serif"><a data-k="index" href="index.html" style="color:#F8F2E4;text-decoration:none;padding:6px 12px;border-radius:6px">🏠 Home</a><a data-k="flowchart" href="flowchart.html" style="color:#F8F2E4;text-decoration:none;padding:6px 12px;border-radius:6px">⌚ Watch</a><a data-k="phoneflow" href="PhoneFlow.html" style="color:#F8F2E4;text-decoration:none;padding:6px 12px;border-radius:6px">📱 Phone</a></div><script>document.querySelectorAll('#wn-switch a').forEach(a=>{if(location.pathname.toLowerCase().includes(a.dataset.k))a.style.background='#8C6328'})</script>
+<div class="wrap">
 
-  <div class="hero">
-    <div class="panel home-panel">
-      <div class="home-node">
-        <div class="n">Home</div>
-        <div class="d">Record<br>Nav Toggle<br>GPS Status</div>
+  <header class="hero">
+    <div class="route-mark">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#8C6328" stroke-width="1.4"/>
+        <path d="M12 5.5V8.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M12 15.5V18.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M5.5 12H8.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M15.5 12H18.5" stroke="#8C6328" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="2" fill="#8C6328"/>
+      </svg>
+      <span class="eyebrow">Field reference · v2</span>
+      <span class="line"></span>
+    </div>
+    <h1 class="title">WristNav</h1>
+    <p class="tagline">A waypoint-by-waypoint map of every screen, gesture, and setting in the watch app.</p>
+
+    <div class="gesture-map">
+      <div class="gesture-row">
+        <div class="gesture-label">Opens on</div>
+        <div class="gesture-detail">
+          The <span class="dim">Map screen</span>, directly. First launch prompts a map download — a local map is suggested from your current GPS position.
+        </div>
+      </div>
+      <div class="gesture-divider"></div>
+      <div class="gesture-row">
+        <div class="gesture-label">Hold</div>
+        <div class="gesture-detail">
+          On the <span class="dim">Map screen</span>, press and hold to open the <span class="dim">Navigation menu</span>. On any other screen, press and hold to open the <span class="dim">Global menu</span>.
+        </div>
+      </div>
+      <div class="gesture-divider"></div>
+      <div class="gesture-row">
+        <div class="gesture-label">Menu icon</div>
+        <div class="gesture-detail">
+          A dedicated button on the Map screen also opens the <span class="dim">Global menu</span> directly.
+        </div>
+      </div>
+      <div class="gesture-divider"></div>
+      <div class="gesture-row">
+        <div class="gesture-label">Note</div>
+        <div class="gesture-detail">
+          Settings content below is carried over unchanged from the previous flow — flag anything that needs updating.
+        </div>
       </div>
     </div>
-    <div class="glance">
-      <div class="glance-card">
-        <div class="label">Horizontal Gestures</div>
-        <div class="value">Swipe left for Quick Settings. Swipe left, twice, for Reverse Route. Swipe right for Home Map.</div>
-      </div>
-      <div class="glance-card">
-        <div class="label">Vertical Pager</div>
-        <div class="value">Stats → Maps → Tracks → Settings → Exit</div>
-      </div>
-      <div class="glance-card">
-        <div class="label">Source Notes</div>
-        <div class="value">Home is a 3-page horizontal pager. Maps and Tracks can be hidden by settings.</div>
-      </div>
-    </div>
-  </div>
+  </header>
 
   <div class="trail">
 
-  <details class="o">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
+    <details class="waypoint" open>
+      <div class="waypoint-badge">1</div>
+      <summary class="waypoint-summary">
         <div>
-          <div class="summary-title">Home Controls</div>
-          <div class="summary-meta">Primary actions and status on the main watch face</div>
+          <div class="waypoint-title">Map Screen</div>
+          <div class="waypoint-sub">The app's home — opens here directly</div>
         </div>
-      </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content stack">
-      <div class="node o"><div class="n">Record</div><div class="d">Start / Stop / Pause</div></div>
-      <div class="node o"><div class="n">Nav Toggle</div><div class="d">Off / On — turning on opens track list</div></div>
-      <div class="node o"><div class="n">GPS Status</div><div class="d">Signal indicator</div></div>
-      <div class="node o"><div class="n">Battery</div><div class="d">% display</div></div>
-      <div class="node o"><div class="n">Clock</div><div class="d">Current time</div></div>
-    </div>
-  </details>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
 
-  <details class="b">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
-        <div>
-          <div class="summary-title">Home Swipe Pages</div>
-          <div class="summary-meta">The left and right pages inside the Home pager</div>
-        </div>
-      </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content grid-2">
-      <div class="node p"><div class="n">Quick Settings Launcher</div><div class="d">Swipe left from Home, then tap to open Quick Settings</div></div>
-      <div class="node b"><div class="n">Home Map</div><div class="d">Swipe right from Home to open the live map page</div></div>
-      <div class="node b"><div class="n">Reverse Route</div><div class="d">Swipe left, twice, from Home, then tap to reverse route, Nav must be ON</div></div>
-    </div>
-  </details>
+        <figure class="screenshot">
+          <img src="images/Map View.png" alt="WristNav Map screen">
+          <figcaption>Map View</figcaption>
+        </figure>
 
-  <details class="p">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
-        <div>
-          <div class="summary-title">Quick Settings</div>
-          <div class="summary-meta">Launcher page opened from the left swipe</div>
+        <div class="item">
+          <span class="item-name">First Launch</span>
+          <span class="item-detail">New users are directed to download a map — a local map from the current GPS position is offered automatically.</span>
         </div>
-      </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content grid-2">
-      <div class="node p"><div class="n">Activity</div><div class="d">10 types</div></div>
-      <div class="node p"><div class="n">Watch Theme</div></div>
-      <div class="node p"><div class="n">Units</div><div class="d">km / mi</div></div>
-      <div class="node p"><div class="n">Small Units</div><div class="d">m / ft</div></div>
-      <div class="node p"><div class="n">Map Control</div><div class="d">Off / Compass / Zoom</div></div>
-      <div class="node p"><div class="n">Nav Distance</div><div class="d">On / Off</div></div>
-      <div class="node p"><div class="n">Nav Turns</div><div class="d">On / Off</div></div>
-      <div class="node p"><div class="n">Auto Pause</div><div class="d">Off / 2s / 5s / 10s</div></div>
-    </div>
-  </details>
 
-  <details class="g">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
-        <div>
-          <div class="summary-title">Stats</div>
-          <div class="summary-meta">Swipeable stat pages</div>
-        </div>
-      </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content stack">
-      <div class="node g"><div class="n">Stats Pages</div><div class="d">Main data screens accessed by vertical paging</div></div>
-    </div>
-  </details>
-
-  <details class="b">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
-        <div>
-          <div class="summary-title">Maps</div>
-          <div class="summary-meta">Download manager and map region maintenance</div>
-        </div>
-      </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content grid-2">
-      <div class="node b"><div class="n">Main Map</div><div class="d">Fetch offline map regions from the built-in country/region list</div></div>
-      <div class="node b"><div class="n">Hillshading</div><div class="d">Downloads a relief-shading overlay (.hgt tiles, zipped) per region — layers under the base map for terrain shading</div></div>
-      <div class="node b"><div class="n">Contours</div><div class="d">Downloads a contour-line map variant per region, from the same country/region list</div></div>
-      <div class="node b"><div class="n">Installed</div><div class="d">Lists every downloaded map, TOPO region, and hillshading set with size — tap to delete</div></div>
-      <div class="node b"><div class="n">URL Download</div><div class="d">Triggered from the companion app — watch downloads a direct .map link or a zip (auto-extracted) in the background</div></div>
-    </div>
-  </details>
-
-  <details class="y">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
-        <div>
-          <div class="summary-title">Tracks</div>
-          <div class="summary-meta">GPX list and track inspection flow</div>
-        </div>
-      </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content grid-2">
-      <div class="node y"><div class="n">Download GPX</div><div class="d">OSM trace ID download from the watch</div></div>
-      <div class="node y"><div class="n">GPX List</div><div class="d">Browse imported, downloaded, and recorded tracks</div></div>
-      <div class="node y"><div class="n">Track Detail</div><div class="d">Opens when a track is tapped</div></div>
-      <div class="node t"><div class="n">Send to Phone</div><div class="d">Export a GPX track to the companion app</div></div>
-      <div class="node y"><div class="n">External GPX Import</div><div class="d">Tracks can also arrive from the companion app or file share intents</div></div>
-    </div>
-  </details>
-
-  <details class="o">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
-        <div>
-          <div class="summary-title">Settings</div>
-          <div class="summary-meta">All settings categories, grouped into collapsible sections</div>
-        </div>
-      </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content stack">
-      <details class="o">
-        <summary>
-          <div class="summary-left">
-            <span class="accent"></span>
-            <div>
-              <div class="summary-title">Display</div>
-              <div class="summary-meta">Theme and text presentation</div>
-            </div>
+        <div class="item">
+          <span class="item-name">Location Button</span>
+          <div class="state-list">
+            <div class="state-row"><span class="state-dot off"></span><b>Red</b> — snaps back to your current location</div>
+            <div class="state-row"><span class="state-dot good"></span><b>Green</b> — free movement, pan the map freely</div>
           </div>
-          <span class="chevron">›</span>
-        </summary>
-        <div class="content stack">
-          <div class="node o"><div class="n">Watch Theme</div><div class="d">Light / Fjord / Dark / Forest / Sand</div></div>
-          <div class="node o"><div class="n">Stats Text Size</div><div class="d">S / M / L</div></div>
         </div>
-      </details>
 
-      <details class="b">
-        <summary>
-          <div class="summary-left">
-            <span class="accent"></span>
-            <div>
-              <div class="summary-title">Map</div>
-              <div class="summary-meta">Theme, zoom, and drill-down map controls</div>
-            </div>
+        <div class="item">
+          <span class="item-name">Clock (tap)</span>
+          <div class="state-list">
+            <div class="state-row"><span class="state-dot off"></span><b>Red dot</b> — locks the map; the menu is still usable</div>
+            <div class="state-row"><span class="state-dot good"></span><b>Green dot</b> — free movement map</div>
           </div>
-          <span class="chevron">›</span>
-        </summary>
-        <div class="content stack">
-          <div class="grid-2">
-            <div class="node o"><div class="n">Map Style</div><div class="d">Mapsforge / TOPO — switches the whole map rendering mode</div></div>
-            <div class="node o"><div class="n">Map Theme</div><div class="d">Light / Fjord / Dark / Min×3 / Custom</div></div>
-            <div class="node o"><div class="n">Custom Themes</div><div class="d">Opens CustomThemeActivity — themes can be built in-app or imported as an XML file from the companion app</div></div>
-            <div class="node o"><div class="n">Topo Zoom</div><div class="d">1× / 1.5× / 2× — replaces Map Theme/Custom Themes in the list when Map Style is TOPO</div></div>
-            <div class="node o"><div class="n">Map Settings</div><div class="d">Opens MapSettingsActivity</div></div>
-            <div class="node o"><div class="n">Lock Zoom</div><div class="d">15 / 16 / 17 / 18</div></div>
-            <div class="node o"><div class="n">Ele Colour</div><div class="d">Red / Blue / Green / Cyan / Orange / Purple / White</div></div>
-          </div>
-          <details class="b">
-            <summary>
-              <div class="summary-left">
-                <span class="accent"></span>
-                <div>
-                  <div class="summary-title">Map Settings</div>
-                  <div class="summary-meta">Detailed overlay and control options</div>
-                </div>
-              </div>
-              <span class="chevron">›</span>
-            </summary>
-            <div class="content grid-2">
-              <div class="node b"><div class="n">Map Control</div><div class="d">Off / Compass / Zoom</div></div>
-              <div class="node b"><div class="n">Control Side</div><div class="d">Left / Right</div></div>
-              <div class="node b"><div class="n">Top Bar</div><div class="d">On / 5s / 10s / Off</div></div>
-              <div class="node b"><div class="n">Map Text Colour</div><div class="d">7 colours</div></div>
-              <div class="node b"><div class="n">Location Button</div><div class="d">Lock colour / Free colour</div></div>
-              <div class="node b"><div class="n">Scale Bar</div><div class="d">On / Off</div></div>
-              <div class="node b"><div class="n">Import Colour</div><div class="d">Red / Green / Yellow / Blue</div></div>
-              <div class="node b"><div class="n">Import Width</div><div class="d">Track line width</div></div>
-              <div class="node b"><div class="n">Bezel Stats</div><div class="d">On / Off — opens Bezel Config to choose 2 or 4 stats</div></div>
-            </div>
-          </details>
         </div>
-      </details>
 
-      <details class="o">
-        <summary>
-          <div class="summary-left">
-            <span class="accent"></span>
-            <div>
-              <div class="summary-title">Recording</div>
-              <div class="summary-meta">Recording behaviour, sensors, and lap logic</div>
-            </div>
+        <div class="item">
+          <span class="item-name">Compass</span>
+          <div class="state-list">
+            <div class="state-row"><span class="state-dot off"></span><b>Red</b> — locked north</div>
+            <div class="state-row"><span class="state-dot good"></span><b>Green</b> — compass moves with the map</div>
+            <div class="state-row"><span class="state-dot info"></span><b>Blue</b> — map locked north, compass moves</div>
           </div>
-          <span class="chevron">›</span>
-        </summary>
-        <div class="content grid-2">
-          <div class="node o"><div class="n">Activity</div><div class="d">Run / Trail / Walk / Hike / Cycle / MTB / Gravel / Kayak / Ski / Snowboard</div></div>
-          <div class="node o"><div class="n">Rec Distance</div><div class="d">Min GPS point distance</div></div>
-          <div class="node o"><div class="n">Rec Time</div><div class="d">Min GPS point interval</div></div>
-          <div class="node o"><div class="n">Auto Pause</div><div class="d">Off / 2s / 5s / 10s</div></div>
-          <div class="node o"><div class="n">Pause Speed</div><div class="d">Speed threshold</div></div>
-          <div class="node o"><div class="n">Record Colour</div><div class="d">Red / Green / Yellow / Blue</div></div>
-          <div class="node o"><div class="n">Record Width</div><div class="d">Track line width</div></div>
-          <div class="node o"><div class="n">Heart Rate</div><div class="d">On / Off</div></div>
-          <div class="node o"><div class="n">Steps</div><div class="d">On / Off</div></div>
-          <div class="node o"><div class="n">Countdown</div><div class="d">Off / 3s / 5s</div></div>
-          <div class="node o"><div class="n">Lap Splits</div><div class="d">On / Off</div></div>
-          <div class="node o"><div class="n">GPS Filtering</div><div class="d">On / Off</div></div>
         </div>
-      </details>
 
-      <details class="t">
-        <summary>
-          <div class="summary-left">
-            <span class="accent"></span>
-            <div>
-              <div class="summary-title">Navigation</div>
-              <div class="summary-meta">What shows on screen during active navigation</div>
-            </div>
-          </div>
-          <span class="chevron">›</span>
-        </summary>
-        <div class="content grid-2">
-          <div class="node t"><div class="n">Nav Distance</div><div class="d">On / Off</div></div>
-          <div class="node t"><div class="n">Nav Elevation</div><div class="d">On / Off</div></div>
-          <div class="node t"><div class="n">Nav Turns</div><div class="d">On / Off</div></div>
-          <div class="node t"><div class="n">Nav Arrows</div><div class="d">On / Off</div></div>
-          <div class="node t"><div class="n">Climb View <span class="beta-tag">Beta</span></div><div class="d">Shows climbs on a loaded GPX, numbered around the route. On a climb: climb #, elevation chart for the climb, % gradient, and time remaining in Small Units. Currently in beta — in review with Google.</div></div>
-          <div class="node t"><div class="n">Climb View Alert Distance <span class="beta-tag">Beta</span></div><div class="d">50m / 100m / 150m / 200m / 500m — alerts this far before a climb begins. Currently in beta — in review with Google.</div></div>
-          <div class="node t"><div class="n">Off-Route Alert</div><div class="d">On / Off — haptic vibration, fires even with the screen off</div></div>
-          <div class="node t"><div class="n">Alert Distance</div><div class="d">20m / 30m / 40m / 50m</div></div>
+        <div class="item">
+          <span class="item-name">Zoom</span>
+          <span class="item-value">+ / −</span>
         </div>
-      </details>
 
-      <details class="g">
-        <summary>
-          <div class="summary-left">
-            <span class="accent"></span>
-            <div>
-              <div class="summary-title">Stats Settings</div>
-              <div class="summary-meta">Config activities, barometer, and pace</div>
-            </div>
-          </div>
-          <span class="chevron">›</span>
-        </summary>
-        <div class="content grid-2">
-          <div class="node g"><div class="n">Stats Pages</div><div class="d">Opens StatsConfigActivity</div></div>
-          <div class="node g"><div class="n">Calories</div><div class="d">Opens CaloriesActivity</div></div>
-          <div class="node g"><div class="n">Barometer</div><div class="d">On / Off</div></div>
-          <div class="node g"><div class="n">Pace Avg</div><div class="d">Averaging window</div></div>
-        </div>
-      </details>
-
-      <details class="o">
-        <summary>
-          <div class="summary-left">
-            <span class="accent"></span>
-            <div>
-              <div class="summary-title">System</div>
-              <div class="summary-meta">Units and power behaviour</div>
-            </div>
-          </div>
-          <span class="chevron">›</span>
-        </summary>
-        <div class="content grid-2">
-          <div class="node o"><div class="n">Distance</div><div class="d">km / mi</div></div>
-          <div class="node o"><div class="n">Small Units</div><div class="d">Metres / Feet</div></div>
-          <div class="node o"><div class="n">Keep Screen On</div><div class="d">On / Off</div></div>
-          <div class="node o"><div class="n">Keep Active</div><div class="d">Background service on / off</div></div>
-          <div class="node o"><div class="n">Battery Saver</div><div class="d">Dark theme, minimal map, disables HR/Steps/Nav overlays/Bezel. Restores all on disable.</div></div>
-        </div>
-      </details>
-    </div>
-  </details>
-
-  <details class="g">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
-        <div>
-          <div class="summary-title">Auto Actions</div>
-          <div class="summary-meta">Flows triggered outside the main pager</div>
-        </div>
       </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content stack">
-      <div class="node g"><div class="n">Workout Summary</div><div class="d">Stats · Map · Save prompt</div></div>
-    </div>
-  </details>
+    </details>
 
-  <details class="x">
-    <summary>
-      <div class="summary-left">
-        <span class="accent"></span>
+    <details class="waypoint" open>
+      <div class="waypoint-badge">2</div>
+      <summary class="waypoint-summary">
         <div>
-          <div class="summary-title">Exit</div>
-          <div class="summary-meta">Close app</div>
+          <div class="waypoint-title">Navigation Menu</div>
+          <div class="waypoint-sub">Opened with a long press on the Map screen</div>
         </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <figure class="screenshot">
+          <img src="images/Map Menu.png" alt="WristNav Navigation menu, opened by a long press on the Map screen">
+          <figcaption>Map Menu</figcaption>
+        </figure>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Navigation Menu</div>
+          <div class="item"><span class="item-name">Load Route</span><span class="item-detail">Opens the GPX list to load a route onto the map. With a saved waypoint it routes you to it (needs the router)</span></div>
+          <div class="item"><span class="item-name">Live Route Editing</span><span class="item-detail">If Nav is active and you edit the route on the phone, send the updated GPX to the watch using the same filename. The watch detects the update and automatically refreshes the active route.</span></div>
+          <div class="item"><span class="item-name">Start</span></div>
+          <div class="item"><span class="item-name">Stop</span></div>
+          <div class="item"><span class="item-name">Pause</span></div>
+          <div class="item"><span class="item-name">Reverse Route</span><span class="item-detail">Requires a route to already be added</span></div>
+          <div class="item"><span class="item-name">Back to Start</span><span class="item-detail">Shown while recording. Builds a route back to your start with the router, saves it and loads it on the map</span></div>
+          <div class="item"><span class="item-name">Add Waypoint</span><span class="item-detail">Saves a waypoint at your current location</span></div>
+          <div class="item"><span class="item-name">Training</span><span class="item-detail">Loads a training session sent from the phone. Starts when recording starts</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Quick Settings</div>
+          <div class="item"><span class="item-name">Watch Theme</span></div>
+          <div class="item"><span class="item-name">Units</span></div>
+          <div class="item"><span class="item-name">Small Units</span></div>
+          <div class="item"><span class="item-name">Map Control</span><span class="item-value">Compass / Zoom / Off</span></div>
+          <div class="item"><span class="item-name">Nav Distance</span><span class="item-detail">Shows remaining distance if a GPX route is loaded on the Map screen</span></div>
+          <div class="item"><span class="item-name">Nav Turns</span><span class="item-detail">Turn-by-turn notifications, plus an overlay on the Map screen</span></div>
+          <div class="item"><span class="item-name">Auto Pause</span></div>
+        </div>
+
       </div>
-      <span class="chevron">›</span>
-    </summary>
-    <div class="content stack">
-      <div class="node x"><div class="n">Exit</div><div class="d">Close app</div></div>
-    </div>
-  </details>
+    </details>
+
+    <details class="waypoint" open>
+      <div class="waypoint-badge">3</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Global Menu</div>
+          <div class="waypoint-sub">Opened with the menu button on the Map screen</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <figure class="screenshot">
+          <img src="images/Main Menu.png" alt="WristNav Global menu">
+          <figcaption>Main Menu</figcaption>
+        </figure>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Stats</div>
+          <div class="item"><span class="item-name">Stats Pages</span><span class="item-detail">Configured in Settings — up to 10 pages, 3 stats per page</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Maps</div>
+          <div class="item"><span class="item-name">Manage Maps</span><span class="item-detail">All maps in one menu. The map provider changed, so reinstall any maps you already have</span></div>
+          <div class="item"><span class="item-name">Installed Maps</span><span class="item-detail">Tap to delete an installed map or its routing data</span></div>
+          <div class="item"><span class="item-name">Local Map</span><span class="item-detail">Gets your location and suggests the local map</span></div>
+          <div class="item"><span class="item-name">Main Map</span><span class="item-detail">Opens the regions. Pick a region, tick what you want (Base Map, Hillshading, Contours, Routing), then download at the bottom</span></div>
+          <div class="item"><span class="item-name">Update Maps</span><span class="item-detail">Checks for the latest maps</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Tracks and Waypoints</div>
+          <div class="item"><span class="item-name">Download OSM</span><span class="item-detail">Via an OSM traces URL / trace number</span></div>
+          <div class="item"><span class="item-name">Track List</span><span class="item-detail">Imported and recorded tracks — tap for details, swipe across to view distance, elevation details, elevation chart, send to phone, and delete</span></div>
+          <div class="item"><span class="item-name">Waypoints</span><span class="item-detail">Saved waypoints. Tap to manage or delete. Import a waypoint GPX sent from the phone</span></div>
+          <div class="item"><span class="item-name">Training Sessions</span><span class="item-detail">Sessions sent from the phone. Manage or delete here</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Settings</div>
+          <div class="item"><span class="item-name">Settings</span><span class="item-detail">Opens the full Settings list — see below</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Home / Map</div>
+          <div class="item"><span class="item-name">Home / Map</span><span class="item-detail">Returns to the Map screen</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Exit</div>
+          <div class="item"><span class="item-name">Exit</span><span class="item-detail">Tap twice to exit</span></div>
+        </div>
+
+      </div>
+    </details>
+
+    <details class="waypoint">
+      <div class="waypoint-badge">4</div>
+      <summary class="waypoint-summary">
+        <div>
+          <div class="waypoint-title">Settings</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="waypoint-body">
+
+        <div class="subgroup">
+          <div class="subgroup-title">Display</div>
+          <div class="item"><span class="item-name">Watch Theme</span><span class="item-value">Light / Fjord / Dark / Forest / Sand</span></div>
+          <div class="item"><span class="item-name">Stats Text Size</span><span class="item-value">S / M / L</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Map</div>
+          <div class="item"><span class="item-name">Map Style</span><span class="item-value">Mapsforge / TOPO</span></div>
+          <div class="item"><span class="item-name">Map Theme</span><span class="item-value">Light / Fjord / Dark / Min×3 / Trail Difficulty / Hiking / Custom</span></div>
+          <div class="item"><span class="item-name">Trail Difficulty</span><span class="item-detail">Mapsforge theme using OSM SAC trail difficulty: Strolling / T1 / T2 / T3 / T4 / T5 / T6</span></div>
+          <div class="item"><span class="item-name">Custom Themes</span><span class="item-detail">Build in-app, or import an XML file from the companion app</span></div>
+          <div class="item"><span class="item-name">Topo Zoom</span><span class="item-value">1× / 1.5× / 2×</span><span class="item-detail">Replaces Map Theme when Map Style is TOPO</span></div>
+          <div class="item"><span class="item-name">Map Settings</span><span class="item-detail">Opens the detailed overlay controls below</span></div>
+          <div class="item"><span class="item-name">Lock Zoom</span><span class="item-value">15 / 16 / 17 / 18</span></div>
+          <div class="item"><span class="item-name">Ele Colour</span><span class="item-value">7 colours</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Map Settings</div>
+          <div class="item"><span class="item-name">Map Control</span><span class="item-value">Off / Compass / Zoom</span></div>
+          <div class="item"><span class="item-name">Control Side</span><span class="item-value">Left / Right</span></div>
+          <div class="item"><span class="item-name">Top Bar</span><span class="item-value">On / 5s / 10s / Off</span></div>
+          <div class="item"><span class="item-name">Map Text Colour</span><span class="item-value">7 colours</span></div>
+          <div class="item"><span class="item-name">Location Button</span><span class="item-value">Lock / Free colour</span></div>
+          <div class="item"><span class="item-name">Scale Bar</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Import Colour</span><span class="item-value">Red / Green / Yellow / Blue</span></div>
+          <div class="item"><span class="item-name">Import Width</span><span class="item-value">Track line width</span></div>
+          <div class="item"><span class="item-name">Bezel Stats</span><span class="item-value">On / Off</span><span class="item-detail">Opens Bezel Config to choose 2 or 4 stats</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Recording</div>
+          <div class="item"><span class="item-name">Activity</span><span class="item-value">10 types</span></div>
+          <div class="item"><span class="item-name">Rec Distance</span><span class="item-value">Min GPS point distance</span></div>
+          <div class="item"><span class="item-name">Rec Time</span><span class="item-value">Min GPS point interval</span></div>
+          <div class="item"><span class="item-name">Auto Pause</span><span class="item-value">Off / 2s / 5s / 10s</span></div>
+          <div class="item"><span class="item-name">Pause Speed</span><span class="item-value">Speed threshold</span></div>
+          <div class="item"><span class="item-name">Record Colour</span><span class="item-value">Red / Green / Yellow / Blue</span></div>
+          <div class="item"><span class="item-name">Record Width</span><span class="item-value">Track line width</span></div>
+          <div class="item"><span class="item-name">Heart Rate</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Steps</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Countdown</span><span class="item-value">Off / 3s / 5s</span></div>
+          <div class="item"><span class="item-name">Lap Splits</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">GPS Filtering</span><span class="item-value">On / Off</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Navigation</div>
+          <div class="item"><span class="item-name">Nav Distance</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Nav Elevation</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Nav Turns</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Nav Arrows</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Climb View</span><span class="item-detail">Shows climbs on a loaded GPX, numbered around the route. On a climb, the Map screen shows the Climb #, an elevation chart of the climb, % gradient, and time remaining in Small Units (set by Settings). When the climb view is active and the elevation chart is showing, tap the screen to minimize the chart. Tap the blue button in the middle of the screen to open the elevation chart again.</span></div>
+          <figure class="screenshot">
+            <img src="images/Climb View.png" alt="WristNav Climb View overlay on the Map screen">
+            <figcaption>Climb View</figcaption>
+          </figure>
+          <div class="item"><span class="item-name">Climb View Alert Distance</span><span class="item-value">50 / 100 / 150 / 200 / 500m</span><span class="item-detail">Alerts this distance before a climb begins</span></div>
+          <div class="item"><span class="item-name">Off-Route Alert</span><span class="item-value">On / Off</span><span class="item-detail">Haptic vibration — fires even with the screen off</span></div>
+          <div class="item"><span class="item-name">Alert Distance</span><span class="item-value">20 / 30 / 40 / 50m</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Stats Settings</div>
+          <div class="item"><span class="item-name">Stats Pages</span><span class="item-detail">Opens the stats page config screen</span></div>
+          <div class="item"><span class="item-name">Calories</span><span class="item-detail">Opens the calories screen</span></div>
+          <div class="item"><span class="item-name">Barometer</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Pace Avg</span><span class="item-value">Averaging window</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">System</div>
+          <div class="item"><span class="item-name">Distance</span><span class="item-value">km / mi</span></div>
+          <div class="item"><span class="item-name">Small Units</span><span class="item-value">Metres / Feet</span></div>
+          <div class="item"><span class="item-name">Keep Screen On</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Keep Active</span><span class="item-value">Background service on / off</span></div>
+          <div class="item"><span class="item-name">Battery Saver</span><span class="item-detail">Dark theme, minimal map, disables HR / Steps / Nav overlays / Bezel. Restores all on disable.</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Auto Actions</div>
+          <div class="item"><span class="item-name">Workout Summary</span><span class="item-value">Stats · Map · Save prompt</span></div>
+        </div>
+
+      </div>
+    </details>
 
   </div>
 
   <div class="legend">
-    <div class="legend-i"><div class="dot" style="background:var(--orange)"></div>Home / Settings</div>
-    <div class="legend-i"><div class="dot" style="background:var(--blue)"></div>Map</div>
-    <div class="legend-i"><div class="dot" style="background:var(--green)"></div>Stats / Recording</div>
-    <div class="legend-i"><div class="dot" style="background:var(--purple)"></div>Quick Settings</div>
-    <div class="legend-i"><div class="dot" style="background:var(--yellow)"></div>Tracks / GPX</div>
-    <div class="legend-i"><div class="dot" style="background:var(--teal)"></div>Navigation</div>
-    <div class="legend-i"><div class="dot" style="background:var(--grey)"></div>Sub-screen</div>
+    <div class="legend-item"><span class="dot"></span> Setting or control</div>
+    <div class="legend-item"><span class="dot good"></span> Green state</div>
+    <div class="legend-item"><span class="dot off"></span> Red state</div>
+    <div class="legend-item"><span class="dot info"></span> Blue state</div>
   </div>
+
+  <footer>WristNav Field Reference · v2</footer>
+
+</div>
 </body>
 </html>
