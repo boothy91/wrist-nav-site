@@ -393,13 +393,16 @@
 
         <div class="subgroup">
           <div class="subgroup-title">Quick Settings</div>
+          <div class="item"><span class="item-name">Activity</span></div>
           <div class="item"><span class="item-name">Watch Theme</span></div>
           <div class="item"><span class="item-name">Units</span></div>
           <div class="item"><span class="item-name">Small Units</span></div>
           <div class="item"><span class="item-name">Map Control</span><span class="item-value">Compass / Zoom / Off</span></div>
           <div class="item"><span class="item-name">Nav Distance</span><span class="item-detail">Shows remaining distance if a GPX route is loaded on the Map screen</span></div>
           <div class="item"><span class="item-name">Nav Turns</span><span class="item-detail">Turn-by-turn notifications, plus an overlay on the Map screen</span></div>
+          <div class="item"><span class="item-name">Nav Arrows</span></div>
           <div class="item"><span class="item-name">Auto Pause</span></div>
+          <div class="item"><span class="item-name">Climb View</span></div>
         </div>
 
       </div>
@@ -423,7 +426,7 @@
 
         <div class="subgroup">
           <div class="subgroup-title">Stats</div>
-          <div class="item"><span class="item-name">Stats Pages</span><span class="item-detail">Configured in Settings — up to 10 pages, 3 stats per page</span></div>
+          <div class="item"><span class="item-name">Stats Pages</span><span class="item-detail">Configured in Settings — up to 10 pages, 3 stats per page. Nav Elevation is a stat here: an elevation chart of the loaded GPX</span></div>
         </div>
 
         <div class="subgroup">
@@ -445,7 +448,7 @@
 
         <div class="subgroup">
           <div class="subgroup-title">Settings</div>
-          <div class="item"><span class="item-name">Settings</span><span class="item-detail">Opens the full Settings list — see below</span></div>
+          <div class="item"><span class="item-name">Settings</span><span class="item-detail">Opens the full Settings list — see below. The list also has Attribution (map data credits)</span></div>
         </div>
 
         <div class="subgroup">
@@ -474,17 +477,18 @@
         <div class="subgroup">
           <div class="subgroup-title">Display</div>
           <div class="item"><span class="item-name">Watch Theme</span><span class="item-value">Light / Fjord / Dark / Forest / Sand</span></div>
-          <div class="item"><span class="item-name">Stats Text Size</span><span class="item-value">S / M / L</span></div>
+          <div class="item"><span class="item-name">Stats Text Size</span><span class="item-value">Small / Medium / Large</span></div>
         </div>
 
         <div class="subgroup">
           <div class="subgroup-title">Map</div>
           <div class="item"><span class="item-name">Map Style</span><span class="item-value">Mapsforge / TOPO / Garmin IMG</span></div>
           <div class="item"><span class="item-name">Garmin IMG</span><span class="item-value">Send .img files from the phone app and enter the URL; the watch downloads them. 4 themes: Dark / Light / Fjord / Hiking</span></div>
-          <div class="item"><span class="item-name">Map Theme</span><span class="item-value">Light / Fjord / Dark / Min×3 / Trail Difficulty / Hiking / Custom</span></div>
+          <div class="item"><span class="item-name">Map Theme</span><span class="item-value">Light / Fjord / Dark / Light Min / Fjord Min / Dark Min / Trail Difficulty / Hiking / Custom</span></div>
           <div class="item"><span class="item-name">Trail Difficulty</span><span class="item-detail">Mapsforge theme using OSM SAC trail difficulty: Strolling / T1 / T2 / T3 / T4 / T5 / T6</span></div>
           <div class="item"><span class="item-name">Custom Themes</span><span class="item-detail">Build in-app, or import an XML file from the companion app</span></div>
           <div class="item"><span class="item-name">Topo Zoom</span><span class="item-value">1× / 1.5× / 2×</span><span class="item-detail">Replaces Map Theme when Map Style is TOPO</span></div>
+          <div class="item"><span class="item-name">Topo Style</span><span class="item-value">Choose which source the TOPO map uses</span></div>
           <div class="item"><span class="item-name">Map Settings</span><span class="item-detail">Opens the detailed overlay controls below</span></div>
           <div class="item"><span class="item-name">Lock Zoom</span><span class="item-value">15 / 16 / 17 / 18</span></div>
           <div class="item"><span class="item-name">Ele Colour</span><span class="item-value">7 colours</span></div>
@@ -493,39 +497,39 @@
         <div class="subgroup">
           <div class="subgroup-title">Map Settings</div>
           <div class="item"><span class="item-name">Map Control</span><span class="item-value">Off / Compass / Zoom</span></div>
-          <div class="item"><span class="item-name">Map Split</span><span class="item-value">Halves the Map screen; the bottom half shows 2 stats</span></div>
+          <div class="item"><span class="item-name">Map Split</span><span class="item-value">On / Off — halves the Map screen; the bottom half shows 2 stats</span></div>
           <div class="item"><span class="item-name">Map Split Config</span><span class="item-value">Choose the 2 stats shown in the Map Split bottom half</span></div>
-          <div class="item"><span class="item-name">Map Direction</span><span class="item-value">Turns the map to the direction you are walking. Mapsforge and TOPO only for now</span></div>
+          <div class="item"><span class="item-name">Map Direction</span><span class="item-value">On / Off — turns the map to the direction you are walking. Mapsforge and TOPO only for now</span></div>
           <div class="item"><span class="item-name">Control Side</span><span class="item-value">Left / Right</span></div>
           <div class="item"><span class="item-name">Top Bar</span><span class="item-value">On / 5s / 10s / Off</span></div>
           <div class="item"><span class="item-name">Map Text Colour</span><span class="item-value">7 colours</span></div>
           <div class="item"><span class="item-name">Location Button</span><span class="item-value">Lock / Free colour</span></div>
           <div class="item"><span class="item-name">Scale Bar</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Import Colour</span><span class="item-value">Red / Green / Yellow / Blue</span></div>
-          <div class="item"><span class="item-name">Import Width</span><span class="item-value">Track line width</span></div>
+          <div class="item"><span class="item-name">Import Width</span><span class="item-value">Track line width, 1px to 40px</span></div>
           <div class="item"><span class="item-name">Bezel Stats</span><span class="item-value">On / Off</span><span class="item-detail">Opens Bezel Config to choose 2 or 4 stats</span></div>
         </div>
 
         <div class="subgroup">
           <div class="subgroup-title">Recording</div>
           <div class="item"><span class="item-name">Activity</span><span class="item-value">Hike / Run / Walk / Trail Run / Road Cycle / Mountain Bike / Gravel / Kayak / Ski / Snowboard</span></div>
-          <div class="item"><span class="item-name">Rec Distance</span><span class="item-value">Min GPS point distance</span></div>
-          <div class="item"><span class="item-name">Rec Time</span><span class="item-value">Min GPS point interval</span></div>
-          <div class="item"><span class="item-name">Auto Pause</span><span class="item-value">Off / 2s / 5s / 10s</span></div>
-          <div class="item"><span class="item-name">Pause Speed</span><span class="item-value">Speed threshold</span></div>
+          <div class="item"><span class="item-name">Rec Distance</span><span class="item-value">Min GPS point distance: 1 / 2 / 3 / 4 / 5 / 8 / 10 / 20m</span></div>
+          <div class="item"><span class="item-name">Rec Time</span><span class="item-value">Min GPS point interval: 1 / 2 / 3 / 4 / 5 / 8 / 10 / 20s</span></div>
+          <div class="item"><span class="item-name">Auto Pause</span><span class="item-value">Off / 2 / 3 / 4 / 5 / 8 / 10 / 15 / 20s</span></div>
+          <div class="item"><span class="item-name">Pause Speed</span><span class="item-value">Speed threshold: 0.7 / 1.0 / 1.5 / 2.0 km/h (0.4 / 0.6 / 0.9 / 1.2 mph)</span></div>
           <div class="item"><span class="item-name">Record Colour</span><span class="item-value">Red / Green / Yellow / Blue</span></div>
-          <div class="item"><span class="item-name">Record Width</span><span class="item-value">Track line width</span></div>
+          <div class="item"><span class="item-name">Record Width</span><span class="item-value">Track line width, 1px to 40px</span></div>
           <div class="item"><span class="item-name">Heart Rate</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Steps</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Countdown</span><span class="item-value">Off / 3s / 5s</span></div>
           <div class="item"><span class="item-name">Lap Splits</span><span class="item-value">On / Off</span></div>
+          <div class="item"><span class="item-name">Split Time</span><span class="item-value">On / Off — reads the loaded GPX; when a lap time fires, shows the split as + or − against it</span></div>
           <div class="item"><span class="item-name">GPS Filtering</span><span class="item-value">On / Off</span></div>
         </div>
 
         <div class="subgroup">
           <div class="subgroup-title">Navigation</div>
           <div class="item"><span class="item-name">Nav Distance</span><span class="item-value">On / Off</span></div>
-          <div class="item"><span class="item-name">Nav Elevation</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Nav Turns</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Nav Arrows</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Climb View</span><span class="item-detail">Shows climbs on a loaded GPX, numbered around the route. On a climb, the Map screen shows the Climb #, an elevation chart of the climb, % gradient, and time remaining in Small Units (set by Settings). When the climb view is active and the elevation chart is showing, tap the screen to minimize the chart. Tap the blue button in the middle of the screen to open the elevation chart again.</span></div>
@@ -533,9 +537,9 @@
             <img src="images/Climb View.png" alt="WristNav Climb View overlay on the Map screen">
             <figcaption>Climb View</figcaption>
           </figure>
-          <div class="item"><span class="item-name">Climb View Alert Distance</span><span class="item-value">50 / 100 / 150 / 200 / 500m</span><span class="item-detail">Alerts this distance before a climb begins</span></div>
-          <div class="item"><span class="item-name">Off-Route Alert</span><span class="item-value">On / Off</span><span class="item-detail">Haptic vibration — fires even with the screen off</span></div>
-          <div class="item"><span class="item-name">Alert Distance</span><span class="item-value">20 / 30 / 40 / 50m</span></div>
+          <div class="item"><span class="item-name">Climb View Distance</span><span class="item-value">50 / 100 / 150 / 250 / 500m</span><span class="item-detail">Alerts this distance before a climb begins</span></div>
+          <div class="item"><span class="item-name">Off Route Alert</span><span class="item-value">On / Off</span><span class="item-detail">Haptic vibration — fires even with the screen off</span></div>
+          <div class="item"><span class="item-name">Off Route Alert Distance</span><span class="item-value">20 / 30 / 40 / 50m</span></div>
         </div>
 
         <div class="subgroup">
@@ -543,7 +547,7 @@
           <div class="item"><span class="item-name">Stats Pages</span><span class="item-detail">Opens the stats page config screen</span></div>
           <div class="item"><span class="item-name">Calories</span><span class="item-detail">Opens the calories screen. Set Weight (kg / lb) and Age for calorie calculation</span></div>
           <div class="item"><span class="item-name">Barometer</span><span class="item-value">On / Off</span></div>
-          <div class="item"><span class="item-name">Pace Avg</span><span class="item-value">Averaging window</span></div>
+          <div class="item"><span class="item-name">Pace Avg</span><span class="item-value">Averaging window: 10s / 20s / 30s / 60s / All</span></div>
         </div>
 
         <div class="subgroup">
@@ -552,7 +556,7 @@
           <div class="item"><span class="item-name">Small Units</span><span class="item-value">Metres / Feet</span></div>
           <div class="item"><span class="item-name">Keep Screen On</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Keep Active</span><span class="item-value">Background service on / off</span></div>
-          <div class="item"><span class="item-name">Voice Alerts</span><span class="item-value">Spoken alerts for lap times and training commands</span></div>
+          <div class="item"><span class="item-name">Voice Alerts</span><span class="item-value">On / Off — spoken alerts for lap times and training commands</span></div>
           <div class="item"><span class="item-name">Battery Saver</span><span class="item-detail">Dark theme, minimal map, disables HR / Steps / Nav overlays / Bezel. Restores all on disable.</span></div>
         </div>
 
