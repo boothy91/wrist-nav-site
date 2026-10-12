@@ -265,7 +265,7 @@
       <div class="waypoint-body">
         <div class="item"><span class="item-name">Send GPX</span><span class="item-detail">Send route files directly to the watch</span></div>
         <div class="item"><span class="item-name">Send .map Files</span><span class="item-detail">For offline map use on the watch</span></div>
-        <div class="item"><span class="item-name">Send a .map URL</span><span class="item-detail">The watch downloads the file directly from the link</span></div>
+        <div class="item"><span class="item-name">Send a .map URL</span><span class="item-detail">The watch downloads the file directly from the link. Also works for Garmin IMG maps (.img)</span></div>
         <div class="item"><span class="item-name">Topo Download Area</span><span class="item-detail">Opens as a popup — full walkthrough below</span></div>
       </div>
     </details>
@@ -289,7 +289,7 @@
           <div class="item"><span class="item-name">Heart Rate Zones</span><span class="item-detail">Time in each of 5 zones, plus estimated calories. Tap the card to set age and weight</span></div>
         <div class="item"><span class="item-name">Export</span><span class="item-detail">Shareable PNG snapshot, optionally overlaid on your own photo</span></div>
         <div class="item"><span class="item-name">Save</span><span class="item-value">GPX / TCX</span><span class="item-detail">To phone storage</span></div>
-        <div class="item"><span class="item-name">Upload</span><span class="item-detail">Health Connect, Intervals.icu (API key in Settings), or manually to Strava via browser — Strava's direct API connect was removed due to subscription costs</span></div>
+        <div class="item"><span class="item-name">Upload</span><span class="item-detail">Health Connect, Intervals.icu (API key in Settings). Strava has no direct upload: use Manual Upload in Settings → Accounts</span></div>
         <div class="item"><span class="item-name">Rename</span></div>
         <div class="item"><span class="item-name">Delete</span></div>
         <div class="item"><span class="item-name">Send to Watch</span></div>
@@ -342,7 +342,7 @@
         <div class="subgroup">
           <div class="subgroup-title">Custom Theme Viewer</div>
           <div class="item"><span class="item-name">Name Theme</span></div>
-          <div class="item"><span class="item-name">Colour Picker</span><span class="item-detail">Full picker per element, with 10 presets to start from</span></div>
+          <div class="item"><span class="item-name">Colour Picker</span><span class="item-detail">Full picker per element, with 14 presets to start from</span></div>
           <div class="item"><span class="item-name">Live Preview</span><span class="item-detail">See the map update before sending</span></div>
           <div class="item"><span class="item-name">Import Theme</span><span class="item-detail">From an XML file — custom or downloaded; must be XML, zip files aren't accepted</span></div>
           <div class="item"><span class="item-name">Send Theme to Watch</span></div>
@@ -364,16 +364,16 @@
 
         <div class="step-list">
           <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-name">Upload GPX</div><div class="step-detail">Loads a route into the Topo Preview screen</div></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-name">Fix GPX</div><div class="step-detail">Adjusts the TOPO area's boundary box so the whole route fits inside it</div></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-name">Fit GPX</div><div class="step-detail">Adjusts the TOPO area's boundary box so the whole route fits inside it</div></div></div>
           <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-name">Area Name</div><div class="step-detail">Text entry — name for this downloaded TOPO region</div></div></div>
           <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-name">Zoom Level</div><div class="step-detail">Shown below the preview box</div></div></div>
           <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-name">Min / Max Zoom</div><div class="step-detail">Zoom range to download tiles for</div></div></div>
-          <div class="step"><div class="step-num">6</div><div class="step-body"><div class="step-name">Map Source</div><div class="step-value">OpenTopo · SwissTopo · TraceStack · USGS Topo · Kartverket</div></div></div>
+          <div class="step"><div class="step-num">6</div><div class="step-body"><div class="step-name">Map Source</div><div class="step-value">OpenTopo · SwissTopo · TraceStack · USGS Topo · Kartverket · OS Maps</div></div></div>
           <div class="step"><div class="step-num">7</div><div class="step-body"><div class="step-name">Download Area</div><div class="step-detail">Sends the tiles to the watch — can take a while, as tiles aren't self-hosted</div></div></div>
-          <div class="step"><div class="step-num">8</div><div class="step-body"><div class="step-name">Refresh Download Area</div><div class="step-detail">Reads installed TOPO files on the watch and lists them below — tap an area to highlight it green and preview it on the map, tap again to remove</div></div></div>
+          <div class="step"><div class="step-num">8</div><div class="step-body"><div class="step-name">Refresh Downloaded Areas</div><div class="step-detail">Reads installed TOPO files on the watch and lists them below — tap an area to highlight it green and preview it on the map, tap again to remove</div></div></div>
         </div>
 
-        <p class="lead-note" style="margin-top:14px;">Map source coverage: OpenTopo works worldwide · SwissTopo covers Switzerland only · TraceStack works worldwide but needs an API key (Settings → Accounts) · USGS Topo covers the USA only · Kartverket covers Norway only.</p>
+        <p class="lead-note" style="margin-top:14px;">Map source coverage: OpenTopo works worldwide · SwissTopo covers Switzerland only · TraceStack works worldwide but needs an API key (Settings → Accounts) · USGS Topo covers the USA only · Kartverket covers Norway only · OS Maps needs an API key (Settings → Accounts) and covers Great Britain.</p>
 
       </div>
     </details>
@@ -394,6 +394,7 @@
           <div class="item"><span class="item-name">Strava</span><span class="item-detail">Manual upload link — direct API connect was removed due to subscription costs</span></div>
           <div class="item"><span class="item-name">Intervals.icu API Key</span><span class="item-detail">Enables uploading routes to Intervals.icu</span></div>
           <div class="item"><span class="item-name">TraceStack API Key</span><span class="item-detail">Required to use TraceStack as a TOPO area map source</span></div>
+          <div class="item"><span class="item-name">OS Maps API Key</span><span class="item-value">Required to use OS Maps as a TOPO area map source (key from osdatahub.os.uk)</span></div>
         </div>
 
         <div class="subgroup">
@@ -406,15 +407,15 @@
           <div class="item"><span class="item-name">Distance Units</span><span class="item-value">km / mi</span></div>
           <div class="item"><span class="item-name">Map Style</span><span class="item-value">Standard / Topo</span></div>
           <div class="item"><span class="item-name">Show Elevation Chart</span><span class="item-value">On / Off</span></div>
-          <div class="item"><span class="item-name">Show Status Bar</span><span class="item-value">On / Off</span><span class="item-detail">Distance / time / elevation summary bar</span></div>
-          <div class="item"><span class="item-name">Route Line Colour</span><span class="item-value">Multiple colours</span></div>
-          <div class="item"><span class="item-name">Route Thickness</span><span class="item-detail">Width of the route line</span></div>
+          <div class="item"><span class="item-name">Show Stats Bar</span><span class="item-value">On / Off</span><span class="item-detail">Distance / time / elevation summary bar</span></div>
+          <div class="item"><span class="item-name">Route Line Colour</span><span class="item-value">Cyan / Red / Green / Orange</span></div>
+          <div class="item"><span class="item-name">Route Line Thickness</span><span class="item-detail">Width of the route line: 4 / 8 / 12 / 16px</span></div>
         </div>
 
         <div class="subgroup">
           <div class="subgroup-title">Routes Tab</div>
-          <div class="item"><span class="item-name">Auto Delete Routes</span><span class="item-value">Off / 7 Days / 30 Days</span></div>
-          <div class="item"><span class="item-name">Sort Files</span><span class="item-value">Newest / Oldest / Name</span></div>
+          <div class="item"><span class="item-name">Auto Delete Received Files</span><span class="item-value">Off / 7 Days / 30 Days</span></div>
+          <div class="item"><span class="item-name">Sort Received Files</span><span class="item-value">Newest / Oldest / Name</span></div>
         </div>
 
         <div class="subgroup">
