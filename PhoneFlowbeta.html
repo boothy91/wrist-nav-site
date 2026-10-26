@@ -266,6 +266,7 @@
         <div class="item"><span class="item-name">Send GPX</span><span class="item-detail">Send route files directly to the watch</span></div>
         <div class="item"><span class="item-name">Send .map Files</span><span class="item-detail">For offline map use on the watch</span></div>
         <div class="item"><span class="item-name">Send a .map URL</span><span class="item-detail">The watch downloads the file directly from the link. Also works for Garmin IMG maps (.img)</span></div>
+        <div class="item"><span class="item-name">Where to Get Maps</span><span class="item-detail">A link under the .map file picker that opens a list of places to get .map files</span></div>
         <div class="item"><span class="item-name">Topo Download Area</span><span class="item-detail">Opens as a popup — full walkthrough below</span></div>
       </div>
     </details>
@@ -294,6 +295,9 @@
         <div class="item"><span class="item-name">Delete</span></div>
         <div class="item"><span class="item-name">Send to Watch</span></div>
         <div class="item"><span class="item-name">Navigate To</span><span class="item-detail">Opens the phone's maps app with directions to the route's start</span></div>
+        <div class="item"><span class="item-name">Route Cards</span><span class="item-detail">Each route shows a thumbnail, distance, ascent and date. View is the main button; Send, Navigate, Save and Upload are icon buttons, and the three-dot button opens Rename and Delete</span></div>
+        <div class="item"><span class="item-name">Backup Routes</span><span class="item-detail">Saves all the routes on the phone to one zip file</span></div>
+        <div class="item"><span class="item-name">Restore Routes</span><span class="item-detail">Pick a backup zip to put the routes back</span></div>
       </div>
     </details>
 
@@ -320,7 +324,7 @@
       <summary class="waypoint-summary">
         <div>
           <div class="waypoint-title">Watch Tab</div>
-          <div class="waypoint-sub">Themes and flow reference for the watch app</div>
+          <div class="waypoint-sub">Training, themes, map checks and watch routes</div>
         </div>
         <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </summary>
@@ -335,12 +339,30 @@
         </div>
 
         <div class="subgroup">
+          <div class="subgroup-title">Check GPX Map</div>
+          <div class="item"><span class="item-name">Upload GPX</span><span class="item-detail">Pick a route. The phone asks the watch which map areas cover it</span></div>
+          <div class="item"><span class="item-name">Result</span><span class="item-detail">Each map area shows as On watch or Missing</span></div>
+          <div class="item"><span class="item-name">Send to Watch</span><span class="item-detail">For a missing area whose .map file is on the phone (maps, Download or Documents folder)</span></div>
+          <div class="item"><span class="item-name">Download on Watch</span><span class="item-detail">The watch downloads the missing area itself from its link</span></div>
+          <div class="item"><span class="item-name">Re-check Watch</span><span class="item-detail">Run the check again once a map has arrived</span></div>
+        </div>
+
+        <div class="subgroup">
+          <div class="subgroup-title">Manage Routes</div>
+          <div class="item"><span class="item-name">Refresh</span><span class="item-detail">Asks the watch for the routes stored on it</span></div>
+          <div class="item"><span class="item-name">Route List</span><span class="item-detail">Each route shows its name, size and date</span></div>
+          <div class="item"><span class="item-name">Details</span><span class="item-detail">Loads the route from the watch and opens its activity view</span></div>
+          <div class="item"><span class="item-name">Rename</span></div>
+          <div class="item"><span class="item-name">Delete</span><span class="item-detail">Asks for confirmation, then removes the route from the watch</span></div>
+        </div>
+
+        <div class="subgroup">
           <div class="subgroup-title">Flow Guide</div>
           <div class="item"><span class="item-name">Flow Guide</span><span class="item-detail">Opens the interactive watch app flow diagram as a popup</span></div>
         </div>
 
         <div class="subgroup">
-          <div class="subgroup-title">Custom Theme Viewer</div>
+          <div class="subgroup-title">Theme Creator</div>
           <div class="item"><span class="item-name">Name Theme</span></div>
           <div class="item"><span class="item-name">Colour Picker</span><span class="item-detail">Full picker per element, with 14 presets to start from</span></div>
           <div class="item"><span class="item-name">Live Preview</span><span class="item-detail">See the map update before sending</span></div>
