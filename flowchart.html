@@ -246,11 +246,34 @@
 
   footer{ margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); }
 
-  @media (max-width: 480px){
+  @media (max-width: 600px){
     h1.title{ font-size: 34px; }
     .gesture-row{ grid-template-columns: 70px 1fr; }
     details.waypoint{ padding-left: 44px; }
     .waypoint-badge{ width: 34px; height: 34px; font-size: 13px; }
+
+    .item{
+      grid-template-columns: minmax(0, 1fr);
+      gap: 5px;
+      padding: 12px 0;
+    }
+    .item-name,
+    .item-value,
+    .item-detail{
+      min-width: 0;
+      max-width: 100%;
+    }
+    .item-value{
+      justify-self: start;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+    .item-detail{
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
   }
 
   @media (prefers-reduced-motion: reduce){ .chevron{ transition: none; } }
@@ -384,7 +407,7 @@
           <div class="item"><span class="item-name">Live Route Editing</span><span class="item-detail">If Nav is active and you edit the route on the phone, send the updated GPX to the watch using the same filename. The watch detects the update and automatically refreshes the active route.</span></div>
           <div class="item"><span class="item-name">Start</span></div>
           <div class="item"><span class="item-name">Stop</span></div>
-          <div class="item"><span class="item-name">Quick Route</span><span class="item-value">Enter a distance, then Create a round-trip route from your location (needs the router and routing data installed). Preview shows it on the map; Accept saves and loads it; Cancel discards it</span></div>
+          <div class="item"><span class="item-name">Quick Route</span><span class="item-detail">Enter a distance, then create a round-trip route from your location. The router and routing data must be installed. Preview the route on the map, then Accept to save and load it, or Cancel to discard it.</span></div>
           <div class="item"><span class="item-name">Pause / Resume</span></div>
           <div class="item"><span class="item-name">Reverse Route</span><span class="item-detail">Requires a route to already be added</span></div>
           <div class="item"><span class="item-name">Back to Start</span><span class="item-detail">Shown while recording. Builds a route back to your start with the router, saves it and loads it on the map</span></div>
@@ -483,12 +506,12 @@
         <div class="subgroup">
           <div class="subgroup-title">Map</div>
           <div class="item"><span class="item-name">Map Style</span><span class="item-value">Mapsforge / TOPO / Garmin IMG</span></div>
-          <div class="item"><span class="item-name">Garmin IMG</span><span class="item-value">Send .img files from the phone app and enter the URL; the watch downloads them. 4 themes: Dark / Light / Fjord / Hiking</span></div>
+          <div class="item"><span class="item-name">Garmin IMG</span><span class="item-detail">Send .img files from the phone app. Enter the URL on the watch to download the map. Available themes: Dark, Light, Fjord and Hiking.</span></div>
           <div class="item"><span class="item-name">Map Theme</span><span class="item-value">Light / Fjord / Dark / Light Min / Fjord Min / Dark Min / Trail Difficulty / Hiking / Custom</span></div>
           <div class="item"><span class="item-name">Trail Difficulty</span><span class="item-detail">Mapsforge theme using OSM SAC trail difficulty: Strolling / T1 / T2 / T3 / T4 / T5 / T6</span></div>
           <div class="item"><span class="item-name">Custom Themes</span><span class="item-detail">Build in-app, or import an XML file from the companion app</span></div>
           <div class="item"><span class="item-name">Topo Zoom</span><span class="item-value">1× / 1.5× / 2×</span><span class="item-detail">Replaces Map Theme when Map Style is TOPO</span></div>
-          <div class="item"><span class="item-name">Topo Style</span><span class="item-value">Choose which installed TOPO map source to display: OpenTopoMap, Tracestrack, OS Outdoor / Light / Road, USGS or Kartverket. Only sources you have downloaded appear</span></div>
+          <div class="item"><span class="item-name">Topo Style</span><span class="item-detail">Choose an installed TOPO map source: OpenTopoMap, Tracestrack, OS Outdoor, OS Light, OS Road, USGS or Kartverket. Only downloaded sources appear.</span></div>
           <div class="item"><span class="item-name">Map Settings</span><span class="item-detail">Opens the detailed overlay controls below</span></div>
           <div class="item"><span class="item-name">Lock Zoom</span><span class="item-value">15 / 16 / 17 / 18</span></div>
           <div class="item"><span class="item-name">Ele Colour</span><span class="item-value">7 colours</span></div>
@@ -497,9 +520,9 @@
         <div class="subgroup">
           <div class="subgroup-title">Map Settings</div>
           <div class="item"><span class="item-name">Map Control</span><span class="item-value">Off / Compass / Zoom</span></div>
-          <div class="item"><span class="item-name">Map Split</span><span class="item-value">On / Off — halves the Map screen; the bottom half shows 2 stats</span></div>
+          <div class="item"><span class="item-name">Map Split</span><span class="item-detail">On / Off</span></div>
           <div class="item"><span class="item-name">Map Split Config</span><span class="item-value">Choose the 2 stats shown in the Map Split bottom half</span></div>
-          <div class="item"><span class="item-name">Map Direction</span><span class="item-value">On / Off — turns the map to the direction you are walking. Mapsforge and TOPO only for now</span></div>
+          <div class="item"><span class="item-name">Map Direction</span><span class="item-detail">On / Off</span></div>
           <div class="item"><span class="item-name">Control Side</span><span class="item-value">Left / Right</span></div>
           <div class="item"><span class="item-name">Top Bar</span><span class="item-value">On / 5s / 10s / Off</span></div>
           <div class="item"><span class="item-name">Map Text Colour</span><span class="item-value">7 colours</span></div>
@@ -523,7 +546,7 @@
           <div class="item"><span class="item-name">Steps</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Countdown</span><span class="item-value">Off / 3s / 5s</span></div>
           <div class="item"><span class="item-name">Lap Splits</span><span class="item-value">On / Off</span></div>
-          <div class="item"><span class="item-name">Split Time</span><span class="item-value">On / Off — reads the loaded GPX; when a lap time fires, shows the split as + or − against it</span></div>
+          <div class="item"><span class="item-name">Split Time</span><span class="item-detail">On / Off</span></div>
           <div class="item"><span class="item-name">GPS Filtering</span><span class="item-value">On / Off</span></div>
         </div>
 
@@ -531,7 +554,7 @@
           <div class="subgroup-title">Navigation</div>
           <div class="item"><span class="item-name">Nav Distance</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Nav Turns</span><span class="item-value">On / Off</span></div>
-          <div class="item"><span class="item-name">Nav Arrows</span><span class="item-value">On / Off — shows the direction of the route on the map screen</span></div>
+          <div class="item"><span class="item-name">Nav Arrows</span><span class="item-detail">On / Off</span></div>
           <div class="item"><span class="item-name">Climb View</span><span class="item-detail">Shows climbs on a loaded GPX, numbered around the route. On a climb, the Map screen shows the Climb #, an elevation chart of the climb, % gradient, and time remaining in Small Units (set by Settings). When the climb view is active and the elevation chart is showing, tap the screen to minimize the chart. Tap the blue button in the middle of the screen to open the elevation chart again.</span></div>
           <figure class="screenshot">
             <img src="images/Climb View.png" alt="WristNav Climb View overlay on the Map screen">
@@ -556,7 +579,7 @@
           <div class="item"><span class="item-name">Small Units</span><span class="item-value">Metres / Feet</span></div>
           <div class="item"><span class="item-name">Keep Screen On</span><span class="item-value">On / Off</span></div>
           <div class="item"><span class="item-name">Keep Active</span><span class="item-value">Background service on / off</span></div>
-          <div class="item"><span class="item-name">Voice Alerts</span><span class="item-value">On / Off — spoken alerts for lap times and training commands</span></div>
+          <div class="item"><span class="item-name">Voice Alerts</span><span class="item-detail">On / Off</span></div>
           <div class="item"><span class="item-name">Battery Saver</span><span class="item-detail">Dark theme, minimal map, disables HR / Steps / Nav overlays / Bezel. Restores all on disable.</span></div>
         </div>
 
