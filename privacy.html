@@ -121,6 +121,14 @@
 <p>When you tap "Send to Garmin Connect" on a route, WristNav sends that route (its name, track points and distance) to your Garmin Connect account. Routes are sent only when you choose to send them. WristNav does not read any data from your Garmin account.</p>
 <p>Your Garmin authorisation tokens are stored on your device. A small authorisation service hosted on Cloudflare completes the sign-in and signs requests to Garmin. It does not store your routes or tokens. You can disconnect at any time in Settings, which deletes the tokens from your device, and you can also revoke access from your Garmin account. Routes already sent to Garmin are subject to Garmin's own privacy policy and must be deleted through Garmin Connect.</p>
 
+<h2>Route Planning</h2>
+<p>The Plan tab in the phone app loads the WristNav Trail Planner, a web page hosted on GitHub Pages. When you plan a route, the points you place on the map are sent to OpenRouteService to calculate the route, so that service can see those coordinates and your IP address.</p>
+<p>The planner also loads map tiles from OpenStreetMap, OpenTopoMap and Esri (satellite imagery), elevation data tiles from the AWS public terrain dataset, fonts from Google Fonts, and code libraries from unpkg. Each of these services can see your IP address and the area of the map you are viewing. WristNav does not store your planned routes on any server. Routes you export are saved to your device. Data received by these services is subject to their own privacy policies.</p>
+
+<h2>Map Downloads</h2>
+<p>When you download topographic map tiles, WristNav requests them from the provider you choose (OpenTopoMap, Tracestrack, Ordnance Survey, swisstopo, USGS or Kartverket). That provider can see your IP address and the areas you request. If you enter your own API key for a provider such as Tracestrack or Ordnance Survey, the key is stored on your device and sent only to that provider.</p>
+<p>Offline map files, contour, hillshade and routing files are downloaded from file hosting operated by the developer. These downloads do not include your location or any personal data beyond the technical information needed to deliver the file, such as your IP address.</p>
+
 <h2>Data Sharing</h2>
 <p>WristNav does not sell your personal data. Data may be transferred to third-party services only when you explicitly use the relevant feature:</p>
 <ul>
