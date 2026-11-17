@@ -124,6 +124,11 @@
 
 <p>Once you manually upload a GPX file to Strava, the data contained in that file is subject to Strava's own privacy policy. See <a href="https://www.strava.com/legal/privacy" target="_blank">strava.com/legal/privacy</a>.</p>
 
+<h2>Garmin Connect</h2>
+<p>WristNav is adding optional integration with Garmin Connect. If you choose to connect your Garmin account, you sign in on Garmin's own page and authorise WristNav to send routes to your account.</p>
+<p>When you tap "Send to Garmin Connect" on a route, WristNav sends that route (its name, track points and distance) to your Garmin Connect account. Routes are sent only when you choose to send them. WristNav does not read any data from your Garmin account.</p>
+<p>Your Garmin authorisation tokens are stored on your device. A small authorisation service hosted on Cloudflare completes the sign-in and signs requests to Garmin. It does not store your routes or tokens. You can disconnect at any time in Settings, which deletes the tokens from your device, and you can also revoke access from your Garmin account. Routes already sent to Garmin are subject to Garmin's own privacy policy and must be deleted through Garmin Connect.</p>
+
 <h2>Data Sharing</h2>
 <p>WristNav does not sell your personal data. Data may be transferred to third-party services only when you explicitly use the relevant feature:</p>
 <ul>
@@ -131,6 +136,7 @@
     <li>A GPX file containing activity data may be uploaded to Intervals.icu when you choose to upload an activity</li>
     <li>A GPX file may be manually shared using your device's share functionality</li>
     <li>A downloaded GPX file may be manually uploaded by you to Strava</li>
+    <li>A route may be sent to Garmin Connect when you choose to send it</li>
     <li>A crash log may be manually sent to the developer via email when you choose to do so</li>
 </ul>
 
